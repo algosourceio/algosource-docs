@@ -1,0 +1,323 @@
+# How Contributions Are Evaluated
+
+import { CheckCircle, XCircle, Eye, Clock, Scale, Target, Shield, Zap } from 'lucide-react'
+
+<Callout type="info" title="The Maintainer's Perspective">
+Understanding how maintainers evaluate contributions helps you craft PRs that get merged—not ignored.
+</Callout>
+
+## The Evaluation Framework
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     CONTRIBUTION EVALUATION MATRIX                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│                              RELEVANCE                                      │
+│                    Does this belong in the project?                         │
+│                                                                             │
+│                                 ▲                                           │
+│                                 │                                           │
+│              ┌──────────────────┼──────────────────┐                       │
+│              │                  │                  │                       │
+│              │    REJECTED      │     IDEAL        │                       │
+│   QUALITY ◄──┼──────────────────┼──────────────────┼──► HIGH               │
+│              │                  │                  │                       │
+│              │    IGNORED       │   MAYBE LATER    │                       │
+│              │                  │                  │                       │
+│              └──────────────────┼──────────────────┘                       │
+│                                 │                                           │
+│                                 ▼                                           │
+│                               LOW                                           │
+│                                                                             │
+│   Additional factors: MAINTENANCE BURDEN + CONTRIBUTOR TRUST               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Dimension 1: Relevance
+
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-6 mb-6">
+
+### Questions Maintainers Ask
+
+- Is there an issue tracking this?
+- Does this align with project roadmap?
+- Is this something users actually need?
+- Does this fit the project's scope?
+
+### Instant Rejection Triggers
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+<div className="flex items-center gap-3 text-red-400">
+<XCircle className="h-5 w-5 flex-shrink-0" />
+<span>Unsolicited feature additions</span>
+</div>
+<div className="flex items-center gap-3 text-red-400">
+<XCircle className="h-5 w-5 flex-shrink-0" />
+<span>Scope creep / kitchen sink PRs</span>
+</div>
+<div className="flex items-center gap-3 text-red-400">
+<XCircle className="h-5 w-5 flex-shrink-0" />
+<span>Features maintainers rejected before</span>
+</div>
+<div className="flex items-center gap-3 text-red-400">
+<XCircle className="h-5 w-5 flex-shrink-0" />
+<span>Duplicates of existing PRs/issues</span>
+</div>
+</div>
+
+### How to Score High
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+<div className="flex items-center gap-3 text-emerald-400">
+<CheckCircle className="h-5 w-5 flex-shrink-0" />
+<span>Link to an existing issue</span>
+</div>
+<div className="flex items-center gap-3 text-emerald-400">
+<CheckCircle className="h-5 w-5 flex-shrink-0" />
+<span>Pick up "help wanted" issues</span>
+</div>
+<div className="flex items-center gap-3 text-emerald-400">
+<CheckCircle className="h-5 w-5 flex-shrink-0" />
+<span>Discuss approach before coding</span>
+</div>
+<div className="flex items-center gap-3 text-emerald-400">
+<CheckCircle className="h-5 w-5 flex-shrink-0" />
+<span>Keep PRs focused and small</span>
+</div>
+</div>
+
+</div>
+
+---
+
+## Dimension 2: Quality
+
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-6 mb-6">
+
+### Quality Checklist
+
+<Checklist>
+<ChecklistItem>Tests pass locally and in CI</ChecklistItem>
+<ChecklistItem>New code is tested</ChecklistItem>
+<ChecklistItem>Follows existing code style</ChecklistItem>
+<ChecklistItem>Clear, descriptive commit messages</ChecklistItem>
+<ChecklistItem>PR description explains the "why"</ChecklistItem>
+<ChecklistItem>No unrelated changes included</ChecklistItem>
+<ChecklistItem>Documentation updated if needed</ChecklistItem>
+</Checklist>
+
+### The Ideal PR Description
+
+```markdown
+## Summary
+[One paragraph: WHAT this PR does]
+
+## Motivation
+[One paragraph: WHY this change is needed]
+Fixes #123
+
+## Changes
+- [Bullet point 1]
+- [Bullet point 2]
+- [Bullet point 3]
+
+## Testing
+- [How you tested this]
+- [Steps to verify]
+
+## Screenshots (if UI changes)
+[Before/after screenshots]
+```
+
+</div>
+
+---
+
+## Dimension 3: Maintenance Burden
+
+<Warning title="The Hidden Factor">
+This is what most new contributors don't consider. Maintainers think long-term: "Will this cause problems for the next 5 years?"
+</Warning>
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    MAINTENANCE BURDEN SCALE                     │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  LOW BURDEN (Welcome!)                                          │
+│  ══════════════════════                                         │
+│  ✓ Bug fixes                                                    │
+│  ✓ Documentation improvements                                   │
+│  ✓ Test additions                                               │
+│  ✓ Performance improvements (no API changes)                    │
+│  ✓ Small refactors                                              │
+│                                                                 │
+│  MEDIUM BURDEN (Discuss First)                                  │
+│  ══════════════════════════════                                 │
+│  ○ New configuration options                                    │
+│  ○ Small features                                               │
+│  ○ Dependency updates                                           │
+│  ○ Larger refactors                                             │
+│                                                                 │
+│  HIGH BURDEN (Rarely Accepted)                                  │
+│  ══════════════════════════════                                 │
+│  ✗ New dependencies                                             │
+│  ✗ Breaking changes                                             │
+│  ✗ New public APIs                                              │
+│  ✗ Major new features                                           │
+│  ✗ Architecture changes                                         │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<Callout type="tip" title="The Boring Solution Wins">
+When in doubt, choose the boring solution. Maintainers will thank you.
+</Callout>
+
+---
+
+## Dimension 4: Contributor Trust
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    TRUST SIGNALS                                │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  HIGH TRUST                      LOW TRUST                      │
+│  ──────────                      ─────────                      │
+│                                                                 │
+│  Previous merged PRs             Brand new account              │
+│  Quick response to reviews       Slow or no responses           │
+│  Follows contribution guidelines Ignores guidelines             │
+│  Polite, professional           Demanding or rude               │
+│  Accepts feedback gracefully    Argues every point              │
+│  Complete, thorough PR          Sloppy, incomplete work         │
+│  Engaged in discussions         Only submits PRs                │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<Steps>
+<Step number={1} title="Start Small">
+Your first contributions should be small and obviously correct. Build credibility.
+</Step>
+
+<Step number={2} title="Be Responsive">
+When maintainers review your PR, respond within 24-48 hours. Every time.
+</Step>
+
+<Step number={3} title="Accept Feedback">
+Even if you disagree, thank them for the review. Discuss respectfully.
+</Step>
+
+<Step number={4} title="Be Consistent">
+One-time contributors are forgettable. Regular contributors build relationships.
+</Step>
+</Steps>
+
+---
+
+## The Review Process Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          PR REVIEW PIPELINE                                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   [PR Submitted]                                                            │
+│         │                                                                   │
+│         ▼                                                                   │
+│   ┌─────────────────┐                                                       │
+│   │ Automated Checks │ ──── FAIL ────► [Fix and re-push]                   │
+│   └────────┬────────┘                                                       │
+│            │ PASS                                                           │
+│            ▼                                                                │
+│   ┌─────────────────┐                                                       │
+│   │ Quick Screening  │ ──── REJECT ──► [Closed with explanation]           │
+│   │ (Is it relevant?)│                                                      │
+│   └────────┬────────┘                                                       │
+│            │ PASS                                                           │
+│            ▼                                                                │
+│   ┌─────────────────┐                                                       │
+│   │ Enters Queue     │                                                       │
+│   │ (Days to weeks)  │                                                       │
+│   └────────┬────────┘                                                       │
+│            ▼                                                                │
+│   ┌─────────────────┐                                                       │
+│   │ Deep Review      │ ──── Changes Requested ──► [You respond]            │
+│   └────────┬────────┘                              ▲                        │
+│            │                                       │                        │
+│            │ APPROVED                              │                        │
+│            ▼                                       │                        │
+│   ┌─────────────────┐                              │                        │
+│   │ Secondary Review │ ─────────────────────────────┘                        │
+│   │ (Maybe)          │                                                       │
+│   └────────┬────────┘                                                       │
+│            │                                                                │
+│            ▼                                                                │
+│   [MERGED! 🎉]                                                              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Common Rejection Reasons
+
+<CardGrid>
+<Card title="No Issue Linked" icon={<XCircle className="h-5 w-5 text-red-400" />}>
+"Please open an issue first to discuss this change."
+</Card>
+
+<Card title="Scope Too Large" icon={<XCircle className="h-5 w-5 text-red-400" />}>
+"This PR does too many things. Please break it into smaller PRs."
+</Card>
+
+<Card title="Doesn't Fit Roadmap" icon={<XCircle className="h-5 w-5 text-red-400" />}>
+"We don't plan to add this feature. See issue #X for context."
+</Card>
+
+<Card title="CI Failing" icon={<XCircle className="h-5 w-5 text-red-400" />}>
+"Please fix the failing tests before we review."
+</Card>
+
+<Card title="Missing Tests" icon={<XCircle className="h-5 w-5 text-red-400" />}>
+"Please add tests for this new functionality."
+</Card>
+
+<Card title="Stale / Abandoned" icon={<XCircle className="h-5 w-5 text-red-400" />}>
+"Closing due to inactivity. Feel free to reopen if you're still working on this."
+</Card>
+</CardGrid>
+
+---
+
+## The Ideal Contribution
+
+<div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-6">
+
+<h3 className="text-emerald-400 font-semibold mb-4">✨ Gold Standard Contribution</h3>
+
+<Checklist>
+<ChecklistItem>Fixes an existing issue (linked in PR)</ChecklistItem>
+<ChecklistItem>Discussed approach in issue before coding</ChecklistItem>
+<ChecklistItem>Small, focused PR (under 200 lines)</ChecklistItem>
+<ChecklistItem>Tests included and passing</ChecklistItem>
+<ChecklistItem>Follows all contribution guidelines</ChecklistItem>
+<ChecklistItem>Clear PR description with context</ChecklistItem>
+<ChecklistItem>Clean commit history</ChecklistItem>
+<ChecklistItem>Documentation updated</ChecklistItem>
+<ChecklistItem>Responds to reviews within 48 hours</ChecklistItem>
+<ChecklistItem>Accepts feedback gracefully</ChecklistItem>
+</Checklist>
+
+</div>
+
+<NextSteps items={[
+  { title: "Getting Started", description: "Ready to contribute? Let's set up", href: "/docs/getting-started" },
+  { title: "First Contribution", description: "Jump to making your first PR", href: "/docs/first-contribution" }
+]} />

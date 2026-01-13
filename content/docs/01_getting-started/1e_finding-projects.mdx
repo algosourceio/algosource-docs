@@ -1,0 +1,301 @@
+# Finding the Right Projects
+
+import { Search, Filter, Star, GitBranch, Users, AlertTriangle, CheckCircle, Target, Globe } from 'lucide-react'
+
+<Callout type="info" title="The Most Critical Decision">
+Choosing the wrong project is the #1 reason contributors quit. Spend time here—it's not wasted.
+</Callout>
+
+## The Project Selection Framework
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      PROJECT SELECTION FUNNEL                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│         ┌─────────────────────────────────────────────┐                    │
+│         │             ALL PROJECTS                     │                    │
+│         │            (Millions)                        │                    │
+│         └───────────────────┬─────────────────────────┘                    │
+│                             │                                               │
+│                     [Language Filter]                                       │
+│                             │                                               │
+│         ┌───────────────────▼─────────────────────────┐                    │
+│         │           LANGUAGE MATCH                     │                    │
+│         │           (Thousands)                        │                    │
+│         └───────────────────┬─────────────────────────┘                    │
+│                             │                                               │
+│                     [Activity Filter]                                       │
+│                             │                                               │
+│         ┌───────────────────▼─────────────────────────┐                    │
+│         │          ACTIVE PROJECTS                     │                    │
+│         │            (Hundreds)                        │                    │
+│         └───────────────────┬─────────────────────────┘                    │
+│                             │                                               │
+│                   [Beginner-Friendly]                                       │
+│                             │                                               │
+│         ┌───────────────────▼─────────────────────────┐                    │
+│         │        BEGINNER-FRIENDLY                     │                    │
+│         │            (Dozens)                          │                    │
+│         └───────────────────┬─────────────────────────┘                    │
+│                             │                                               │
+│                   [Health Check]                                            │
+│                             │                                               │
+│         ┌───────────────────▼─────────────────────────┐                    │
+│         │          YOUR TOP 2-3                        │                    │
+│         │           PROJECTS                           │                    │
+│         └─────────────────────────────────────────────┘                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Discovery Sources
+
+<CardGrid>
+<Card title="GitHub Explore" icon={<Search className="h-5 w-5" />}>
+[github.com/explore](https://github.com/explore)
+Curated collections by topic, trending repos, and topic pages.
+</Card>
+
+<Card title="Good First Issue" icon={<Target className="h-5 w-5" />}>
+[goodfirstissue.dev](https://goodfirstissue.dev)
+Aggregates beginner-friendly issues from popular projects.
+</Card>
+
+<Card title="First Timers Only" icon={<Users className="h-5 w-5" />}>
+[firsttimersonly.com](https://firsttimersonly.com)
+Resources specifically for first-time contributors.
+</Card>
+
+<Card title="Up For Grabs" icon={<Star className="h-5 w-5" />}>
+[up-for-grabs.net](https://up-for-grabs.net)
+Projects with tasks labeled for new contributors.
+</Card>
+
+<Card title="CodeTriage" icon={<Filter className="h-5 w-5" />}>
+[codetriage.com](https://codetriage.com)
+Get issues emailed to you from projects you care about.
+</Card>
+
+<Card title="Awesome Lists" icon={<Globe className="h-5 w-5" />}>
+[github.com/topics/awesome](https://github.com/topics/awesome)
+Curated lists of projects by domain. Pick your interest and explore.
+</Card>
+</CardGrid>
+
+---
+
+## GitHub Search Queries
+
+### Basic Searches
+
+```
+# Good first issues in JavaScript
+label:"good first issue" language:javascript
+
+# Help wanted in Python projects
+label:"help wanted" language:python
+
+# Beginner issues updated recently
+label:"good first issue" pushed:>2024-01-01
+
+# React projects needing help
+language:javascript topic:react label:"help wanted"
+```
+
+### Advanced Searches
+
+```
+# Active projects with good first issues
+language:typescript stars:>100 pushed:>2024-01-01 
+label:"good first issue" is:open
+
+# Projects in your timezone (by contributor location)
+# (Check contributor profiles manually)
+
+# Specific domain
+topic:cli language:rust label:"good first issue"
+```
+
+---
+
+## Project Health Indicators
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       PROJECT HEALTH MATRIX                                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  INDICATOR             HEALTHY                    UNHEALTHY                 │
+│  ═════════             ═══════                    ═════════                 │
+│                                                                             │
+│  Last commit           < 1 month ago              > 6 months ago            │
+│  Open issues           10-500                     0 or 5000+                │
+│  PR response time      < 2 weeks                  > 2 months                │
+│  Stars                 100+                       N/A (not critical)        │
+│  Contributors          5+                         1-2 (bus factor)          │
+│  CONTRIBUTING.md       Exists & detailed          Missing                   │
+│  Issue labels          Organized                  None or chaotic           │
+│  CI/CD                 Green checks               Failing or none           │
+│  License               MIT, Apache, GPL           None or custom            │
+│  Code of Conduct       Exists                     Missing                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Quick Health Check
+
+<Checklist>
+<ChecklistItem>Last commit within 30 days</ChecklistItem>
+<ChecklistItem>At least 5 contributors</ChecklistItem>
+<ChecklistItem>PRs get responses within 2 weeks</ChecklistItem>
+<ChecklistItem>Has CONTRIBUTING.md</ChecklistItem>
+<ChecklistItem>Uses issue labels (especially "good first issue")</ChecklistItem>
+<ChecklistItem>CI checks pass on main branch</ChecklistItem>
+<ChecklistItem>Has a clear license</ChecklistItem>
+<ChecklistItem>Maintainers are polite in issue comments</ChecklistItem>
+</Checklist>
+
+---
+
+## Red Flags to Avoid
+
+<Warning title="Walk Away From These">
+Not every project deserves your time. Recognizing red flags early saves you frustration.
+</Warning>
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                       🚩 RED FLAGS 🚩                           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  INACTIVITY                                                     │
+│  • No commits in 3+ months                                      │
+│  • Many open PRs with no reviews                                │
+│  • Issues unanswered for months                                 │
+│                                                                 │
+│  TOXICITY                                                       │
+│  • Maintainers are rude in comments                             │
+│  • Contributors argue frequently                                │
+│  • No Code of Conduct                                           │
+│  • Dismissive responses to questions                            │
+│                                                                 │
+│  CHAOS                                                          │
+│  • No clear contribution guidelines                             │
+│  • No issue templates                                           │
+│  • Inconsistent code style                                      │
+│  • Broken CI that's been failing for weeks                      │
+│                                                                 │
+│  OVERLOAD                                                       │
+│  • 1000+ open issues                                            │
+│  • 100+ open PRs                                                │
+│  • Single maintainer burnt out                                  │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Project Size Considerations
+
+| Size | Stars | Pros | Cons |
+|------|-------|------|------|
+| Tiny | < 100 | Fast reviews, personal attention | Might be abandoned, less resume value |
+| Small | 100-1K | Responsive maintainers, meaningful impact | Less structured processes |
+| Medium | 1K-10K | Good balance, real-world experience | More competition for issues |
+| Large | 10K-50K | Resume boost, learn from experts | Slow reviews, complex codebase |
+| Huge | 50K+ | Major recognition | Very competitive, long onboarding |
+
+<Callout type="tip" title="Start Medium">
+For your first contributions, target projects with 500-5,000 stars. They're active enough to merge PRs but not so large that you get lost.
+</Callout>
+
+---
+
+## Domain Matching
+
+Choose projects you'll actually use or care about:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    DOMAIN SUGGESTIONS                           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  If you're a...          Look at...                             │
+│  ═══════════════         ══════════                             │
+│                                                                 │
+│  Web developer           UI component libraries                 │
+│                          Static site generators                 │
+│                          CSS frameworks                         │
+│                                                                 │
+│  Backend developer       API frameworks                         │
+│                          Database tools                         │
+│                          CLI applications                       │
+│                                                                 │
+│  DevOps engineer         CI/CD tools                            │
+│                          Container tools                        │
+│                          Infrastructure as code                 │
+│                                                                 │
+│  Data scientist          Visualization libraries                │
+│                          ML frameworks                          │
+│                          Data processing tools                  │
+│                                                                 │
+│  Mobile developer        Cross-platform frameworks              │
+│                          Native libraries                       │
+│                          Development tools                      │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Your Project Shortlist
+
+After researching, create a shortlist:
+
+| Project | Stars | Language | Last Commit | Good First Issues? | Notes |
+|---------|-------|----------|-------------|-------------------|-------|
+| [Project 1] | ___ | ___ | ___ | Yes/No | ___ |
+| [Project 2] | ___ | ___ | ___ | Yes/No | ___ |
+| [Project 3] | ___ | ___ | ___ | Yes/No | ___ |
+
+For each project on your shortlist:
+1. Read their README completely
+2. Check their CONTRIBUTING.md
+3. Browse recent issues and PRs
+4. Look at maintainer responses
+
+---
+
+## Sample Beginner-Friendly Projects
+
+These are examples—find projects that match YOUR skills:
+
+**JavaScript/TypeScript:**
+- freeCodeCamp/freeCodeCamp
+- facebook/react (has good first issues)
+- microsoft/vscode
+- vercel/next.js
+
+**Python:**
+- pandas-dev/pandas
+- python/cpython
+- scikit-learn/scikit-learn
+- django/django
+
+**Rust:**
+- rust-lang/rust
+- denoland/deno
+- starship/starship
+
+**Go:**
+- kubernetes/kubernetes
+- gohugoio/hugo
+- prometheus/prometheus
+
+<NextSteps items={[
+  { title: "Reading Documentation", description: "How to read project docs effectively", href: "/docs/getting-started/reading-documentation" },
+  { title: "Local Setup Guide", description: "Clone and run your chosen project", href: "/docs/getting-started/local-setup" }
+]} />

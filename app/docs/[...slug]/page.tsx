@@ -99,10 +99,10 @@ export default async function DocPage({ params }: PageProps) {
   const { prev, next } = getAdjacentDocs(sectionSlug, docSlug);
   const breadcrumbs = getBreadcrumbs(sectionSlug, docSlug);
 
-  // Dynamic import of MDX content
+  // Dynamic import of MDX content using folder and file from config
   let Content: React.ComponentType;
   try {
-    const mdxModule = await import(`@/content/docs/${sectionSlug}/${docSlug}.mdx`);
+    const mdxModule = await import(`@/content/docs/${section.folder}/${docResult.doc.file}.mdx`);
     Content = mdxModule.default;
   } catch {
     // If MDX file doesn't exist yet, show placeholder
@@ -112,7 +112,7 @@ export default async function DocPage({ params }: PageProps) {
           This documentation page is coming soon.
         </p>
         <p className="font-mono text-sm text-white/40">
-          Content file: <code className="text-emerald-400">content/docs/{sectionSlug}/{docSlug}.mdx</code>
+          Content file: <code className="text-emerald-400">content/docs/{section.folder}/{docResult.doc.file}.mdx</code>
         </p>
       </div>
     );

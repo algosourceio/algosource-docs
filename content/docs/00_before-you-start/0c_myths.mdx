@@ -1,0 +1,291 @@
+# Common Myths New Contributors Believe
+
+import { XCircle, AlertTriangle, CheckCircle, Lightbulb, Target } from 'lucide-react'
+
+<Callout type="warning" title="These Myths Kill Contributions">
+Every myth below has derailed countless contributors. Knowing them upfront saves you months of frustration.
+</Callout>
+
+## The Myth-Reality Framework
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        MYTH VS REALITY                                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│    MYTHS                              REALITY                               │
+│    ─────                              ───────                               │
+│                                                                             │
+│    Quick results         ───────►     Long-term investment                  │
+│    Instant mentorship    ───────►     Self-directed learning                │
+│    Code is everything    ───────►     Soft skills matter equally            │
+│    All projects welcome  ───────►     Some are hostile                      │
+│    Fast PR reviews       ───────►     Weeks of waiting                      │
+│    Quantity wins         ───────►     Quality always wins                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Myth #1: "Contribute to Get Hired Fast"
+
+<div className="bg-red-500/10 border border-red-500/30 rounded-lg p-6 mb-6">
+  <div className="flex items-center gap-3 mb-3">
+    <XCircle className="h-6 w-6 text-red-400" />
+    <span className="text-red-400 font-semibold text-lg">THE MYTH</span>
+  </div>
+  <p className="text-neutral-300">"I'll contribute to open source for a few months and companies will line up to hire me."</p>
+</div>
+
+### The Reality
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│           CAREER IMPACT TIMELINE                                │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Month 1-3:   ░░░░░░░░░░ Learning, failing, minimal impact     │
+│  Month 4-6:   ▓░░░░░░░░░ First merged PRs, building presence   │
+│  Month 7-12:  ▓▓▓░░░░░░░ Recognized contributor, some impact   │
+│  Year 1-2:    ▓▓▓▓▓▓░░░░ Strong profile, real opportunities    │
+│  Year 2+:     ▓▓▓▓▓▓▓▓▓▓ Significant career differentiator     │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### What Actually Works
+
+<Checklist>
+<ChecklistItem>Deep contributions to 1-2 projects (not shallow to 20)</ChecklistItem>
+<ChecklistItem>Contributions that show problem-solving, not just typo fixes</ChecklistItem>
+<ChecklistItem>Public technical writing about your contributions</ChecklistItem>
+<ChecklistItem>Relationships with maintainers who can vouch for you</ChecklistItem>
+</Checklist>
+
+---
+
+## Myth #2: "Maintainers Will Mentor Me"
+
+<div className="bg-red-500/10 border border-red-500/30 rounded-lg p-6 mb-6">
+  <div className="flex items-center gap-3 mb-3">
+    <XCircle className="h-6 w-6 text-red-400" />
+    <span className="text-red-400 font-semibold text-lg">THE MYTH</span>
+  </div>
+  <p className="text-neutral-300">"Open source is great for learning because experienced developers will teach me."</p>
+</div>
+
+### The Reality
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                 MAINTAINER REALITY                              │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   ┌─────────────────────────────────────────────────────────┐  │
+│   │                    MAINTAINER TIME                      │  │
+│   ├─────────────────────────────────────────────────────────┤  │
+│   │ ████████████████████░░░░░░░░░░░░░░  Issue triage (40%)  │  │
+│   │ ████████████████░░░░░░░░░░░░░░░░░░  PR reviews (35%)    │  │
+│   │ ██████░░░░░░░░░░░░░░░░░░░░░░░░░░░░  Own code (15%)      │  │
+│   │ ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  Community (10%)     │  │
+│   │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  Teaching (0%)       │  │
+│   └─────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│   Maintainers are:                                              │
+│   • Overwhelmed with issues and PRs                             │
+│   • Volunteers (usually unpaid)                                 │
+│   • Fighting burnout daily                                      │
+│   • Focused on project health, not teaching                     │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### What Actually Works
+
+<Steps>
+<Step number={1} title="Do Your Homework First">
+Exhaust all documentation, past issues, and Stack Overflow before asking.
+</Step>
+
+<Step number={2} title="Ask Smart Questions">
+Include what you've tried, what you expected, and what happened.
+</Step>
+
+<Step number={3} title="Respect Their Time">
+Keep questions focused. One question per issue. No spam.
+</Step>
+
+<Step number={4} title="Give Back">
+Answer questions from other newcomers when you can.
+</Step>
+</Steps>
+
+---
+
+## Myth #3: "Good Code Is All That Matters"
+
+<div className="bg-red-500/10 border border-red-500/30 rounded-lg p-6 mb-6">
+  <div className="flex items-center gap-3 mb-3">
+    <XCircle className="h-6 w-6 text-red-400" />
+    <span className="text-red-400 font-semibold text-lg">THE MYTH</span>
+  </div>
+  <p className="text-neutral-300">"If my code is good, it will be merged. Technical quality is everything."</p>
+</div>
+
+### The Reality
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              WHY GOOD CODE GETS REJECTED                        │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   ❌ Doesn't follow contribution guidelines                    │
+│   ❌ No issue linked / unsolicited feature                     │
+│   ❌ Poor PR description                                       │
+│   ❌ Conflicts with project direction                          │
+│   ❌ Maintainer bandwidth exhausted                            │
+│   ❌ Breaks backward compatibility                             │
+│   ❌ Missing tests                                             │
+│   ❌ Author unresponsive to feedback                           │
+│   ❌ PR too large to review                                    │
+│   ❌ Duplicates existing work                                  │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<CardGrid>
+<Card title="Read CONTRIBUTING.md" icon={<CheckCircle className="h-5 w-5 text-emerald-400" />}>
+Every project has guidelines. Follow them exactly.
+</Card>
+
+<Card title="File an Issue First" icon={<CheckCircle className="h-5 w-5 text-emerald-400" />}>
+Before writing code, discuss your approach. Get buy-in.
+</Card>
+
+<Card title="Write Great Descriptions" icon={<CheckCircle className="h-5 w-5 text-emerald-400" />}>
+Explain the why, not just the what.
+</Card>
+
+<Card title="Be Responsive" icon={<CheckCircle className="h-5 w-5 text-emerald-400" />}>
+When maintainers review, respond within 48 hours.
+</Card>
+</CardGrid>
+
+---
+
+## Myth #4: "All Projects Welcome Newcomers"
+
+<div className="bg-red-500/10 border border-red-500/30 rounded-lg p-6 mb-6">
+  <div className="flex items-center gap-3 mb-3">
+    <XCircle className="h-6 w-6 text-red-400" />
+    <span className="text-red-400 font-semibold text-lg">THE MYTH</span>
+  </div>
+  <p className="text-neutral-300">"Open source communities are welcoming by nature. Any project will be happy to have me."</p>
+</div>
+
+### Red Flags to Avoid
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    PROJECT RED FLAGS                            │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   🚩 Maintainers are rude in issue comments                    │
+│   🚩 PRs sit for months with no response                       │
+│   🚩 No Code of Conduct exists                                 │
+│   🚩 Newcomer questions are mocked or ignored                  │
+│   🚩 Same 2-3 people do everything, no community               │
+│   🚩 Last commit was months ago                                │
+│   🚩 Issues closed without explanation                         │
+│   🚩 Hostile responses to bug reports                          │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<Warning title="Protect Your Energy">
+If a project feels hostile after your first few interactions, leave. There are thousands of welcoming projects. Don't waste time on toxic ones.
+</Warning>
+
+---
+
+## Myth #5: "My PRs Will Be Merged Quickly"
+
+<div className="bg-red-500/10 border border-red-500/30 rounded-lg p-6 mb-6">
+  <div className="flex items-center gap-3 mb-3">
+    <XCircle className="h-6 w-6 text-red-400" />
+    <span className="text-red-400 font-semibold text-lg">THE MYTH</span>
+  </div>
+  <p className="text-neutral-300">"I'll submit a PR and it will be reviewed and merged within a few days."</p>
+</div>
+
+### Average Time-to-Merge
+
+| Project Size | First Response | Full Review | Merge |
+|--------------|----------------|-------------|-------|
+| Small (< 100 ⭐) | 1-3 days | 1 week | 2 weeks |
+| Medium (100-1K ⭐) | 1-2 weeks | 2-4 weeks | 1-2 months |
+| Large (1K-10K ⭐) | 2-4 weeks | 1-2 months | 2-3 months |
+| Huge (10K+ ⭐) | 1-2 months | Variable | Variable |
+
+---
+
+## Myth #6: "Quantity Over Quality"
+
+<div className="bg-red-500/10 border border-red-500/30 rounded-lg p-6 mb-6">
+  <div className="flex items-center gap-3 mb-3">
+    <XCircle className="h-6 w-6 text-red-400" />
+    <span className="text-red-400 font-semibold text-lg">THE MYTH</span>
+  </div>
+  <p className="text-neutral-300">"The more PRs I submit, the better. GitHub green squares matter most."</p>
+</div>
+
+### Contribution Farming Red Flags
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│           🚨 CONTRIBUTION FARMER SIGNALS 🚨                     │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   • PRs that only fix typos                                     │
+│   • Contributions spread across 50+ random projects             │
+│   • No depth in any single project                              │
+│   • PRs submitted during Hacktoberfest only                     │
+│   • Automated or AI-generated contributions                     │
+│   • No engagement in issues, only PRs                           │
+│   • No responses to review feedback                             │
+│                                                                 │
+│   Maintainers can spot this INSTANTLY                           │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<Callout type="tip" title="Quality Always Wins">
+One meaningful contribution that shows you understand the codebase is worth more than 100 drive-by typo fixes.
+</Callout>
+
+---
+
+## The Right Mindset
+
+<div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-6">
+  <div className="flex items-center gap-3 mb-3">
+    <CheckCircle className="h-6 w-6 text-emerald-400" />
+    <span className="text-emerald-400 font-semibold text-lg">THE TRUTH</span>
+  </div>
+  
+  <p className="text-neutral-300 mb-4">Open source rewards patience, quality, and genuine interest in the project—not quick hacks to pad your resume.</p>
+  
+  <div className="space-y-2 text-sm text-neutral-400">
+    <p>✓ It's a marathon, not a sprint</p>
+    <p>✓ Learning > Recognition</p>
+    <p>✓ Relationships > PR counts</p>
+    <p>✓ Depth > Breadth</p>
+    <p>✓ Consistency > Intensity</p>
+  </div>
+</div>
+
+<NextSteps items={[
+  { title: "Time & Expectations", description: "How much time you'll actually need", href: "/docs/before-you-start/time-expectations" },
+  { title: "Roles in Open Source", description: "Understanding the hierarchy", href: "/docs/before-you-start/roles" }
+]} />

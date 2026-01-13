@@ -1,0 +1,162 @@
+# Before You Start
+
+import { FileWarning, Clock, Users, CheckCircle, AlertTriangle, Filter, Target } from 'lucide-react'
+
+<Callout type="warning" title="Most documentation skips this section">
+This is where 90% of contributors fail—before they even write a line of code. Don't skip this.
+</Callout>
+
+## Why This Section Exists
+
+Most open source documentation jumps straight into "how to fork a repo." That's a mistake. This section exists because the **#1 reason contributors fail isn't technical—it's misaligned expectations**.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     CONTRIBUTOR FAILURE FUNNEL                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   100 People Start                                                          │
+│         │                                                                   │
+│         ▼                                                                   │
+│   ┌─────────────────┐                                                       │
+│   │ 60 quit: Wrong  │ ← This section addresses this                        │
+│   │ expectations    │                                                       │
+│   └────────┬────────┘                                                       │
+│            ▼                                                                │
+│   40 Continue                                                               │
+│         │                                                                   │
+│         ▼                                                                   │
+│   ┌─────────────────┐                                                       │
+│   │ 20 quit:        │ ← Getting Started addresses this                     │
+│   │ Technical setup │                                                       │
+│   └────────┬────────┘                                                       │
+│            ▼                                                                │
+│   20 Submit First PR                                                        │
+│         │                                                                   │
+│         ▼                                                                   │
+│   ┌─────────────────┐                                                       │
+│   │ 10 quit: First  │ ← Later sections address this                        │
+│   │ PR rejected     │                                                       │
+│   └────────┬────────┘                                                       │
+│            ▼                                                                │
+│   10 Become Contributors                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+## The Real Purpose
+
+<CardGrid>
+<Card title="Filter Early" icon={<Filter className="h-5 w-5" />}>
+Save your time and maintainers' time by setting honest expectations upfront.
+</Card>
+
+<Card title="Reality Check" icon={<AlertTriangle className="h-5 w-5" />}>
+Bust the myths that cause most contributors to quit in frustration.
+</Card>
+
+<Card title="Time Investment" icon={<Clock className="h-5 w-5" />}>
+Understand the real commitment required—no sugarcoating.
+</Card>
+
+<Card title="Success Mindset" icon={<Target className="h-5 w-5" />}>
+Adopt the mindset that separates successful contributors from the rest.
+</Card>
+</CardGrid>
+
+---
+
+## What You'll Learn
+
+<Steps>
+<Step number={1} title="What Open Source Really Is">
+Cut through the hype and understand what you're actually getting into.
+</Step>
+
+<Step number={2} title="Common Myths">
+The dangerous misconceptions that derail most new contributors.
+</Step>
+
+<Step number={3} title="Time & Expectations">
+Honest numbers about how much time this actually takes.
+</Step>
+
+<Step number={4} title="Roles in Open Source">
+Understanding Beginner → Contributor → Maintainer progression.
+</Step>
+
+<Step number={5} title="How Contributions Are Evaluated">
+What maintainers actually look for when reviewing your work.
+</Step>
+</Steps>
+
+---
+
+## The Hard Truth
+
+<Warning title="Read This Carefully">
+Open source contribution is **NOT**:
+- A shortcut to getting hired in 3 months
+- A way to get quick fame or recognition
+- Easy or fast (especially at first)
+- Always welcoming or friendly
+
+It **IS**:
+- A long-term investment (6-12+ months to see results)
+- A learning opportunity unlike any other
+- Sometimes frustrating and slow
+- Ultimately rewarding for those who persist
+</Warning>
+
+---
+
+## Self-Assessment
+
+Before diving in, honestly answer these questions:
+
+<Checklist>
+<ChecklistItem>I can commit 5-10 hours per week for at least 3-6 months</ChecklistItem>
+<ChecklistItem>I'm okay with my first few contributions taking weeks to get reviewed</ChecklistItem>
+<ChecklistItem>I can handle rejection and use it as a learning opportunity</ChecklistItem>
+<ChecklistItem>I'm interested in genuine learning, not just GitHub green squares</ChecklistItem>
+<ChecklistItem>I understand maintainers are volunteers with limited time</ChecklistItem>
+<ChecklistItem>I'm willing to read documentation thoroughly before asking questions</ChecklistItem>
+</Checklist>
+
+**Checked all boxes?** You're ready. Let's begin.
+
+**Missing some?** That's okay—this section will help you develop the right mindset.
+
+---
+
+## Architecture of This Section
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    BEFORE YOU START                             │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌──────────────────┐    ┌──────────────────┐                  │
+│  │ 0.1 What Open    │───▶│ 0.2 Common       │                  │
+│  │ Source Really Is │    │ Myths            │                  │
+│  └──────────────────┘    └────────┬─────────┘                  │
+│                                   │                             │
+│                                   ▼                             │
+│  ┌──────────────────┐    ┌──────────────────┐                  │
+│  │ 0.5 How Contribs │◀───│ 0.3 Time &       │                  │
+│  │ Are Evaluated    │    │ Expectations     │                  │
+│  └──────────────────┘    └────────┬─────────┘                  │
+│         ▲                         │                             │
+│         │                         ▼                             │
+│         │                ┌──────────────────┐                  │
+│         └────────────────│ 0.4 Roles in     │                  │
+│                          │ Open Source      │                  │
+│                          └──────────────────┘                  │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<NextSteps items={[
+  { title: "What Open Source Really Is", description: "Start with the fundamentals", href: "/docs/before-you-start/what-open-source-is" },
+  { title: "Skip to Getting Started", description: "If you're already experienced", href: "/docs/getting-started" }
+]} />

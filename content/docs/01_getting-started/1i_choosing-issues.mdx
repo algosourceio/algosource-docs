@@ -1,0 +1,314 @@
+# Choosing Your First Issue
+
+import { Target, Search, Tag, CheckCircle, AlertTriangle, Clock, Star, GitPullRequest } from 'lucide-react'
+
+<Callout type="info" title="The Right Issue Makes All The Difference">
+Your first issue sets the tone for your entire contribution journey. Choose wisely.
+</Callout>
+
+## Issue Selection Criteria
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       IDEAL FIRST ISSUE CHECKLIST                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ✓ Labeled "good first issue", "beginner-friendly", or "help wanted"       │
+│  ✓ Clear description of what needs to be done                              │
+│  ✓ No one else is actively working on it                                   │
+│  ✓ Maintainer has responded recently (issue is monitored)                  │
+│  ✓ Small scope (can be completed in one PR)                                │
+│  ✓ Doesn't require deep understanding of codebase                          │
+│  ✓ Has some guidance or pointers to relevant code                          │
+│  ✓ Not stale (opened within last 3 months)                                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Good First Issue Labels
+
+Different projects use different labels:
+
+| Label | What It Means |
+|-------|---------------|
+| `good first issue` | GitHub's official label for beginners |
+| `first-timers-only` | Reserved specifically for first-time contributors |
+| `beginner` / `beginner-friendly` | Suitable for beginners |
+| `help wanted` | Maintainers need help (may not be beginner) |
+| `easy` / `low-hanging-fruit` | Relatively simple to implement |
+| `documentation` | Doc improvements (often good for first-timers) |
+| `starter issue` | Another beginner-friendly variant |
+
+---
+
+## Finding Issues
+
+### GitHub Search Queries
+
+```bash
+# Good first issues in a specific repo
+repo:facebook/react label:"good first issue" is:open
+
+# Help wanted, not assigned
+repo:vercel/next.js label:"help wanted" no:assignee is:open
+
+# Documentation issues
+repo:microsoft/vscode label:"documentation" is:open
+
+# Issues without PRs linked
+repo:org/project label:"good first issue" is:open linked:pr is:unlinked
+```
+
+### Project-Specific Locations
+
+<Steps>
+<Step number={1} title="Check Issues tab">
+Go to `github.com/org/project/issues` and filter by labels.
+</Step>
+
+<Step number={2} title="Check Contributing Guide">
+Some projects list beginner issues in their CONTRIBUTING.md.
+</Step>
+
+<Step number={3} title="Check project roadmap">
+Projects sometimes tag issues for upcoming releases that need help.
+</Step>
+
+<Step number={4} title="Check community channels">
+Discord/Slack often has channels specifically for finding issues.
+</Step>
+</Steps>
+
+---
+
+## Issue Evaluation Matrix
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         ISSUE EVALUATION                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│              GREEN LIGHT                    RED LIGHT                       │
+│              ═══════════                    ═════════                       │
+│                                                                             │
+│  Clarity     Clear description              Vague "fix the thing"           │
+│              Steps to reproduce             No reproduction steps           │
+│              Expected vs actual             Unclear expected behavior       │
+│                                                                             │
+│  Scope       Self-contained change          Requires multiple PRs           │
+│              <200 lines estimated           Major refactoring needed        │
+│              One feature/fix                Kitchen sink of changes         │
+│                                                                             │
+│  Activity    Comments in last month         Last comment 6+ months ago      │
+│              Maintainer responded           No maintainer engagement        │
+│              Discussion happened            Issue opened and abandoned      │
+│                                                                             │
+│  Assignment  No one assigned                Already assigned                │
+│              No linked PRs                  Linked PR exists                │
+│              Open for grabs                 "Working on it" comment         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Issue Types for Beginners
+
+<CardGrid>
+<Card title="Documentation" icon={<Target className="h-5 w-5 text-emerald-400" />}>
+**Best for:** Absolute beginners
+- Fix typos
+- Clarify instructions
+- Add examples
+- Update outdated info
+
+**Risk:** Very low
+</Card>
+
+<Card title="Bug Fixes" icon={<Target className="h-5 w-5 text-emerald-400" />}>
+**Best for:** Those with some coding experience
+- Clear reproduction steps
+- Well-defined expected behavior
+- Self-contained fix
+
+**Risk:** Low-medium
+</Card>
+
+<Card title="Test Coverage" icon={<Target className="h-5 w-5 text-yellow-400" />}>
+**Best for:** Learning the codebase
+- Add tests for untested code
+- Fix flaky tests
+- Improve test utilities
+
+**Risk:** Medium
+</Card>
+
+<Card title="Small Features" icon={<Target className="h-5 w-5 text-yellow-400" />}>
+**Best for:** Confident beginners
+- Add a flag/option
+- Improve error messages
+- Add a small UI element
+
+**Risk:** Medium
+</Card>
+</CardGrid>
+
+<Warning title="Avoid These for First Contribution">
+- Major new features
+- Breaking changes
+- Performance optimizations
+- Anything labeled "complex" or "advanced"
+- Issues with ongoing debates in comments
+</Warning>
+
+---
+
+## Before Claiming an Issue
+
+<Steps>
+<Step number={1} title="Read the entire thread">
+Read ALL comments. Someone might have already solved it, or there might be important context.
+</Step>
+
+<Step number={2} title="Check for linked PRs">
+Look in the sidebar for "Linked pull requests". If there's an open PR, the issue is taken.
+</Step>
+
+<Step number={3} title="Check recent comments">
+Look for "I'm working on this" or "@maintainer can I take this?"
+</Step>
+
+<Step number={4} title="Understand the scope">
+Make sure you understand:
+- What exactly needs to be done
+- Where the code lives
+- How to test the fix
+</Step>
+
+<Step number={5} title="Comment to claim">
+Leave a comment expressing interest:
+```
+Hi! I'd like to work on this issue. I've read through the discussion and 
+I understand the requirements. I plan to [brief approach]. 
+Could you assign this to me?
+```
+</Step>
+
+<Step number={6} title="Wait for response">
+Don't start coding until a maintainer acknowledges you. They might have additional context or want to assign it officially.
+</Step>
+</Steps>
+
+---
+
+## Sample First Issues by Type
+
+### Documentation Issue
+
+```markdown
+Title: Clarify installation instructions for Windows users
+
+Labels: good first issue, documentation
+
+Description:
+The current README says "run npm install" but Windows users have 
+reported issues with native dependencies. 
+
+Task:
+- Add Windows-specific instructions
+- Include required Visual Studio Build Tools setup
+- Test on a Windows machine if possible
+```
+
+**Why it's good:** Clear scope, no code changes, helps real users.
+
+### Bug Fix Issue
+
+```markdown
+Title: Button click handler fires twice on mobile
+
+Labels: good first issue, bug
+
+Description:
+On mobile devices, clicking the submit button fires the 
+handler twice. This causes duplicate form submissions.
+
+Steps to reproduce:
+1. Open app on mobile Safari
+2. Fill out form
+3. Tap submit button
+4. Observe network tab shows two requests
+
+Expected: One request
+Actual: Two requests
+
+Hint: Look at src/components/Button.tsx, the touchend event 
+might be the issue.
+```
+
+**Why it's good:** Clear reproduction, hints provided, self-contained.
+
+### Test Issue
+
+```markdown
+Title: Add tests for UserService.updateProfile()
+
+Labels: good first issue, testing
+
+Description:
+The updateProfile method in src/services/user.ts has no 
+test coverage. Add tests for:
+- Successful profile update
+- Validation errors
+- User not found case
+
+Related file: src/services/user.test.ts (add tests here)
+```
+
+**Why it's good:** Clearly scoped, teaches the codebase, valuable contribution.
+
+---
+
+## Issue Claim Template
+
+Use this template when commenting on an issue:
+
+```markdown
+Hi @maintainer! 👋
+
+I'd like to work on this issue. Here's my understanding of what needs to be done:
+
+**Task:** [One sentence summary]
+
+**Approach:** 
+- [Step 1]
+- [Step 2]
+- [Step 3]
+
+**Questions:**
+- [Any clarifying questions]
+
+I'm a [new/intermediate] contributor. Is it okay if I take this one?
+```
+
+---
+
+## Your First Issue Checklist
+
+<Checklist>
+<ChecklistItem>Issue has a beginner-friendly label</ChecklistItem>
+<ChecklistItem>Issue was active in the last 3 months</ChecklistItem>
+<ChecklistItem>No one is currently assigned or working on it</ChecklistItem>
+<ChecklistItem>I fully understand what needs to be done</ChecklistItem>
+<ChecklistItem>I know where the relevant code lives</ChecklistItem>
+<ChecklistItem>Scope is small enough for one PR</ChecklistItem>
+<ChecklistItem>I've commented to claim and got acknowledgment</ChecklistItem>
+<ChecklistItem>I'm ready to work on it within the next few days</ChecklistItem>
+</Checklist>
+
+<NextSteps items={[
+  { title: "Making Your First Contribution", description: "Let's write the code!", href: "/docs/first-contribution" },
+  { title: "Writing Code", description: "Jump to the coding phase", href: "/docs/writing-code" }
+]} />
