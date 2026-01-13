@@ -1,0 +1,299 @@
+# GitHub Profile Setup
+
+import { User, Star, GitPullRequest, Code, Eye, Globe, FileText } from 'lucide-react'
+
+<Callout type="info" title="Your First Impression">
+Your GitHub profile is your open source resume. Maintainers will check it before reviewing your PRs. Make it count.
+</Callout>
+
+## Why Your Profile Matters
+
+When you submit a PR, maintainers often click on your profile to answer:
+
+- Is this person legitimate?
+- Have they contributed to other projects?
+- Are they likely to follow through?
+- Will they be pleasant to work with?
+
+A good profile answers these questions positively.
+
+---
+
+## Essential Profile Elements
+
+### 1. Profile Picture
+
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-6 mb-6">
+
+**Do:**
+- Use a clear photo of your face OR
+- Use a recognizable avatar/logo you use consistently
+
+**Don't:**
+- Use the default GitHub avatar
+- Use memes or offensive images
+- Change it frequently
+
+<Callout type="tip" title="Consistency Matters">
+Use the same avatar across GitHub, Twitter, Discord, and your blog. It builds recognition.
+</Callout>
+
+</div>
+
+### 2. Display Name
+
+- Use your real name OR
+- Use a consistent pseudonym you use everywhere
+
+**Examples:**
+- ✅ "Sarah Chen"
+- ✅ "sindresorhus" (consistent online identity)
+- ❌ "xX_C0d3r_Xx" (looks unprofessional)
+
+### 3. Bio
+
+Your bio should be concise and informative:
+
+```
+[Your role/title] | [Technologies/Interests] | [Location (optional)]
+```
+
+**Good examples:**
+- "Full-stack developer. Open source enthusiast. Rust & TypeScript."
+- "Student @Stanford. Building tools for developers."
+- "Backend engineer @Company. Maintainer of @project."
+
+**Bad examples:**
+- "Just a guy who codes" (too vague)
+- "10x developer and thought leader" (cringe)
+- "" (empty bio = suspicious)
+
+### 4. Location
+
+Optional, but helpful for:
+- Time zone awareness
+- Local community connections
+- Conference/meetup opportunities
+
+### 5. Website/Links
+
+Add links to:
+- Personal website or blog
+- Twitter/X profile
+- LinkedIn (optional)
+
+---
+
+## Profile README
+
+GitHub lets you create a special README that displays on your profile page.
+
+### Create Your Profile README
+
+<Steps>
+<Step number={1} title="Create a Repository">
+Create a new repository with **exactly your username** as the name.
+
+For example, if your username is `sarahchen`, create a repo named `sarahchen`.
+</Step>
+
+<Step number={2} title="Add a README">
+Create a `README.md` file in this repository.
+</Step>
+
+<Step number={3} title="Customize It">
+This README will now display on your profile!
+</Step>
+</Steps>
+
+### Profile README Template
+
+```markdown
+# Hi, I'm [Your Name] 👋
+
+## About Me
+
+🎓 [Your current role/education]
+🔭 Currently working on: [Current project]
+🌱 Learning: [What you're learning]
+💬 Ask me about: [Your expertise]
+📫 How to reach me: [Email or social]
+
+## Tech Stack
+
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat&logo=node.js&logoColor=white)
+
+## Open Source
+
+- 🛠️ Contributor to [@project](https://github.com/org/project)
+- 📝 [Latest blog post about open source](https://your-blog.com/post)
+
+## GitHub Stats
+
+![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=dark)
+```
+
+<Warning title="Keep It Professional">
+Avoid excessive emojis, animated GIFs, or cluttered layouts. Clean and professional wins.
+</Warning>
+
+---
+
+## Pinned Repositories
+
+GitHub lets you pin up to 6 repositories to your profile. Choose wisely.
+
+### What to Pin
+
+<CardGrid>
+<Card title="Your Best Work" icon={<Star className="h-5 w-5 text-emerald-400" />}>
+Projects that showcase your skills. Quality over quantity.
+</Card>
+
+<Card title="Open Source Contributions" icon={<GitPullRequest className="h-5 w-5 text-emerald-400" />}>
+Forks where you've made significant contributions.
+</Card>
+
+<Card title="Side Projects" icon={<Code className="h-5 w-5 text-emerald-400" />}>
+Interesting projects that show your interests.
+</Card>
+
+<Card title="Documentation/Guides" icon={<FileText className="h-5 w-5 text-emerald-400" />}>
+Written content showing communication skills.
+</Card>
+</CardGrid>
+
+### What NOT to Pin
+
+- Empty or barely-started repos
+- Course homework/tutorials
+- Forks you never modified
+- Private joke projects
+
+### How to Pin
+
+1. Go to your profile page
+2. Click "Customize your pins"
+3. Select up to 6 repositories
+4. Drag to reorder
+
+---
+
+## Contribution Graph
+
+Your contribution graph (the green squares) tells a story.
+
+### What Maintainers See
+
+| Pattern | Interpretation |
+|---------|----------------|
+| Consistent activity | Reliable, committed |
+| Sporadic bursts | May not follow through |
+| Hacktoberfest spikes only | Contribution farmer? |
+| Recent start | New to open source (neutral) |
+| Empty | No public activity (yellow flag) |
+
+### How to Build Your Graph
+
+<Checklist>
+<ChecklistItem>Make commits on public repositories (private don't count)</ChecklistItem>
+<ChecklistItem>Commit to your fork's main/master branch or open PRs</ChecklistItem>
+<ChecklistItem>Configure your Git email to match your GitHub email</ChecklistItem>
+<ChecklistItem>Aim for consistency over intensity</ChecklistItem>
+</Checklist>
+
+<Callout type="warning" title="Don't Game the System">
+Fake commits and contribution inflation are obvious and will hurt your reputation. Real, quality contributions always win.
+</Callout>
+
+---
+
+## Social Proof
+
+### Organizations
+
+Join organizations you contribute to. They appear on your profile and add credibility.
+
+### Achievements
+
+GitHub has achievement badges. Some notable ones:
+- **Pull Shark** — Merged PRs
+- **YOLO** — Merged PR without review
+- **Starstruck** — Created a repo with 16+ stars
+- **Pair Extraordinaire** — Co-authored commits
+
+### Sponsors
+
+If you're eligible, set up GitHub Sponsors. Even if no one sponsors you, it shows you're serious about open source.
+
+---
+
+## Profile Checklist
+
+Before you start contributing, ensure your profile has:
+
+<Checklist>
+<ChecklistItem>Profile picture (not default)</ChecklistItem>
+<ChecklistItem>Display name set</ChecklistItem>
+<ChecklistItem>Bio with relevant info</ChecklistItem>
+<ChecklistItem>Location (optional)</ChecklistItem>
+<ChecklistItem>Website or social links</ChecklistItem>
+<ChecklistItem>Profile README (recommended)</ChecklistItem>
+<ChecklistItem>2-6 pinned repositories</ChecklistItem>
+<ChecklistItem>Email configured for contributions</ChecklistItem>
+</Checklist>
+
+---
+
+## Example Profiles
+
+Study these well-crafted profiles:
+
+1. **[@sindresorhus](https://github.com/sindresorhus)** — Prolific open source maintainer
+2. **[@cassidoo](https://github.com/cassidoo)** — Developer advocate with strong personal brand
+3. **[@antfu](https://github.com/antfu)** — Vue core team, great README
+4. **[@kentcdodds](https://github.com/kentcdodds)** — Educator with clear focus
+
+Notice what they have in common:
+- Clear identity
+- Consistent branding
+- Quality pinned repos
+- Active contribution history
+
+---
+
+## Before and After
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<div className="bg-red-500/10 border border-red-500/30 rounded-lg p-6">
+<h3 className="text-red-400 font-semibold mb-4">❌ Before</h3>
+<ul className="space-y-2 text-sm text-neutral-400">
+<li>• Default avatar</li>
+<li>• Username: xX_coder123_Xx</li>
+<li>• Bio: empty</li>
+<li>• Pinned: tutorial forks</li>
+<li>• Activity: sporadic</li>
+</ul>
+</div>
+
+<div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-6">
+<h3 className="text-emerald-400 font-semibold mb-4">✅ After</h3>
+<ul className="space-y-2 text-sm text-neutral-400">
+<li>• Professional headshot</li>
+<li>• Real name displayed</li>
+<li>• Clear, concise bio</li>
+<li>• Quality projects pinned</li>
+<li>• Consistent activity</li>
+</ul>
+</div>
+
+</div>
+
+<NextSteps items={[
+  { title: "Finding Projects", description: "Find your first project to contribute to", href: "/docs/getting-started/finding-projects" },
+  { title: "Reading Documentation", description: "Learn to read project docs effectively", href: "/docs/getting-started/reading-documentation" }
+]} />

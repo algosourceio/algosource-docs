@@ -1,0 +1,77 @@
+# Making Your First Contribution
+
+You've learned the basics. Now it's time to make it happen.
+
+## The First Contribution Checklist
+
+Before you start:
+
+<Checklist>
+<ChecklistItem>Found a beginner-friendly project</ChecklistItem>
+<ChecklistItem>Read the CONTRIBUTING guide</ChecklistItem>
+<ChecklistItem>Forked and cloned the repository</ChecklistItem>
+<ChecklistItem>Set up the development environment</ChecklistItem>
+<ChecklistItem>Identified an issue to work on</ChecklistItem>
+</Checklist>
+
+## Ideal First Contributions
+
+<CardGrid>
+<Card title="Documentation Fixes">
+Typos, unclear explanations, missing examples. Low risk, high value.
+</Card>
+
+<Card title="Good First Issues">
+Issues labeled "good first issue" or "beginner friendly" are curated for newcomers.
+</Card>
+
+<Card title="Test Coverage">
+Adding tests for untested code. Helps you understand the codebase.
+</Card>
+
+<Card title="Small Bug Fixes">
+Simple bugs with clear reproduction steps and obvious fixes.
+</Card>
+</CardGrid>
+
+<Warning title="Avoid for First Contribution">
+- Large refactors
+- New features without discussion
+- Performance optimizations
+- Architectural changes
+</Warning>
+
+## The Process
+
+<Steps>
+<Step number={1} title="Find an issue">
+Look for issues labeled "good first issue" or similar. Comment that you'd like to work on it.
+</Step>
+
+<Step number={2} title="Understand the problem">
+Read the issue carefully. Reproduce the bug. Ask questions if unclear.
+</Step>
+
+<Step number={3} title="Create a branch">
+```bash
+git checkout -b fix/issue-123-typo-in-readme
+```
+</Step>
+
+<Step number={4} title="Make your changes">
+Small, focused changes. Follow the project's code style.
+</Step>
+
+<Step number={5} title="Test thoroughly">
+Run existing tests. Add new tests if applicable.
+</Step>
+
+<Step number={6} title="Submit your PR">
+Write a clear description. Reference the issue. Be responsive.
+</Step>
+</Steps>
+
+<NextSteps items={[
+  { title: "Finding Good First Issues", description: "Where to start looking", href: "/docs/first-contribution/finding-issues" },
+  { title: "Creating a Pull Request", description: "Submit your work", href: "/docs/first-contribution/creating-pr" }
+]} />

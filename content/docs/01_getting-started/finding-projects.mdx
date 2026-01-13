@@ -1,0 +1,312 @@
+# Finding Your First Project
+
+import { Search, Star, Users, Activity, Shield, Heart, Filter, Target } from 'lucide-react'
+
+<Callout type="info" title="The Right Project Matters">
+Your first project can make or break your open source journey. Choose poorly, and you'll struggle. Choose wisely, and you'll thrive.
+</Callout>
+
+## The Project Selection Framework
+
+Finding a good first project requires balancing multiple factors:
+
+```
+                        YOUR INTERESTS
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│    ┌─────────┐     ┌─────────┐     ┌─────────┐             │
+│    │ Active  │  +  │ Welcoming│  +  │ Right   │  =  IDEAL  │
+│    │ Maintainers│   │ Community│     │ Complexity│     PROJECT│
+│    └─────────┘     └─────────┘     └─────────┘             │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Step 1: Start With Your Interests
+
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-6 mb-6">
+
+### Ask Yourself
+
+- **What tools do you already use?** Contributing to tools you use daily is easier because you understand the user perspective.
+- **What languages are you comfortable with?** Your first contribution shouldn't require learning a new language.
+- **What domains interest you?** Web dev? DevOps? AI/ML? Data science? Gaming?
+- **What do you want to learn?** Use open source as a learning opportunity.
+
+### Interest Categories
+
+<CardGrid>
+<Card title="Tools You Use" icon={<Star className="h-5 w-5" />}>
+VS Code extensions, CLI tools, libraries in your stack
+</Card>
+
+<Card title="Problems You've Faced" icon={<Target className="h-5 w-5" />}>
+Projects where you've hit bugs or missing features
+</Card>
+
+<Card title="Learning Goals" icon={<Activity className="h-5 w-5" />}>
+Projects using technologies you want to master
+</Card>
+
+<Card title="Communities You Like" icon={<Users className="h-5 w-5" />}>
+Projects with communities you want to be part of
+</Card>
+</CardGrid>
+
+</div>
+
+---
+
+## Step 2: Evaluate Project Health
+
+Not all projects are good for contributors. Look for these signals:
+
+### 🟢 Green Flags
+
+<Checklist>
+<ChecklistItem>**Recent commits** — Activity in the last month</ChecklistItem>
+<ChecklistItem>**Active issue responses** — Maintainers reply to issues</ChecklistItem>
+<ChecklistItem>**PRs getting merged** — Not just opened, but merged</ChecklistItem>
+<ChecklistItem>**CONTRIBUTING.md exists** — Clear contribution guidelines</ChecklistItem>
+<ChecklistItem>**Code of Conduct** — Community standards defined</ChecklistItem>
+<ChecklistItem>**"Good first issue" labels** — Newcomers are welcome</ChecklistItem>
+<ChecklistItem>**Helpful review comments** — Constructive, not hostile</ChecklistItem>
+</Checklist>
+
+### 🔴 Red Flags
+
+<div className="bg-red-500/10 border border-red-500/30 rounded-lg p-6 mb-6">
+
+<ul className="space-y-2">
+<li>❌ **No commits in months** — Project may be abandoned</li>
+<li>❌ **PRs sitting for months** — Maintainers overwhelmed or MIA</li>
+<li>❌ **Hostile issue comments** — Toxic community</li>
+<li>❌ **No documentation** — Will be hard to contribute</li>
+<li>❌ **Single maintainer, inactive** — Bus factor = 1</li>
+<li>❌ **Closed to outside contributions** — Check if PRs from outsiders get merged</li>
+</ul>
+
+</div>
+
+### How to Check
+
+```
+GitHub Insights (for any repo)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to the repository
+2. Click "Insights" tab
+3. Check:
+   - Pulse: Recent activity
+   - Contributors: Who's active
+   - Commits: Frequency
+   - Code frequency: Development pace
+4. Look at "Pull Requests" tab
+   - How quickly are they merged?
+   - Are they reviewed constructively?
+```
+
+---
+
+## Step 3: Where to Find Projects
+
+### 1. GitHub Explore
+
+[github.com/explore](https://github.com/explore)
+
+- Trending repositories
+- Topics you follow
+- Collections by category
+
+### 2. Good First Issues Aggregators
+
+| Site | URL | Notes |
+|------|-----|-------|
+| Good First Issue | goodfirstissue.dev | Curated by language |
+| First Timers Only | firsttimersonly.com | Beginner-focused |
+| Up For Grabs | up-for-grabs.net | Projects seeking help |
+| CodeTriage | codetriage.com | Get issues in your inbox |
+| Ovio | ovio.org | Task-based matching |
+
+### 3. GitHub Search Queries
+
+Use GitHub's search to find contributor-friendly projects:
+
+```
+# Good first issues in JavaScript
+label:"good first issue" language:javascript is:open
+
+# Help wanted in Python, updated recently
+label:"help wanted" language:python is:open pushed:>2024-01-01
+
+# Beginner-friendly TypeScript projects
+label:"beginner-friendly" language:typescript is:open
+
+# Documentation issues (great for first-timers)
+label:"documentation" is:open is:issue
+```
+
+### 4. Your Existing Stack
+
+Look at your `package.json`, `requirements.txt`, `Cargo.toml`, etc.:
+
+```bash
+# See what you're using in a Node.js project
+cat package.json | grep -A 100 dependencies
+```
+
+Pick a dependency and check its GitHub repo.
+
+### 5. Hacktoberfest Projects
+
+During October, use the "hacktoberfest" label:
+
+```
+label:hacktoberfest is:open is:issue
+```
+
+<Warning title="Quality Over Quantity">
+Hacktoberfest has a spam problem. Focus on quality contributions, not gaming the system.
+</Warning>
+
+---
+
+## Step 4: Size Matters
+
+Project size affects your experience:
+
+| Size | Characteristics | First-timer Experience |
+|------|----------------|------------------------|
+| **Small** (< 100 stars) | Few maintainers, quick feedback, less formal | Best for learning, personal attention |
+| **Medium** (100-1K stars) | Established processes, moderate review time | Good balance of structure and accessibility |
+| **Large** (1K-10K stars) | Formal processes, longer review times | More resources, more competition |
+| **Huge** (10K+ stars) | Very formal, slow reviews, high standards | Challenging but prestigious |
+
+<Callout type="tip" title="Start Small">
+For your first contribution, target small to medium projects. You'll get faster feedback and more personal guidance.
+</Callout>
+
+---
+
+## Step 5: Evaluate the First Issue
+
+Once you find a potential project, look for a specific issue to work on:
+
+### Good First Issues
+
+Look for these labels:
+- `good first issue`
+- `first-timers-only`
+- `beginner-friendly`
+- `easy`
+- `starter`
+- `help wanted`
+- `documentation`
+
+### Evaluating an Issue
+
+<Checklist>
+<ChecklistItem>**Clear description** — You understand what needs to be done</ChecklistItem>
+<ChecklistItem>**Not claimed** — No one else is working on it</ChecklistItem>
+<ChecklistItem>**Recent activity** — Issue was updated recently</ChecklistItem>
+<ChecklistItem>**Within your skills** — You can do this (with some stretching)</ChecklistItem>
+<ChecklistItem>**Maintainer engagement** — Maintainer has commented/responded</ChecklistItem>
+</Checklist>
+
+### Before Claiming an Issue
+
+1. **Read the entire issue thread** — Context matters
+2. **Check linked PRs** — Make sure it's not already solved
+3. **Understand the scope** — Know what you're signing up for
+4. **Comment that you're interested** — Ask any clarifying questions
+5. **Wait for assignment** — Don't start until you're confirmed
+
+---
+
+## Recommended First Projects
+
+Here are some known contributor-friendly projects:
+
+### Documentation-Heavy
+
+| Project | Language | Notes |
+|---------|----------|-------|
+| freeCodeCamp | JavaScript | Massive learning community |
+| MDN Web Docs | Markdown | Mozilla's web documentation |
+| EddieHub | Various | Community focused on open source education |
+
+### Tools & Libraries
+
+| Project | Language | Notes |
+|---------|----------|-------|
+| ESLint | JavaScript | Always needs plugin work |
+| Prettier | JavaScript | Formatting tool |
+| Mermaid | JavaScript | Diagram generation |
+| FastAPI | Python | Modern Python web framework |
+| Tokio | Rust | Async runtime for Rust |
+
+### Communities Known for Welcoming Newcomers
+
+- **DEV.to** — Platform for developers
+- **Hugging Face** — AI/ML community
+- **Gatsby** — React framework
+- **Kubernetes** — Container orchestration (has mentorship programs)
+
+---
+
+## Action Plan
+
+<Steps>
+<Step number={1} title="List Your Interests">
+Write down 5 technologies or tools you use regularly.
+</Step>
+
+<Step number={2} title="Find 5 Candidate Projects">
+Use the search methods above to find 5 potential projects.
+</Step>
+
+<Step number={3} title="Evaluate Each Project">
+Check the green/red flags for each.
+</Step>
+
+<Step number={4} title="Pick Your Top 2">
+Narrow down to 2 projects you'd be excited to contribute to.
+</Step>
+
+<Step number={5} title="Find an Issue">
+Look for a "good first issue" in each project.
+</Step>
+
+<Step number={6} title="Read the Docs">
+Before touching code, read their CONTRIBUTING.md and related docs.
+</Step>
+</Steps>
+
+---
+
+## Project Evaluation Worksheet
+
+Use this template to evaluate projects:
+
+| Criteria | Project 1 | Project 2 | Project 3 |
+|----------|-----------|-----------|-----------|
+| Name | | | |
+| URL | | | |
+| Language | | | |
+| Last commit | | | |
+| Open issues | | | |
+| Has CONTRIBUTING.md | ⬜ | ⬜ | ⬜ |
+| Has good first issues | ⬜ | ⬜ | ⬜ |
+| Recent PR merged | ⬜ | ⬜ | ⬜ |
+| Friendly community | ⬜ | ⬜ | ⬜ |
+| Matches my interests | ⬜ | ⬜ | ⬜ |
+| **Score** | /5 | /5 | /5 |
+
+<NextSteps items={[
+  { title: "Reading Documentation", description: "Learn to navigate project docs", href: "/docs/getting-started/reading-documentation" },
+  { title: "Making Your First Contribution", description: "Ready to contribute? Let's go", href: "/docs/first-contribution" }
+]} />
