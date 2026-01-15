@@ -1,474 +1,624 @@
 ---
 title: "PR Description Template"
-description: "What maintainers expect to see in your PR"
+description: "Copy-paste templates for different PR types"
 ---
 
 # PR Description Template
 
-A well-structured PR description is a gift to reviewers. Here's exactly what to include.
+import { Copy, FileText, Bug, Sparkles, Book } from 'lucide-react'
 
-## The Complete Template
+<Callout type="success" title="Copy-Paste Ready">
+These templates are battle-tested across hundreds of successful PRs. Customize them for your needs.
+</Callout>
+
+## Universal Template
+
+Use this for most PRs:
 
 ```markdown
-## Summary
+## Problem
+<!-- Clear explanation of what this PR addresses -->
 
-<!-- One paragraph explaining what this PR does and why -->
+Fixes #ISSUE_NUMBER
 
-## Related Issue
+## Solution
+<!-- How you solved the problem. Key technical decisions. -->
 
-<!-- Link to related issues -->
-Fixes #
-Related to #
-
-## Motivation and Context
-
-<!-- Why is this change needed? What problem does it solve? -->
-
-## Changes Made
-
-<!-- Bullet list of changes -->
+## Changes
+<!-- Bullet list of what changed -->
 - 
 - 
 - 
 
-## Type of Change
+## Testing
+<!-- How you verified this works -->
+- [ ] Unit tests pass
+- [ ] Integration tests pass
+- [ ] Manual testing completed
 
-<!-- Check the relevant option -->
-- [ ] 🐛 Bug fix (non-breaking change that fixes an issue)
-- [ ] ✨ New feature (non-breaking change that adds functionality)
-- [ ] 💥 Breaking change (fix or feature that would cause existing functionality to change)
-- [ ] 📝 Documentation update
-- [ ] 🎨 Style/formatting (no functional changes)
-- [ ] ♻️ Refactoring (no functional changes)
-- [ ] ⚡ Performance improvement
-- [ ] 🧪 Test update
+**Manual test scenarios:**
+- 
+- 
 
-## How Has This Been Tested?
-
-<!-- Describe testing approach -->
-- [ ] Unit tests
-- [ ] Integration tests
-- [ ] E2E tests
-- [ ] Manual testing
-
-### Test Configuration
-- OS: 
-- Browser (if applicable): 
-- Version: 
-
-## Screenshots/Recordings
-
-<!-- For UI changes, add before/after screenshots -->
-### Before
-<!-- Screenshot -->
-
-### After
-<!-- Screenshot -->
+## Breaking Changes
+<!-- YES or NO. If YES, explain migration path -->
 
 ## Checklist
-
-<!-- Verify you've completed these items -->
-- [ ] My code follows the project's coding standards
-- [ ] I have performed a self-review of my code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published
-
-## Additional Notes
-
-<!-- Any other information reviewers should know -->
+- [ ] Code follows project style guide
+- [ ] Tests added/updated
+- [ ] Documentation updated
+- [ ] CI passing
+- [ ] Self-reviewed code
 ```
-
-## Template Breakdown
-
-### Summary Section
-
-```markdown
-## Summary
-
-This PR implements automatic session timeout for security compliance.
-When a user is inactive for 15 minutes, they are automatically logged out
-and redirected to the login page with an explanatory message.
-```
-
-**What to include:**
-- What the PR does (not how)
-- Why it's needed
-- Key behavior change
-
-**What NOT to include:**
-- Implementation details (that's in the code)
-- The entire issue description (link to it)
-
-### Related Issues
-
-```markdown
-## Related Issue
-
-Fixes #234 - Session timeout for security compliance
-Fixes #235 - Users stay logged in forever (security risk)
-Related to #100 - Security improvements epic
-See also #256 - Similar feature for admin panel
-```
-
-**Keywords that close issues:**
-- `Fixes #123`
-- `Closes #123`
-- `Resolves #123`
-
-**Keywords that just reference:**
-- `Related to #123`
-- `See #123`
-- `Part of #123`
-
-### Motivation and Context
-
-```markdown
-## Motivation and Context
-
-Our security audit identified that users can remain logged in indefinitely,
-which is a compliance violation for SOC 2. This PR implements automatic
-session timeout after 15 minutes of inactivity.
-
-Without this change:
-- Sessions never expire
-- Shared computers pose security risk
-- We fail compliance requirements
-
-With this change:
-- Sessions auto-expire after 15 min
-- Users see clear message explaining logout
-- We meet SOC 2 requirement 8.1.4
-```
-
-### Changes Made
-
-```markdown
-## Changes Made
-
-### Added
-- `SessionTimeoutProvider` component to track activity
-- `useIdleTimer` hook for detecting inactivity
-- Session timeout warning modal (shows at 14 min)
-- Automatic logout at 15 min of inactivity
-
-### Changed
-- `AuthContext` now includes `lastActivity` timestamp
-- Login page shows "session expired" message when applicable
-
-### Removed
-- Removed legacy `keepAlive` ping (no longer needed)
-
-### Fixed
-- Fixed race condition in logout flow
-```
-
-**Use semantic categories:**
-- Added
-- Changed
-- Deprecated
-- Removed
-- Fixed
-- Security
-
-### Type of Change
-
-```markdown
-## Type of Change
-
-- [ ] 🐛 Bug fix (non-breaking change that fixes an issue)
-- [x] ✨ New feature (non-breaking change that adds functionality)
-- [ ] 💥 Breaking change (fix or feature that would cause existing functionality to change)
-- [ ] 📝 Documentation update
-```
-
-**Multiple types are okay:**
-
-```markdown
-- [x] ✨ New feature
-- [x] 📝 Documentation update
-```
-
-### Testing Section
-
-```markdown
-## How Has This Been Tested?
-
-### Automated Tests
-- [x] Unit tests for `useIdleTimer` hook
-- [x] Unit tests for `SessionTimeoutProvider`
-- [x] Integration test for complete timeout flow
-- [x] E2E test simulating 15-min timeout
-
-### Manual Testing
-- [x] Verified timeout works in Chrome, Firefox, Safari
-- [x] Verified warning modal appears at 14 min
-- [x] Verified logout at 15 min
-- [x] Verified activity resets timer (mouse, keyboard)
-- [x] Verified "session expired" message on login page
-
-### Test Commands
-```bash
-npm test -- --grep "SessionTimeout"
-npm run e2e -- --spec "session-timeout.spec.ts"
-```
-
-### Test Configuration
-- OS: macOS Ventura, Ubuntu 22.04, Windows 11
-- Browsers: Chrome 115, Firefox 116, Safari 16
-- Node.js: 18.17.0
-```
-
-### Screenshots Section
-
-```markdown
-## Screenshots/Recordings
-
-### Warning Modal (14 min)
-![Warning modal showing session will expire soon](warning-modal.png)
-
-### After Timeout
-![Login page with session expired message](session-expired.png)
-
-### Demo Recording
-[Watch 30-second demo](link-to-video-or-gif)
-```
-
-**Tips:**
-- Use before/after for changes
-- Add annotations for clarity
-- Keep images reasonably sized
-- GIFs for interactions
-
-### Checklist
-
-```markdown
-## Checklist
-
-- [x] My code follows the project's coding standards
-- [x] I have performed a self-review of my code
-- [x] I have commented my code, particularly in hard-to-understand areas
-- [x] I have made corresponding changes to the documentation
-- [x] My changes generate no new warnings
-- [x] I have added tests that prove my fix is effective
-- [x] New and existing unit tests pass locally
-- [x] Any dependent changes have been merged
-```
-
-### Additional Notes
-
-```markdown
-## Additional Notes
-
-### Performance Considerations
-Timer uses `setInterval` with 1-second resolution. This is intentional
-as we need accurate timing for compliance. Battery impact is minimal
-as modern browsers throttle intervals in background tabs.
-
-### Migration Notes
-Existing sessions will be logged out on first inactivity check after
-deployment. Consider notifying users about the new security feature.
-
-### Future Improvements
-- Make timeout duration configurable (#300)
-- Add "Remember me" option to extend timeout (#301)
-```
-
-## Simplified Templates
-
-### For Small Bug Fixes
-
-```markdown
-## Summary
-
-Fixes null pointer exception when user has no profile image.
-
-## Related Issue
-
-Fixes #234
-
-## Changes
-
-- Added null check in `UserAvatar` component
-- Added test case for missing profile image
-
-## Testing
-
-- [x] Added unit test
-- [x] Tested manually with test user
-```
-
-### For Documentation Only
-
-```markdown
-## Summary
-
-Updates installation documentation for Windows users.
-
-## Related Issue
-
-Closes #456
-
-## Changes
-
-- Added PowerShell installation commands
-- Added Windows-specific troubleshooting section
-- Fixed broken links
-
-## Checklist
-
-- [x] Docs build without errors
-- [x] Links verified
-- [x] Spelling checked
-```
-
-### For Refactoring
-
-```markdown
-## Summary
-
-Refactors authentication module to use async/await instead of callbacks.
-
-## Motivation
-
-- Improves code readability
-- Enables better error handling
-- Prepares for upcoming async features
-
-## Changes
-
-- Converted all callback-based auth functions to async/await
-- No behavior changes
-- All existing tests pass
-
-## Testing
-
-- [x] All existing tests pass
-- [x] No new tests needed (behavior unchanged)
-
-## Notes
-
-This is a pure refactor. Functionality is identical.
-```
-
-## Project-Specific Templates
-
-Many projects have their own templates. Always check:
-
-```bash
-# Template location
-.github/PULL_REQUEST_TEMPLATE.md
-.github/pull_request_template.md
-
-# Multiple templates
-.github/PULL_REQUEST_TEMPLATE/
-├── bug_fix.md
-├── feature.md
-└── documentation.md
-```
-
-### If Project Has Template
-
-```mermaid
-flowchart TD
-    A[Opening PR] --> B{Template exists?}
-    B -->|Yes| C[Fill in ALL sections]
-    B -->|No| D[Use comprehensive template]
-    C --> E[Don't delete sections]
-    E --> F[Mark N/A if not applicable]
-```
-
-## Common Mistakes
-
-### ❌ Empty Template
-
-```markdown
-## Summary
-<!-- Describe changes -->
-
-## Related Issue
-<!-- Link -->
-
-## Changes
-<!-- List -->
-```
-
-Fill it in! Don't leave placeholders.
-
-### ❌ Too Brief
-
-```markdown
-## Summary
-Fixed bug
-
-## Changes
-- Fixed it
-```
-
-Add detail! What bug? How fixed?
-
-### ❌ Deleted Sections
-
-```markdown
-## Summary
-Added feature X
-
-<!-- Deleted everything else -->
-```
-
-Keep sections, mark N/A if not applicable.
-
-### ❌ Wrong Checklist
-
-```markdown
-- [x] All items checked without actually checking
-```
-
-Only check what you actually did.
-
-## Quick Reference
-
-### Minimum Viable PR Description
-
-```markdown
-## Summary
-[1-2 sentences: what and why]
-
-## Related Issue
-Fixes #XXX
-
-## Changes
-- [Key change 1]
-- [Key change 2]
-
-## Testing
-- [x] [How you verified it works]
-```
-
-### Description Emojis
-
-| Emoji | Meaning |
-|-------|---------|
-| 🐛 | Bug fix |
-| ✨ | New feature |
-| 💥 | Breaking change |
-| 📝 | Documentation |
-| 🎨 | Style/formatting |
-| ♻️ | Refactoring |
-| ⚡ | Performance |
-| 🧪 | Tests |
-| 🔒 | Security |
-| 🗑️ | Deprecation |
-
-## Next Steps
-
-Learn how to respond when maintainers review your code:
-
-➡️ [Responding to Code Reviews →](code-reviews)
 
 ---
 
-> **Pro tip:** Write your PR description before you start coding. It helps clarify your thinking and keeps you focused on what matters.
+## Bug Fix Template
+
+```markdown
+fix(scope): brief description of bug
+
+## Problem
+**Bug:** [Clear description of the bug]
+
+**Impact:** [Who/what is affected]
+
+**Root Cause:** [Why the bug exists]
+
+Fixes #ISSUE_NUMBER
+
+## Solution
+[Explanation of how you fixed it]
+
+## Changes
+- Fixed X by doing Y
+- Added validation for Z
+- Updated error handling in W
+
+## Testing
+**Before this fix:**
+- Scenario A resulted in error ❌
+- Scenario B crashed the app ❌
+
+**After this fix:**
+- Scenario A works correctly ✅
+- Scenario B handles gracefully ✅
+
+**Test coverage:**
+- [ ] Unit tests for bug scenario
+- [ ] Regression test added
+- [ ] Edge cases covered
+
+**Manual testing:**
+```bash
+# Steps to reproduce original bug:
+1. 
+2. 
+3. 
+
+# Verified fix:
+[x] Bug no longer occurs
+[x] No new issues introduced
+```
+
+## Affected Users
+[Low / Medium / High impact]
+
+## Breaking Changes
+NO
+
+## Checklist
+- [ ] Bug fix verified
+- [ ] Tests prevent regression
+- [ ] No unintended side effects
+```
+
+---
+
+## Feature Template
+
+```markdown
+feat(scope): brief description of feature
+
+## Problem
+**User need:** [What problem does this solve for users?]
+
+**Current limitation:** [What can't users do now?]
+
+Closes #ISSUE_NUMBER
+
+## Solution
+[High-level overview of your implementation]
+
+**Key features:**
+- Feature A allows users to...
+- Feature B provides...
+- Feature C enables...
+
+## Changes
+**Added:**
+- New component: `ComponentName`
+- New utility: `utilityFunction()`
+- New API endpoint: `POST /api/resource`
+
+**Modified:**
+- Updated `ExistingComponent` to handle new feature
+- Enhanced `existingFunction()` with parameter X
+
+**Database changes:**
+- Added table: `table_name`
+- New columns: `column_a`, `column_b`
+- Migration: `YYYYMMDD_migration_name.sql`
+
+## Technical Design
+[Brief architecture explanation or link to design doc]
+
+**Implementation approach:**
+1. 
+2. 
+3. 
+
+**Alternatives considered:**
+- Approach A: Rejected because...
+- Approach B: Too complex for...
+
+## Testing
+**Unit tests:**
+- [x] `ComponentName` tests (100% coverage)
+- [x] `utilityFunction()` tests
+- [x] API endpoint tests
+
+**Integration tests:**
+- [x] End-to-end user flow
+- [x] Error handling scenarios
+
+**Manual testing:**
+- [x] Feature works as expected
+- [x] Edge cases handled:
+  - Empty state ✅
+  - Max capacity ✅
+  - Invalid input ✅
+- [x] Cross-browser testing (Chrome, Firefox, Safari)
+- [x] Mobile responsive ✅
+
+## Screenshots
+### Before
+![Before](url)
+
+### After
+![After](url)
+
+### Different States
+- Empty: ![Empty](url)
+- Loading: ![Loading](url)
+- Error: ![Error](url)
+- Success: ![Success](url)
+
+## Performance Impact
+- Bundle size: +15KB (minified + gzipped)
+- API response time: < 100ms
+- Database queries: +1 query, < 50ms
+
+## Breaking Changes
+NO
+<!-- If YES: explain migration path and deprecation timeline -->
+
+## Documentation
+- [ ] README updated
+- [ ] API docs updated
+- [ ] Code comments added
+- [ ] Examples provided
+
+## Checklist
+- [ ] Feature complete and working
+- [ ] Tests comprehensive
+- [ ] Documentation complete
+- [ ] No breaking changes
+- [ ] Performance acceptable
+- [ ] Accessibility considered
+- [ ] Security reviewed
+```
+
+---
+
+## Documentation Template
+
+```markdown
+docs(scope): brief description
+
+## Problem
+**Documentation gap:** [What was missing or unclear?]
+
+**User impact:** [How does this help users?]
+
+Closes #ISSUE_NUMBER
+
+## Changes
+- Added section: "Title"
+- Clarified explanation of X
+- Fixed typos in Y
+- Updated outdated examples in Z
+
+## Improvements
+**Before:**
+- Users were confused about...
+- Common questions about...
+
+**After:**
+- Clear explanation with examples
+- Step-by-step guide
+- Visual diagrams
+
+## Validation
+- [ ] Technically accurate
+- [ ] Links work
+- [ ] Code examples tested
+- [ ] Spelling/grammar checked
+
+## Preview
+[Link to preview or screenshots if applicable]
+
+## Checklist
+- [ ] All links tested
+- [ ] Code examples work
+- [ ] No broken formatting
+- [ ] Consistent with existing docs style
+```
+
+---
+
+## Refactoring Template
+
+```markdown
+refactor(scope): brief description
+
+## Problem
+**Code smell:** [What needed improvement?]
+
+**Motivation:** [Why refactor now?]
+
+Related to #ISSUE_NUMBER
+
+## Solution
+[What you refactored and how]
+
+## Changes
+**Refactored:**
+- Extracted `newFunction()` from `oldFunction()`
+- Renamed `confusingName` to `clearName`
+- Simplified logic in `module`
+- Removed duplication between X and Y
+
+**Benefits:**
+- Improved readability
+- Reduced complexity (cyclomatic complexity: 12 → 6)
+- Better testability
+- Eliminated code duplication
+
+## Testing
+**No behavior changes:**
+- [x] All existing tests pass
+- [x] No new tests needed (pure refactor)
+- [x] Manual smoke testing completed
+
+**Before/After metrics:**
+```
+Lines of code: 450 → 320 (-29%)
+Duplication: 15% → 3%
+Complexity: 12 → 6
+```
+
+## Breaking Changes
+NO - Internal refactor only, no API changes
+
+## Checklist
+- [ ] Behavior unchanged
+- [ ] Tests still pass
+- [ ] No performance regression
+- [ ] Improved code quality
+```
+
+---
+
+## Test Addition Template
+
+```markdown
+test(scope): add tests for X
+
+## Problem
+**Coverage gap:** [What wasn't tested?]
+
+**Risk:** [Why does this matter?]
+
+Related to #ISSUE_NUMBER
+
+## Solution
+Added comprehensive test coverage for:
+- Happy path scenarios
+- Edge cases
+- Error conditions
+
+## Changes
+**Added tests:**
+- Unit tests for `functionName()`
+- Integration tests for X workflow
+- Edge case tests for Y scenario
+
+**Coverage improvement:**
+```
+Before: 65%
+After:  92%
+```
+
+## Test Cases
+1. ✅ Normal input handling
+2. ✅ Empty/null input
+3. ✅ Invalid input rejection
+4. ✅ Boundary conditions
+5. ✅ Error scenarios
+6. ✅ Race conditions
+7. ✅ Async behavior
+
+## Testing
+- [x] All new tests pass
+- [x] No flaky tests
+- [x] Fast execution (< 1s per test)
+
+## Checklist
+- [ ] Tests are readable
+- [ ] Tests are maintainable
+- [ ] No redundant tests
+- [ ] Good coverage of edge cases
+```
+
+---
+
+## Performance Improvement Template
+
+```markdown
+perf(scope): optimize X to improve Y
+
+## Problem
+**Performance issue:** [What was slow?]
+
+**Impact:** [How did this affect users?]
+
+Fixes #ISSUE_NUMBER
+
+## Solution
+[How you optimized it]
+
+## Changes
+- Optimized database query by adding index
+- Implemented caching for expensive operation
+- Reduced memory allocations in hot path
+
+## Performance Impact
+**Before:**
+```
+Response time: 1200ms
+Memory usage: 150MB
+Database queries: 15
+```
+
+**After:**
+```
+Response time: 180ms (-85%)
+Memory usage: 45MB (-70%)
+Database queries: 2 (-87%)
+```
+
+**Benchmarks:**
+```bash
+# Before
+10,000 requests: 120s
+Throughput: 83 req/s
+
+# After
+10,000 requests: 15s
+Throughput: 666 req/s (+700%)
+```
+
+## Testing
+- [x] Load testing performed
+- [x] No functionality changes
+- [x] All tests pass
+- [x] Memory profiling shows improvement
+
+## Trade-offs
+[Any compromises made, if applicable]
+
+## Breaking Changes
+NO
+
+## Checklist
+- [ ] Performance improvement verified
+- [ ] No breaking changes
+- [ ] Tests pass
+- [ ] Monitoring added for key metrics
+```
+
+---
+
+## Security Fix Template
+
+```markdown
+fix(security): address vulnerability in X
+
+## Problem
+**Vulnerability:** [Brief description]
+
+**Severity:** [Critical / High / Medium / Low]
+
+**Attack vector:** [How could this be exploited?]
+
+Fixes #ISSUE_NUMBER
+
+## Solution
+[How you fixed the vulnerability]
+
+## Changes
+- Updated dependency X to version Y
+- Added input validation for Z
+- Implemented sanitization in W
+
+## Security Impact
+**Before:** 
+- Vulnerable to [attack type]
+- Potential for [impact]
+
+**After:**
+- Vulnerability patched
+- Input sanitized
+- Tests verify security
+
+## Testing
+- [x] Security test added
+- [x] Attempted exploit scenarios (all blocked)
+- [x] No regressions
+
+**Verified:**
+- [x] SQL injection attempts blocked
+- [x] XSS attempts sanitized
+- [x] CSRF protection working
+
+## Breaking Changes
+NO
+
+## Disclosure
+[If coordinated disclosure, mention timeline]
+
+## Checklist
+- [ ] Vulnerability fixed
+- [ ] Security tests added
+- [ ] No information leak in PR
+- [ ] Backports considered
+```
+
+---
+
+## Dependency Update Template
+
+```markdown
+chore(deps): update X from v1.0 to v2.0
+
+## Changes
+**Updated dependencies:**
+- `package-name`: v1.0.0 → v2.0.0
+
+## Motivation
+- Security patch included
+- Performance improvements
+- New features available
+- Bug fixes
+
+## Breaking Changes
+[Check if dependency has breaking changes affecting this project]
+
+**Migration notes:**
+- [If applicable]
+
+## Testing
+- [x] All tests pass
+- [x] No regressions observed
+- [x] Compatibility verified
+
+## Changelog Review
+[Link to dependency's changelog]
+
+Key changes:
+- 
+- 
+
+## Checklist
+- [ ] Lock file updated
+- [ ] Tests pass
+- [ ] No breaking changes (or handled)
+- [ ] Bundle size acceptable
+```
+
+---
+
+## Multi-PR Template (Part of Series)
+
+```markdown
+feat(scope): add feature X [Part 1/3]
+
+## Context
+This is part 1 of a 3-part feature addition:
+- **Part 1 (this PR):** Core data models and database schema
+- Part 2: API endpoints and business logic
+- Part 3: UI components and integration
+
+Related to #ISSUE_NUMBER
+
+## Problem
+[Overall problem being solved]
+
+## This PR's Scope
+[What specifically this PR does]
+
+**Out of scope:**
+- API implementation (Part 2)
+- UI components (Part 3)
+
+## Changes
+[Changes in this PR only]
+
+## Testing
+[Tests for this PR's scope]
+
+## Next Steps
+After merge:
+1. Part 2 PR will add API endpoints
+2. Part 3 PR will add UI
+
+## Checklist
+- [ ] Focused on defined scope
+- [ ] Ready for Part 2 to build on
+- [ ] Tests complete for this part
+```
+
+---
+
+## Quick Reference
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         PR TYPE SELECTOR                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Your Change           Template to Use                                      │
+│  ═══════════           ══════════════                                       │
+│                                                                             │
+│  Fixing a bug          → Bug Fix Template                                   │
+│  Adding feature        → Feature Template                                   │
+│  Improving docs        → Documentation Template                             │
+│  Refactoring code      → Refactoring Template                               │
+│  Adding tests          → Test Addition Template                             │
+│  Making faster         → Performance Template                               │
+│  Security issue        → Security Fix Template                              │
+│  Updating deps         → Dependency Update Template                         │
+│  Series of PRs         → Multi-PR Template                                  │
+│  Not sure / Mixed      → Universal Template                                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+<Callout type="tip" title="Customize the Template">
+These templates are starting points. Adapt them to your project's conventions and the specific PR context.
+</Callout>
+
+---
+
+## Next Steps
+
+<CardGrid>
+<Card title="Responding to Reviews" icon={<FileText className="h-5 w-5" />}>
+Learn [how to handle code reviews](/docs/issues-prs/code-reviews) gracefully.
+</Card>
+
+<Card title="Handling Rejection" icon={<Bug className="h-5 w-5" />}>
+See [how to handle rejection](/docs/issues-prs/handling-rejection) without burning bridges.
+</Card>
+</CardGrid>

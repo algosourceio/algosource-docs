@@ -1,389 +1,429 @@
 ---
 title: "How to Raise a Good Issue"
-description: "Issues that get attention and actually get resolved"
+description: "Issues that get attention"
 ---
 
 # How to Raise a Good Issue
 
-A well-written issue gets attention. A poorly-written one gets ignored.
+import { Search, FileText, Bug, CheckCircle, XCircle } from 'lucide-react'
 
-## Why Issue Quality Matters
+Good issues save maintainer time and get triaged fast. Bad issues get closed or ignored.
 
-```mermaid
-pie title "Issue Response Based on Quality"
-    "Excellent - Response in hours" : 30
-    "Good - Response in days" : 35
-    "Poor - Response in weeks" : 20
-    "Terrible - No response" : 15
-```
+<Callout type="warning" title="The 5-Minute Rule">
+If a maintainer can't understand and reproduce your issue in 5 minutes, it's not a good issue.
+</Callout>
 
-**65%** of well-written issues get quick responses!
+## Pre-Issue Checklist
 
-## Before You Open an Issue
+**ALWAYS do this before opening an issue:**
+
+<Checklist>
+<ChecklistItem>Search existing issues (open AND closed)</ChecklistItem>
+<ChecklistItem>Check discussions and FAQ</ChecklistItem>
+<ChecklistItem>Search recent PRs (might be fixed, not yet released)</ChecklistItem>
+<ChecklistItem>Reproduce on latest version/commit</ChecklistItem>
+<ChecklistItem>Read CONTRIBUTING.md for issue guidelines</ChecklistItem>
+</Checklist>
 
 ```mermaid
 flowchart TD
-    A[Have a problem?] --> B{Search existing issues}
-    B -->|Found| C[Comment on existing]
-    B -->|Not found| D{Search docs}
-    D -->|Found answer| E[Problem solved!]
-    D -->|Not found| F{Is it really a bug?}
-    F -->|Not sure| G[Ask in discussions]
-    F -->|Yes| H[Open issue]
+    A[Want to Report Issue] --> B{Searched existing?}
+    B -->|No| C[❌ STOP: Search first]
+    B -->|Yes| D{Found similar?}
+    D -->|Yes| E[Comment on existing]
+    D -->|No| F{Latest version?}
+    F -->|No| G[❌ STOP: Update first]
+    F -->|Yes| H{Can reproduce?}
+    H -->|No| I[❌ Gather more info]
+    H -->|Yes| J[✅ Open issue]
 ```
 
-### Pre-Issue Checklist
+---
 
-- [ ] Searched existing issues (open AND closed)
-- [ ] Checked the documentation
-- [ ] Checked FAQ/troubleshooting
-- [ ] Using latest version
-- [ ] Can reproduce consistently
+## The Anatomy of a Great Issue
 
-## Anatomy of a Great Issue
-
-### Title
-
-```markdown
-❌ Bad: "It's broken"
-❌ Bad: "Help please"
-❌ Bad: "Bug"
-
-✅ Good: "[Bug] Login fails with special characters in password"
-✅ Good: "[Feature] Add dark mode support"
-✅ Good: "TypeError when processing empty array in v2.3.1"
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        PERFECT ISSUE STRUCTURE                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. TITLE (50-60 chars)                                                     │
+│     ├─ Component: [API]                                                     │
+│     ├─ Symptom: "500 error"                                                 │
+│     └─ Context: "on POST /users with empty email"                           │
+│                                                                             │
+│  2. ENVIRONMENT                                                             │
+│     ├─ Version/commit: v2.3.1 or commit abc123                              │
+│     ├─ OS: Ubuntu 22.04, macOS 14, Windows 11                               │
+│     ├─ Runtime: Node 20.x, Python 3.11, etc                                 │
+│     └─ Browser (if web): Chrome 120, Firefox 121                            │
+│                                                                             │
+│  3. CURRENT BEHAVIOR                                                        │
+│     └─ What actually happens (with evidence)                                │
+│                                                                             │
+│  4. EXPECTED BEHAVIOR                                                       │
+│     └─ What should happen instead                                           │
+│                                                                             │
+│  5. REPRODUCTION STEPS                                                      │
+│     ├─ Step 1: Clone repo                                                   │
+│     ├─ Step 2: Run command X                                                │
+│     ├─ Step 3: Observe result Y                                             │
+│     └─ Result: Error Z occurs                                               │
+│                                                                             │
+│  6. EVIDENCE                                                                │
+│     ├─ Error logs (trimmed, formatted)                                      │
+│     ├─ Screenshots (if UI)                                                  │
+│     └─ Network traces (if API)                                              │
+│                                                                             │
+│  7. ADDITIONAL CONTEXT                                                      │
+│     ├─ Frequency: always/sometimes/rare                                     │
+│     ├─ User impact: blocks X users                                          │
+│     └─ Workarounds tried (if any)                                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Body Structure
+---
+
+## Title Examples
+
+### ✅ Good Titles
+
+| Title | Why It's Good |
+|-------|---------------|
+| `[API] 500 error on POST /users with null email` | Component + symptom + trigger |
+| `[UI] Button click fails on mobile Safari iOS 17` | Platform-specific + clear |
+| `[Docs] Broken link in installation guide section 3` | Location + specific |
+| `[Build] TypeScript compilation fails with strict mode` | Build stage + condition |
+
+### ❌ Bad Titles
+
+| Title | Why It's Bad | Fix |
+|-------|--------------|-----|
+| `It doesn't work` | No information | Specify what doesn't work |
+| `Bug` | Useless | Describe the bug |
+| `Help needed` | Not descriptive | Explain what you need |
+| `Is this a bug?` | Uncertain | Investigate first |
+| `URGENT!!!` | Noise | Just describe it |
+
+---
+
+## Reproduction Steps Template
 
 ```markdown
-## Description
-
-[Clear, one-paragraph explanation of the issue]
-
 ## Steps to Reproduce
 
-1. Go to '...'
-2. Click on '...'
-3. Enter '...'
-4. See error
+1. Clone the repo
+   ```bash
+   git clone https://github.com/org/repo
+   cd repo
+   ```
 
-## Expected Behavior
+2. Install dependencies
+   ```bash
+   npm install
+   ```
 
-[What should happen]
+3. Run the application
+   ```bash
+   npm run dev
+   ```
 
-## Actual Behavior
+4. Navigate to http://localhost:3000
 
-[What actually happens]
+5. Click the "Submit" button
 
+**Expected:** Form submits successfully
+**Actual:** Console shows TypeError: Cannot read property 'value' of null
+```
+
+**Why this works:**
+- Copy-paste ready commands
+- Numbered steps
+- Clear expected vs actual
+- Environment implicitly shown (npm = Node.js project)
+
+---
+
+## Environment Information
+
+### Minimal Example
+
+```markdown
 ## Environment
 
-- OS: [e.g., Ubuntu 22.04]
-- Browser: [if relevant]
-- Version: [e.g., v2.3.1]
-- Node.js: [if relevant]
-
-## Additional Context
-
-[Screenshots, logs, related issues]
+- **Version:** v1.2.3 (commit abc1234)
+- **OS:** Ubuntu 22.04
+- **Node:** 20.10.0
+- **npm:** 10.2.3
 ```
 
-## Issue Template Examples
-
-### Bug Report
+### Comprehensive Example (when needed)
 
 ```markdown
-## 🐛 Bug Report
+## Environment
 
-### Description
-The login form crashes when the password contains the "#" character.
-
-### Steps to Reproduce
-1. Go to /login
-2. Enter any email
-3. Enter password: "Test#123"
-4. Click "Login"
-5. App crashes with white screen
-
-### Expected Behavior
-Login should succeed or show validation error.
-
-### Actual Behavior
-App crashes. Console shows:
-```
-TypeError: Cannot read property 'split' of undefined
-    at validatePassword (auth.js:45)
+- **Project Version:** v2.5.0
+- **Commit Hash:** `a1b2c3d4e5f6`
+- **OS:** macOS 14.2 (23C64)
+- **Architecture:** arm64 (M2)
+- **Runtime:** Node.js 20.10.0
+- **Package Manager:** pnpm 8.14.0
+- **Browser:** Chrome 120.0.6099.129
+- **Extensions:** React DevTools, Redux DevTools
 ```
 
-### Environment
-- OS: macOS Ventura 13.4
-- Browser: Chrome 115.0.5790.170
-- App Version: 2.3.1
+---
 
-### Additional Context
-Works fine without special characters. First noticed after updating to 2.3.1.
-
-### Possible Fix
-Line 45 in auth.js doesn't handle undefined input.
-```
-
-### Feature Request
-
-```markdown
-## 💡 Feature Request
-
-### Description
-Add ability to export data as CSV file.
-
-### Use Case
-As a user, I want to export my transaction history so I can analyze it in Excel.
-
-### Proposed Solution
-Add an "Export CSV" button in the transaction list header that downloads all visible transactions.
-
-### Alternatives Considered
-1. Copy/paste to spreadsheet (tedious for large datasets)
-2. Use API directly (requires technical knowledge)
-
-### Additional Context
-Many similar tools offer this (see competitor X, Y).
-
-Would be happy to implement this if approach is approved.
-```
-
-## What to Include
-
-### For Bugs
-
-| Element | Why It's Important |
-|---------|-------------------|
-| Version number | Bug may be fixed in newer version |
-| OS/environment | May be platform-specific |
-| Steps to reproduce | Maintainer must recreate it |
-| Error messages | Exact text, not paraphrased |
-| Screenshots | Visual bugs need visual proof |
-| Minimal example | Isolates the issue |
-
-### For Features
-
-| Element | Why It's Important |
-|---------|-------------------|
-| Use case | Why you need it |
-| Proposed solution | Shows you've thought about it |
-| Alternatives | Shows you've considered options |
-| Willingness to help | Maintainers love contributors |
-
-## Creating Minimal Reproductions
-
-### What's a Minimal Reproduction?
-
-The **smallest possible code** that demonstrates the issue.
-
-```javascript
-// ❌ Too much context (entire app)
-// [500 lines of code]
-// "The bug is somewhere in here"
-
-// ✅ Minimal reproduction
-const result = processData(null);
-// Throws: TypeError: Cannot read property 'length' of null
-```
-
-### Online Reproduction Tools
-
-| Language | Tool |
-|----------|------|
-| JavaScript | CodeSandbox, StackBlitz |
-| React | CodeSandbox |
-| Python | Replit |
-| Go | Go Playground |
-| Rust | Rust Playground |
-| General | GitHub Gist |
-
-### Reproduction Template
-
-```markdown
-## Reproduction
-
-**CodeSandbox:** [link]
-
-Or run locally:
-```bash
-git clone https://github.com/user/minimal-repro
-cd minimal-repro
-npm install
-npm run demo  # See the error
-```
-
-## Formatting Tips
-
-### Code Blocks
-
-````markdown
-Use language-specific syntax highlighting:
-
-```javascript
-const broken = someFunction(null);
-```
-
-Not just:
-```
-const broken = someFunction(null);
-```
-````
-
-### Error Messages
-
-```markdown
-Full error with stack trace:
-
-```
-TypeError: Cannot read property 'map' of undefined
-    at processItems (/src/utils.js:23:15)
-    at handleData (/src/handlers.js:45:10)
-    at async main (/src/index.js:12:5)
-```
-```
-
-### Screenshots
-
-```markdown
-![Description of what the screenshot shows](url-or-path)
-
-Use annotations to highlight the problem:
-![Error highlighted in red circle](screenshot.png)
-```
+## Evidence Pack
 
 ### Logs
 
+**❌ Don't do this:**
+```
+[giant wall of unformatted logs with 500 lines]
+```
+
+**✅ Do this:**
 ```markdown
+## Error Log
+
+```bash
+Error: Cannot find module 'missing-package'
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:922:27)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+```
+
 <details>
-<summary>Full debug log (click to expand)</summary>
+<summary>Full log (click to expand)</summary>
 
 ```
-[2024-01-15 10:23:45] DEBUG: Starting process
-[2024-01-15 10:23:46] ERROR: Connection failed
-[2024-01-15 10:23:46] DEBUG: Retrying...
-[... many more lines ...]
+[full log here]
 ```
 
 </details>
 ```
 
-## Common Mistakes
+### Screenshots
 
-### ❌ Mistake: Vague Description
+**For UI issues:**
+- Annotate screenshots with arrows/highlights
+- Include browser console if relevant
+- Show both expected vs actual if possible
 
+**Example structure:**
 ```markdown
-Bad: "It doesn't work"
+## Screenshots
 
-Good: "The save button is disabled after entering valid data in all required fields"
+### Current (Broken)
+![broken-ui](url)
+
+### Expected
+![expected-ui](url)
 ```
 
-### ❌ Mistake: Missing Steps
+---
+
+## Frequency & Impact
+
+Help maintainers prioritize:
+
+| Frequency | Impact | Priority Example |
+|-----------|--------|------------------|
+| **Always** | Critical | Can't deploy to production |
+| **Always** | Major | Blocks common workflow |
+| **Sometimes** | Critical | Data loss for some users |
+| **Sometimes** | Minor | Cosmetic glitch |
+| **Rare** | Critical | Edge case crashes system |
+| **Rare** | Minor | Typo in rarely-seen error |
 
 ```markdown
-Bad: "I clicked the button and it crashed"
+## Impact
 
-Good:
-1. Open settings page
-2. Change language to Spanish
-3. Click "Save"
-4. App crashes with error: [error message]
+- **Frequency:** Happens every time on Chrome 120+
+- **User Impact:** Blocks checkout flow for ~30% of users
+- **Workaround:** Users can switch to Firefox (not ideal)
 ```
 
-### ❌ Mistake: No Version Info
+---
+
+## Tone & Communication
+
+<CardGrid>
+<Card title="Be Specific" icon={<FileText className="h-5 w-5" />}>
+"The button doesn't work" → "Submit button on /checkout page returns 400 error"
+</Card>
+
+<Card title="Be Humble" icon={<CheckCircle className="h-5 w-5" />}>
+"This is broken" → "I'm experiencing unexpected behavior"
+</Card>
+
+<Card title="Be Helpful" icon={<Search className="h-5 w-5" />}>
+Include what you've already tried. Saves back-and-forth.
+</Card>
+</CardGrid>
+
+---
+
+## Fast Rejections to Avoid
+
+```mermaid
+graph TD
+    A[Issue Opened] --> B{Complete info?}
+    B -->|No| C[❌ Closed: Incomplete]
+    B -->|Yes| D{Reproduced on latest?}
+    D -->|No| E[❌ Closed: Old version]
+    D -->|Yes| F{Belongs in issue tracker?}
+    F -->|No| G[❌ Closed: Use discussions]
+    F -->|Yes| H{Duplicate?}
+    H -->|Yes| I[❌ Closed: Duplicate]
+    H -->|No| J[✅ Triaged]
+```
+
+**Common rejection reasons:**
+
+| Reason | Fix |
+|--------|-----|
+| Can't reproduce | Provide complete steps |
+| Incomplete template | Fill out all sections |
+| Already reported | Search first, comment on existing |
+| Not a bug | Ask in discussions first |
+| Unmaintained version | Test on latest |
+| Support question | Use forums/Discord/Stack Overflow |
+
+---
+
+## Real Examples
+
+### ✅ Excellent Issue
 
 ```markdown
-Bad: "Using latest version"
+Title: [API] POST /api/users returns 500 when email contains + character
 
-Good: "Version 2.3.1 (also tested on 2.3.0, same issue)"
+## Environment
+- Version: v1.5.2
+- OS: Ubuntu 22.04
+- Node: 20.10.0
+
+## Current Behavior
+Creating a user with an email containing a + character (e.g., user+test@example.com) 
+results in a 500 Internal Server Error.
+
+## Expected Behavior
+Should create the user successfully, as + is valid in email addresses (RFC 5322).
+
+## Steps to Reproduce
+1. Start the server: `npm run dev`
+2. Send POST request:
+   ```bash
+   curl -X POST http://localhost:3000/api/users \
+     -H "Content-Type: application/json" \
+     -d '{"email": "user+test@example.com", "name": "Test User"}'
+   ```
+3. Observe 500 error
+
+## Error Log
+```
+Error: Invalid email format
+    at validateEmail (src/utils/validation.js:15:11)
+    at createUser (src/controllers/users.js:42:5)
 ```
 
-### ❌ Mistake: Assumptions
+## Impact
+- Affects users with + in email (common for Gmail aliases)
+- Frequency: 100% reproducible
+- Workaround: None
+
+## Possible Cause
+Email validation regex in `src/utils/validation.js` line 15 doesn't allow + character.
+```
+
+**Why this is perfect:**
+- Clear, specific title
+- Complete environment
+- Copy-paste reproduction
+- Impact assessment
+- Even suggests where the bug might be
+
+---
+
+### ❌ Poor Issue
 
 ```markdown
-Bad: "The bug is in the database code"
+Title: Email bug
 
-Good: "Error occurs when saving data. Here's what I see: [actual evidence]"
+It doesn't work when I try to create a user. Please fix ASAP!!!
 ```
+
+**Why this fails:**
+- Vague title
+- No details
+- No reproduction steps
+- Demanding tone
+- No environment info
+
+---
+
+## Issue Templates
+
+Most projects provide templates. **USE THEM.**
+
+```markdown
+**Don't skip sections or write "N/A" everywhere.**
+
+If a section truly doesn't apply:
+✅ "N/A - This is a documentation issue, no code changes"
+❌ "N/A" (with no explanation)
+```
+
+---
 
 ## After Opening the Issue
 
-```mermaid
-flowchart TD
-    A[Issue Opened] --> B{Maintainer Response}
-    B -->|Questions| C[Answer promptly]
-    B -->|Duplicate| D[Link to original]
-    B -->|Can't reproduce| E[Provide more details]
-    B -->|Accepted| F[Wait for fix or contribute]
-    
-    C --> B
-    E --> B
-```
+<Steps>
+<Step number={1} title="Monitor">
+Watch for maintainer questions. Respond quickly.
+</Step>
 
-### Be Responsive
+<Step number={2} title="Be Patient">
+Maintainers are often volunteers. 1-3 days response time is normal.
+</Step>
 
-- Answer questions within 24-48 hours
-- Provide requested information
-- Update if you find new details
-- Close if you solved it yourself
+<Step number={3} title="Update">
+If you find new information, add it to the issue.
+</Step>
 
-### If No Response
+<Step number={4} title="Don't Bump">
+Avoid "any update?" comments within first week.
+</Step>
+</Steps>
 
-Wait at least a week, then:
+---
 
-```markdown
-@maintainer - Just checking if you need any additional information about this issue. Happy to provide more details or a minimal reproduction if helpful.
-```
+## Checklist Before Submitting
 
-## Issue Etiquette
+<Checklist>
+<ChecklistItem>Searched for duplicates</ChecklistItem>
+<ChecklistItem>Tested on latest version</ChecklistItem>
+<ChecklistItem>Clear, descriptive title (50-60 chars)</ChecklistItem>
+<ChecklistItem>Environment details provided</ChecklistItem>
+<ChecklistItem>Reproduction steps are copy-paste ready</ChecklistItem>
+<ChecklistItem>Expected vs actual behavior stated</ChecklistItem>
+<ChecklistItem>Logs/screenshots included (trimmed)</ChecklistItem>
+<ChecklistItem>Impact and frequency mentioned</ChecklistItem>
+<ChecklistItem>Professional, respectful tone</ChecklistItem>
+<ChecklistItem>Template filled out completely</ChecklistItem>
+</Checklist>
 
-### Do
-
-- ✅ Be patient (maintainers are busy)
-- ✅ Be grateful (it's volunteer work)
-- ✅ Be precise (save maintainer time)
-- ✅ Offer to help (shows commitment)
-
-### Don't
-
-- ❌ Demand immediate fixes
-- ❌ Use aggressive language
-- ❌ Open duplicates
-- ❌ Hijack other issues
-- ❌ Ping maintainers repeatedly
-
-## Quick Reference
-
-### Issue Title Formats
-
-| Type | Format |
-|------|--------|
-| Bug | `[Bug] Short description of the bug` |
-| Feature | `[Feature] Proposed feature name` |
-| Question | `[Question] What you need help with` |
-| Docs | `[Docs] What's missing or wrong` |
-
-### Minimum Required Info
-
-For bugs:
-1. Steps to reproduce
-2. Expected vs actual behavior
-3. Version/environment
-4. Error message (if any)
-
-For features:
-1. What you want
-2. Why you want it
-3. How it might work
+---
 
 ## Next Steps
 
-Learn the difference between issue types:
+Now that you can write great issues, learn the difference between bug reports and feature requests:
 
 ➡️ [Bug Reports vs Feature Requests →](issue-types)
 
 ---
 
-> **Remember:** A well-written issue isn't just about getting your problem solved—it's a contribution to the project. Future users with the same problem will benefit from your clear documentation.
+> **Remember:** A well-written issue is half the solution. Invest 20 minutes writing a good issue to save hours of back-and-forth.

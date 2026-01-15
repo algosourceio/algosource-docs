@@ -1,488 +1,496 @@
 ---
 title: "Writing a High-Quality PR"
-description: "PRs that maintainers love to merge"
+description: "PRs that get merged, not closed"
 ---
 
 # Writing a High-Quality PR
 
-A high-quality PR is a gift to maintainers. It's easy to review, easy to merge, and easy to maintain.
+import { GitPullRequest, CheckCircle, XCircle, AlertTriangle, Code, FileText } from 'lucide-react'
 
-## The Ideal PR
+<Callout type="warning" title="First Impressions Matter">
+Maintainers decide in the first 30 seconds whether your PR is worth their time. Make those seconds count.
+</Callout>
 
-```mermaid
-pie title "What Maintainers Look For"
-    "Clear description" : 25
-    "Small, focused changes" : 25
-    "Tests included" : 20
-    "Clean code" : 15
-    "Good commit messages" : 10
-    "Documentation" : 5
+## The 3-Second Test
+
+When a maintainer opens your PR, they see:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         WHAT MAINTAINERS SEE FIRST                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. PR Title                        ← 3 seconds: Is this worth reading?    │
+│  2. First 3 lines of description    ← 10 seconds: Is this complete?       │
+│  3. Files changed count             ← 2 seconds: Is this focused?         │
+│  4. CI status                       ← 1 second: Basic quality check       │
+│                                                                             │
+│  If ANY of these fail → PR closed or ignored                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## PR Anatomy
+---
 
-```mermaid
-flowchart TD
-    A[Pull Request] --> B[Title]
-    A --> C[Description]
-    A --> D[Changes]
-    A --> E[Tests]
-    A --> F[Documentation]
-    
-    B --> B1[Clear, concise summary]
-    C --> C1[What, Why, How]
-    D --> D1[Small, focused commits]
-    E --> E1[Prove it works]
-    F --> F1[Update if needed]
-```
+## PR Title Standards
 
-## Before You Start
-
-### Pre-PR Checklist
-
-- [ ] Issue exists (or create one)
-- [ ] Approach discussed with maintainers
-- [ ] Fork is up to date with upstream
-- [ ] New branch created from main/master
-- [ ] Contributing guidelines read
-
-### Branch Naming
-
-```bash
-# Convention: type/description
-feature/add-dark-mode
-fix/login-crash-special-chars
-docs/update-installation-guide
-refactor/simplify-auth-logic
-```
-
-## Writing the PR Title
-
-### Format
+### The Format
 
 ```
 type(scope): brief description
 
-# Examples
-feat(auth): add password strength indicator
-fix(api): handle null response from server
-docs(readme): add Windows installation steps
-test(utils): add tests for date formatting
-refactor(db): simplify connection pooling
+Examples:
+✅ fix(auth): prevent token expiration race condition
+✅ feat(api): add pagination to user list endpoint
+✅ docs(readme): fix installation instructions
+✅ test(auth): add unit tests for login flow
 ```
 
-### Title Types
+### Types
 
-| Type | When to Use |
-|------|------------|
-| `feat` | New feature |
-| `fix` | Bug fix |
-| `docs` | Documentation only |
-| `style` | Formatting, no logic change |
-| `refactor` | Code restructuring |
-| `test` | Adding tests |
-| `chore` | Maintenance tasks |
-| `perf` | Performance improvements |
+| Type | When to Use | Example |
+|------|-------------|---------|
+| `feat` | New feature | `feat(cart): add discount code support` |
+| `fix` | Bug fix | `fix(login): resolve password validation` |
+| `docs` | Documentation | `docs(api): update authentication guide` |
+| `test` | Tests only | `test(utils): add edge case coverage` |
+| `refactor` | Code improvement | `refactor(db): optimize query performance` |
+| `style` | Formatting | `style(css): fix indentation in navbar` |
+| `chore` | Maintenance | `chore(deps): update react to 18.2` |
+| `perf` | Performance | `perf(api): reduce response time by 40%` |
 
-### Good vs Bad Titles
+### Title Quality Comparison
 
-```markdown
-❌ Bad:
-- "Fixed stuff"
-- "Updates"
-- "WIP"
-- "Please merge"
-
-✅ Good:
-- "fix(auth): prevent XSS in login form"
-- "feat(api): add pagination to user endpoint"
-- "docs: add troubleshooting section for Linux"
+```mermaid
+graph LR
+    subgraph Bad["❌ Bad Titles"]
+        A1["Update code"]
+        A2["Fixed bug"]
+        A3["Changes"]
+    end
+    
+    subgraph Good["✅ Good Titles"]
+        B1["fix(auth): prevent XSS in login form"]
+        B2["feat(api): add rate limiting"]
+        B3["docs(guide): clarify setup steps"]
+    end
+    
+    Bad -.->|Rejected| X[🗑️]
+    Good -.->|Reviewed| Y[✅]
 ```
 
-## Writing the Description
+---
+
+## PR Description Structure
 
 ### The Template
 
 ```markdown
-## Summary
-
-[One paragraph explaining what this PR does]
-
-## Related Issue
+## Problem
+Brief explanation of what issue this PR solves.
 
 Fixes #123
-Closes #456
-Related to #789
+
+## Solution
+How this PR addresses the problem. Key technical decisions.
 
 ## Changes
-
-- [Change 1]
-- [Change 2]
-- [Change 3]
-
-## Type of Change
-
-- [ ] Bug fix (non-breaking change that fixes an issue)
-- [ ] New feature (non-breaking change that adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to change)
-- [ ] Documentation update
-
-## How Has This Been Tested?
-
-[Describe testing approach]
-
-- [ ] Unit tests
-- [ ] Integration tests
-- [ ] Manual testing
-
-## Screenshots (if applicable)
-
-[Before/after screenshots for UI changes]
-
-## Checklist
-
-- [ ] My code follows the project's style guidelines
-- [ ] I have performed a self-review
-- [ ] I have commented hard-to-understand code
-- [ ] I have updated documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests
-- [ ] All tests pass locally
-```
-
-### Example: Complete PR Description
-
-```markdown
-## Summary
-
-This PR adds a password strength indicator to the signup form. 
-Users can now see real-time feedback about their password security.
-
-## Related Issue
-
-Fixes #234 - Users want to know if their password is strong enough
-
-## Changes
-
-- Added `PasswordStrength` component with visual indicator
-- Integrated zxcvbn library for password analysis
-- Added strength requirements tooltip
-- Added unit tests for the component
-- Updated signup form documentation
-
-## Type of Change
-
-- [ ] Bug fix
-- [x] New feature
-- [ ] Breaking change
-- [ ] Documentation update
-
-## How Has This Been Tested?
-
-- [x] Unit tests for PasswordStrength component
-- [x] Integration test for signup flow
-- [x] Manual testing on Chrome, Firefox, Safari
-- [x] Accessibility testing with VoiceOver
-
-## Screenshots
-
-### Before
-![Signup form without indicator](before.png)
-
-### After
-![Signup form with strength indicator](after.png)
-
-## Checklist
-
-- [x] My code follows the project's style guidelines
-- [x] I have performed a self-review
-- [x] I have commented hard-to-understand code
-- [x] I have updated documentation
-- [x] My changes generate no new warnings
-- [x] I have added tests
-- [x] All tests pass locally
-```
-
-## Keeping PRs Small
-
-### Why Size Matters
-
-```mermaid
-quadrantChart
-    title PR Size vs Review Quality
-    x-axis Small --> Large
-    y-axis Low Quality Review --> High Quality Review
-    quadrant-1 Quick & Thorough
-    quadrant-2 Careful but Slow
-    quadrant-3 Neglected
-    quadrant-4 Superficial
-    
-    Small Bug Fix: [0.2, 0.9]
-    Feature Module: [0.5, 0.6]
-    Major Refactor: [0.7, 0.4]
-    Complete Rewrite: [0.9, 0.2]
-```
-
-### Size Guidelines
-
-| PR Size | Lines Changed | Review Time | Quality |
-|---------|---------------|-------------|---------|
-| Tiny | < 50 | Minutes | Excellent |
-| Small | 50-200 | Hours | Good |
-| Medium | 200-500 | Days | Moderate |
-| Large | 500+ | Weeks | Poor |
-
-### How to Keep PRs Small
-
-```mermaid
-flowchart TD
-    A[Large Feature] --> B[Split by layer]
-    A --> C[Split by functionality]
-    A --> D[Split by steps]
-    
-    B --> B1[PR 1: Database changes]
-    B --> B2[PR 2: API endpoints]
-    B --> B3[PR 3: UI components]
-    
-    C --> C1[PR 1: Core feature]
-    C --> C2[PR 2: Enhancement A]
-    C --> C3[PR 3: Enhancement B]
-    
-    D --> D1[PR 1: Add tests for existing]
-    D --> D2[PR 2: Refactor needed parts]
-    D --> D3[PR 3: Implement feature]
-```
-
-### Stacked PRs
-
-For large features:
-
-```
-main
-  └── feature/user-auth-base (PR #1)
-       └── feature/user-auth-api (PR #2)
-            └── feature/user-auth-ui (PR #3)
-```
-
-## Commit Structure
-
-### One Logical Change Per Commit
-
-```bash
-# ❌ Bad: Everything in one commit
-git add .
-git commit -m "Add feature"
-
-# ✅ Good: Logical commits
-git add src/components/Button.tsx
-git commit -m "feat(ui): add Button component"
-
-git add src/components/Button.test.tsx
-git commit -m "test(ui): add Button component tests"
-
-git add docs/components.md
-git commit -m "docs: add Button documentation"
-```
-
-### Clean Up Before PR
-
-```bash
-# Squash/fixup messy commits
-git rebase -i HEAD~5
-
-# Choose commits to squash:
-# pick abc123 feat: add user auth
-# fixup def456 fix typo
-# fixup ghi789 fix another typo
-# fixup jkl012 oops forgot file
-```
-
-## Self-Review
-
-Before requesting review:
-
-```mermaid
-flowchart TD
-    A[Ready to Submit?] --> B{Diff clean?}
-    B -->|No| C[Remove debug code]
-    B -->|Yes| D{Tests pass?}
-    D -->|No| E[Fix tests]
-    D -->|Yes| F{Docs updated?}
-    F -->|No| G[Update docs]
-    F -->|Yes| H{Commits clean?}
-    H -->|No| I[Rebase/squash]
-    H -->|Yes| J[Submit PR!]
-```
-
-### Self-Review Checklist
-
-- [ ] No console.log or debug statements
-- [ ] No commented-out code
-- [ ] No unrelated changes
-- [ ] No merge conflicts
-- [ ] Tests pass locally
-- [ ] Linting passes
-- [ ] Types are correct (if TypeScript)
-
-## Draft PRs
-
-### When to Use Drafts
-
-- Work in progress, need feedback
-- Sharing approach before finishing
-- CI setup to run on PR
-- Blocking on external dependency
-
-### Draft PR Template
-
-```markdown
-## 🚧 Work in Progress
-
-This PR is not ready for review yet.
-
-## What's Done
-- [x] Basic implementation
-- [x] Happy path works
-
-## What's Left
-- [ ] Error handling
-- [ ] Tests
-- [ ] Documentation
-
-## Questions for Maintainers
-1. Is this the right approach for X?
-2. Should I use library A or B?
-
-## When Ready
-I'll mark this as "Ready for Review" when complete.
-```
-
-## Linking Issues
-
-### How to Link
-
-```markdown
-# Keywords that close issues when PR is merged:
-Fixes #123
-Closes #123
-Resolves #123
-
-# Reference without closing:
-Related to #123
-See #123
-Part of #123
-```
-
-### Multiple Issues
-
-```markdown
-## Related Issues
-
-Fixes #123 - Main bug this addresses
-Fixes #124 - Related issue also fixed
-Related to #100 - Parent epic
-```
-
-## Requesting Review
-
-### When to Request
-
-```mermaid
-flowchart TD
-    A[PR Created] --> B{Is it a draft?}
-    B -->|Yes| C[Wait until ready]
-    B -->|No| D{CI passing?}
-    D -->|No| E[Fix CI first]
-    D -->|Yes| F{Self-reviewed?}
-    F -->|No| G[Review your own code]
-    F -->|Yes| H[Request review]
-```
-
-### How to Request
-
-```markdown
-@maintainer - This PR is ready for review. 
-It implements #123 as discussed. 
-Happy to make any changes you suggest.
-```
-
-## Common Mistakes
-
-### ❌ Too Large
-
-```markdown
-PR: "Refactor entire codebase"
-Changed files: 150
-Lines changed: 10,000+
-
-# This will never get proper review
-```
-
-### ❌ Poor Description
-
-```markdown
-Title: "Fix"
-Description: "Fixed the bug"
-
-# No one knows what this does
-```
-
-### ❌ Unrelated Changes
-
-```markdown
-PR: "Fix login bug"
-Also includes:
-- Updated eslint config
-- Renamed variables throughout
-- Added new feature
-
-# Should be 3 separate PRs
-```
-
-### ❌ Broken CI
-
-```markdown
-CI Status: ❌ Failing
-Requesting: "Please review"
-
-# Fix CI before asking for review
-```
-
-## Quick Reference
-
-### PR Title Formula
-
-```
-type(scope): imperative description
-
-Examples:
-feat(api): add user search endpoint
-fix(auth): handle expired tokens gracefully
-docs: update API reference
-```
-
-### Minimum PR Description
-
-```markdown
-## Summary
-[What and why]
-
-## Related Issue
-Fixes #XXX
-
-## Changes
-- [List key changes]
+- Changed X to handle Y
+- Added Z for better performance
+- Removed deprecated W
 
 ## Testing
-[How you tested]
+- [ ] Unit tests pass
+- [ ] Integration tests pass
+- [ ] Manually tested scenarios A, B, C
+
+## Screenshots (if UI changes)
+Before: [image]
+After: [image]
+
+## Checklist
+- [ ] Code follows project style
+- [ ] Tests added/updated
+- [ ] Documentation updated
+- [ ] No breaking changes
 ```
 
-## Next Steps
+### Real Example: Good PR
 
-Use the complete PR template:
+```markdown
+## Problem
+Users lose form data when session expires (#456)
 
-➡️ [PR Description Template →](pr-template)
+## Solution
+Implemented client-side form state persistence using localStorage.
+Falls back gracefully if localStorage is unavailable.
+
+## Changes
+- Added `FormPersistence` utility class
+- Hooked into form `onChange` events
+- Auto-restore on mount if data exists
+- Clear storage on successful submit
+
+## Testing
+- [x] Unit tests for FormPersistence class
+- [x] Integration test for auto-restore
+- [x] Manual testing:
+  - Fill form → refresh → data restored ✅
+  - Submit form → data cleared ✅
+  - Private browsing → graceful fallback ✅
+
+## Breaking Changes
+None
+
+## Additional Notes
+Considered IndexedDB but localStorage sufficient for form sizes < 5MB
+```
 
 ---
 
-> **Remember:** Your PR isn't just code—it's a communication. Make it easy to understand, and maintainers will be happy to review it.
+## Code Quality Checklist
+
+### Before Submitting
+
+<Checklist>
+  <ChecklistItem checked={false}>Code runs locally without errors</ChecklistItem>
+  <ChecklistItem checked={false}>All tests pass</ChecklistItem>
+  <ChecklistItem checked={false}>No console.log() or debug statements</ChecklistItem>
+  <ChecklistItem checked={false}>No commented-out code</ChecklistItem>
+  <ChecklistItem checked={false}>Code follows project style guide</ChecklistItem>
+  <ChecklistItem checked={false}>No unnecessary dependencies added</ChecklistItem>
+  <ChecklistItem checked={false}>Error handling implemented</ChecklistItem>
+  <ChecklistItem checked={false}>Edge cases considered</ChecklistItem>
+</Checklist>
+
+### Self-Review
+
+<Steps>
+<Step number={1} title="Read Your Own Code">
+Go through every changed file. Would YOU approve this?
+</Step>
+
+<Step number={2} title="Check the Diff">
+No accidental whitespace changes, formatting differences, or unrelated files.
+</Step>
+
+<Step number={3} title="Run Linters">
+Fix all linting errors before submitting.
+</Step>
+
+<Step number={4} title="Test Edge Cases">
+What happens with empty input? Null values? Huge datasets?
+</Step>
+</Steps>
+
+---
+
+## PR Size Guidelines
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           PR SIZE CHART                                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Lines Changed        Merge Probability    Review Time                      │
+│  ══════════════       ═════════════════    ═══════════                      │
+│                                                                             │
+│  1-50                 95%                  < 30 mins                        │
+│  51-200               80%                  1-2 hours                        │
+│  201-500              50%                  4-8 hours                        │
+│  501-1000             25%                  1-2 days                         │
+│  1000+                10%                  Weeks (if ever)                  │
+│                                                                             │
+│  Sweet spot: 50-200 lines                                                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+<Callout type="info" title="Break Large Changes into Smaller PRs">
+Instead of one 800-line PR, submit four 200-line PRs that build on each other.
+</Callout>
+
+---
+
+## Common PR Mistakes
+
+### 🚫 Mistake 1: Too Many Changes
+
+```diff
+❌ BAD PR:
+Files changed: 47
+- Added feature X
+- Fixed bugs Y, Z
+- Refactored module A
+- Updated documentation
+- Changed config files
+```
+
+```diff
+✅ GOOD PR:
+Files changed: 5
+- Added feature X with tests
+- Updated relevant documentation
+```
+
+### 🚫 Mistake 2: No Context
+
+```markdown
+❌ BAD:
+## Description
+Fixed the bug
+
+## Changes
+Changed some files
+```
+
+```markdown
+✅ GOOD:
+## Problem
+Users couldn't log in with emails containing + character (#789)
+
+## Solution
+Updated email validation regex to include RFC 5322 compliant characters
+
+## Changes
+- Modified `validateEmail()` in auth/validation.js
+- Added test cases for edge case emails
+- Updated email regex pattern
+
+## Testing
+- [x] Test suite passes
+- [x] Tested with email: user+tag@example.com ✅
+```
+
+### 🚫 Mistake 3: Failing CI
+
+<Warning title="Never Submit with Broken CI">
+If your PR has failing tests or linting errors on GitHub, maintainers won't even look at it. Fix CI first.
+</Warning>
+
+### 🚫 Mistake 4: Merge Conflicts
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  PR with Conflicts                                                          │
+│  ══════════════════                                                         │
+│                                                                             │
+│  [!] This branch has conflicts that must be resolved                        │
+│                                                                             │
+│  Maintainer's reaction: "Come back when it's ready"                         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Draft vs Ready PRs
+
+### When to Use Draft
+
+- Still working on the implementation
+- Want early feedback on approach
+- CI not passing yet
+- Not ready for full review
+
+### Draft PR Title
+
+```markdown
+[WIP] feat(api): add GraphQL support
+
+## Status
+🚧 Work in Progress
+
+Seeking feedback on:
+- [ ] GraphQL schema design
+- [ ] Authentication approach
+
+TODO:
+- [ ] Add remaining mutations
+- [ ] Write tests
+- [ ] Update docs
+```
+
+---
+
+## Linking Issues
+
+Always link to the issue your PR addresses:
+
+```markdown
+✅ Fixes #123
+✅ Closes #123
+✅ Resolves #123
+
+⚠️ Related to #123
+⚠️ Part of #123
+
+❌ Fixes issue with login
+❌ Addresses the bug
+```
+
+**GitHub keywords that auto-close issues:**
+- `fix`, `fixes`, `fixed`
+- `close`, `closes`, `closed`
+- `resolve`, `resolves`, `resolved`
+
+---
+
+## Screenshots for UI Changes
+
+### Always Include
+
+<CardGrid>
+<Card title="Before State" icon={<XCircle className="h-5 w-5" />}>
+Show what it looked like before your changes.
+</Card>
+
+<Card title="After State" icon={<CheckCircle className="h-5 w-5" />}>
+Show your implementation.
+</Card>
+
+<Card title="Different States" icon={<Code className="h-5 w-5" />}>
+Loading, error, empty, populated states.
+</Card>
+
+<Card title="Responsive Views" icon={<FileText className="h-5 w-5" />}>
+Desktop, tablet, mobile if applicable.
+</Card>
+</CardGrid>
+
+### Screenshot Template
+
+```markdown
+## Screenshots
+
+### Before
+![Before](url-to-before-image)
+
+### After
+![After](url-to-after-image)
+
+### Mobile View
+![Mobile](url-to-mobile-image)
+
+### Edge Cases
+- Empty state: ![Empty](url)
+- Error state: ![Error](url)
+- Loading state: ![Loading](url)
+```
+
+---
+
+## The Perfect PR Checklist
+
+<Checklist>
+  <ChecklistItem checked={false}>Clear, descriptive title following conventions</ChecklistItem>
+  <ChecklistItem checked={false}>Comprehensive description with problem/solution</ChecklistItem>
+  <ChecklistItem checked={false}>Links to related issue(s)</ChecklistItem>
+  <ChecklistItem checked={false}>Code is self-reviewed</ChecklistItem>
+  <ChecklistItem checked={false}>Tests added/updated and passing</ChecklistItem>
+  <ChecklistItem checked={false}>Documentation updated if needed</ChecklistItem>
+  <ChecklistItem checked={false}>No merge conflicts</ChecklistItem>
+  <ChecklistItem checked={false}>CI passing (all green)</ChecklistItem>
+  <ChecklistItem checked={false}>Focused scope (< 200 lines if possible)</ChecklistItem>
+  <ChecklistItem checked={false}>Screenshots for UI changes</ChecklistItem>
+  <ChecklistItem checked={false}>Breaking changes documented</ChecklistItem>
+  <ChecklistItem checked={false}>No debugging code or comments</ChecklistItem>
+</Checklist>
+
+---
+
+## After Submitting
+
+### Don't Just Walk Away
+
+1. **Monitor for feedback** - Check daily
+2. **Respond within 24 hours** - Show you're engaged
+3. **Keep it updated** - Rebase if main moves forward
+4. **Be patient** - Reviews take time
+
+### If No Response After 1 Week
+
+```markdown
+Polite ping:
+
+"Hi @maintainer, 
+
+Just checking if you've had a chance to review this PR. 
+Happy to make any changes needed. No rush!
+
+Thanks!"
+```
+
+<Callout type="info" title="Patience Wins">
+Good PRs sometimes sit for weeks. Don't take it personally—maintainers are busy.
+</Callout>
+
+---
+
+## Example: Stellar PR
+
+```markdown
+feat(api): add rate limiting to authentication endpoints
+
+## Problem
+Authentication endpoints are vulnerable to brute force attacks (#891)
+
+## Solution
+Implemented sliding window rate limiting using Redis:
+- 5 attempts per IP per minute
+- 20 attempts per IP per hour
+- Configurable via environment variables
+
+## Changes
+- Added `RateLimiter` middleware
+- Updated auth routes to use rate limiter
+- Added Redis dependency for distributed rate limiting
+- Created unit and integration tests
+
+## Technical Decisions
+- Chose sliding window over fixed window for fairness
+- Used Redis for distributed systems (multiple server instances)
+- Made limits configurable for different deployment environments
+
+## Testing
+- [x] Unit tests for RateLimiter class (100% coverage)
+- [x] Integration tests for auth endpoints
+- [x] Load tested with 1000 concurrent requests
+- [x] Verified rate limit headers in response
+
+Manual testing:
+- Exceeded rate limit → 429 response ✅
+- Rate limit resets after window → 200 response ✅
+- Multiple IPs → independent limits ✅
+
+## Breaking Changes
+None. Rate limiting is opt-in via `ENABLE_RATE_LIMIT` env var.
+
+## Performance Impact
+- < 1ms latency per request
+- Redis memory: ~1KB per IP address
+- Tested with 10,000 unique IPs
+
+## Documentation
+- Updated API docs with rate limit headers
+- Added rate limiting section to README
+- Included configuration examples
+
+## Screenshots
+N/A (API change only)
+
+## Checklist
+- [x] Code follows project style guide
+- [x] Tests pass locally
+- [x] Documentation updated
+- [x] No breaking changes
+- [x] Security implications considered
+```
+
+---
+
+## Next Steps
+
+<Card title="Learn PR Templates" icon={<FileText className="h-5 w-5" />}>
+See [PR Description Template](/docs/issues-prs/pr-template) for a reusable template.
+</Card>

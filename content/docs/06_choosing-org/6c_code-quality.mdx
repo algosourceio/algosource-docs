@@ -1,0 +1,271 @@
+---
+title: "Evaluating Code Quality"
+description: "Technical assessment"
+---
+
+# Evaluating Code Quality
+
+How to assess if a codebase is worth your time.
+
+## Quick Assessment
+
+### Architecture
+
+- [ ] Clear separation of concerns
+- [ ] Modules are cohesive
+- [ ] Dependencies are minimal
+- [ ] No massive catch-all files
+
+### Testing
+
+| Metric | Healthy | Unhealthy |
+|--------|---------|-----------|
+| **Test Coverage** | 80%+ | <50% |
+| **CI Failures** | Rare, fixed quickly | Frequent |
+| **Test Organization** | Clear test structure | Tests everywhere |
+
+### Documentation
+
+<Checklist>
+<ChecklistItem>**Function comments** explain why, not what</ChecklistItem>
+<ChecklistItem>**README** explains architecture</ChecklistItem>
+<ChecklistItem>**Inline docs** for complex algorithms</ChecklistItem>
+<ChecklistItem>**ADRs** for major decisions</ChecklistItem>
+</Checklist>
+
+### Code Style
+
+```
+Green Flags:
+✓ Consistent style across codebase
+✓ Linters/formatters configured
+✓ Style guide documented
+✓ CI checks code style
+
+Red Flags:
+✗ Inconsistent naming
+✗ No linters
+✗ Chaotic formatting
+✗ No style enforcement
+```
+
+## Quick Assessment (15 minutes)
+
+### Step 1: Check Test Coverage (3 minutes)
+
+```
+Go to: GitHub repo → Click "code"
+
+Look for:
+- /tests folder (exists?)
+- test_*.py or *.test.js files (many?)
+- .github/workflows or .circleci (CI configured?)
+
+Signs of good testing:
+- Tests folder is as large as source folder
+- Recent test additions (not neglected)
+- CI runs tests on every PR
+
+Signs of bad testing:
+- Few/no test files
+- Tests folder is tiny
+- CI doesn't check tests
+```
+
+### Step 2: Read 3 Recently Merged PRs (5 minutes)
+
+```
+Go to: Pull Requests → Merged
+
+Pick 3 random merged PRs from last month:
+
+For each PR:
+1. Read the description
+   Good: "Fixes #123. Changes X because Y."
+   Bad: "Fix bug" (no detail)
+
+2. Look at code changes
+   Good: Clear changes, easy to understand
+   Bad: Huge file, 500+ line diffs
+
+3. Check reviews
+   Good: Reviewers asked questions, suggested improvements
+   Bad: No reviews or "LGTM" only
+
+Score each PR:
+Good description + Good code + Good reviews = Healthy project
+```
+
+### Step 3: Check Documentation (3 minutes)
+
+```
+Look for:
+- README explains what project does? ✓
+- Architecture.md or docs/ folder? ✓
+- CONTRIBUTING.md with setup steps? ✓
+- Code comments on complex logic? ✓
+
+Missing docs = Harder to contribute
+Lots of docs = Community values onboarding
+```
+
+### Step 4: Run the Code (4 minutes)
+
+```
+From the README:
+1. Clone project
+2. Follow setup steps
+3. Try to run it
+
+Did it work first try? ✓ Good sign
+Did you hit errors? ⚠️ Either docs are incomplete
+                          or environment is fragile
+
+If it works:
+- Try to understand one code section
+- Find function names (are they meaningful?)
+- Check: Is code readable?
+
+Readable code = Easier to learn and contribute
+```
+
+## Detailed Code Quality Scoring
+
+Score each area on 1-5:
+
+```
+ARCHITECTURE (How organized is the code?)
+1 - "Everything in one file"
+2 - "Files exist but no clear organization"
+3 - "Some separation, mostly clear"
+4 - "Well-organized, clear modules"
+5 - "Excellent structure, easy to navigate"
+
+TESTING (How thoroughly tested?)
+1 - "No tests or < 20% coverage"
+2 - "Some tests, ~40% coverage"
+3 - "Decent tests, ~70% coverage"
+4 - "Good tests, ~85% coverage"
+5 - "Excellent tests, >90% coverage"
+
+DOCUMENTATION (How well explained?)
+1 - "Almost no docs"
+2 - "Minimal docs, hard to understand"
+3 - "Basic docs, covers main concepts"
+4 - "Good docs, easy to understand"
+5 - "Excellent docs, every part explained"
+
+CODE STYLE (How consistent and clean?)
+1 - "No linting, messy"
+2 - "Some linting, inconsistent"
+3 - "Decent style, mostly consistent"
+4 - "Good style, well-formatted"
+5 - "Excellent, auto-formatted"
+
+TOTAL SCORE:
+
+4-6:   Red flag - Don't contribute here
+7-12:  Caution - Okay, but could be better
+13-18: Good - Solid project, worth learning
+19-22: Excellent - Great place to contribute
+23-25: Outstanding - Top-tier codebase
+```
+
+## Real Examples
+
+### Example 1: Good Project
+
+```
+Architecture: ✓ (4)
+- /src: core code
+- /tests: test files
+- /docs: documentation
+- /config: configuration
+Clear separation of concerns
+
+Testing: ✓ (4)
+- 82% code coverage
+- Tests run on every PR
+- Integration tests exist
+- Most functions have tests
+
+Documentation: ✓ (4)
+- Clear README
+- Architecture.md explains design
+- Functions have docstrings
+- CONTRIBUTING guide exists
+
+Code Style: ✓ (5)
+- ESLint configured (auto-format)
+- Prettier on all commits
+- No style inconsistencies
+- CI checks code quality
+
+SCORE: 17/20 - Great place to contribute
+Verdict: Yes, contribute here
+```
+
+### Example 2: Problematic Project
+
+```
+Architecture: ✗ (2)
+- No clear folder structure
+- Thousands of files in /src
+- Hard to find anything
+
+Testing: ✗ (1)
+- 5% code coverage
+- No tests on most code
+- Tests haven't run in 6 months
+
+Documentation: ✗ (1)
+- README just says "It's a project"
+- No architecture docs
+- No code comments
+
+Code Style: ✗ (1)
+- No linter
+- Inconsistent naming
+- Different indentation throughout
+
+SCORE: 5/20 - Problematic project
+Verdict: Avoid this one (unless you like pain)
+```
+
+## Code Quality Red Flags
+
+| Flag | What It Means | Impact |
+|------|---------------|--------|
+| **No tests** | Project doesn't validate code | Code breaks easily |
+| **No docs** | Hard to understand | Wasted time learning |
+| **Huge files** | Poor organization | Hard to navigate |
+| **No architecture** | No clear design | Changes break things |
+| **Ignored issues** | Maintainers don't care | PRs ignored too |
+| **No linter** | Code quality not monitored | Inconsistent code |
+
+## Green Flags (Look For These)
+
+| Flag | What It Means | Benefit |
+|------|---------------|---------|
+| **>80% coverage** | Code is thoroughly tested | Safe to change |
+| **Clear docs** | Easy to understand | Faster learning |
+| **Organized** | Clear folder structure | Easy to navigate |
+| **Consistent style** | Formatter configured | No style conflicts |
+| **Recent updates** | Actively maintained | Worth your time |
+| **Good reviews** | Mentors care | You'll learn more |
+
+---
+
+> **Spend 30 minutes assessing code quality. Avoid bad projects early.**
+
+## Red Flags
+
+- "This is a quick hack"
+- Repeated code (no DRY)
+- No error handling
+- Massive functions (>200 lines)
+- No comments on complex logic
+
+---
+
+> **Quality matters because you'll be reading this code for months.** Invest time in evaluating it.

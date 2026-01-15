@@ -1,0 +1,205 @@
+---
+title: "Moving Beyond Good First Issues"
+description: "Level up your contributions"
+---
+
+# Moving Beyond Good First Issues
+
+At some point, "good first issues" aren't enough.
+
+# Moving Beyond Good First Issues
+
+This is where most contributors plateau. Don't be one of them.
+
+## The Progression Path
+
+```
+Month 1-2: Good First Issues
+- Fix: "Add error message"
+- Fix: "Improve documentation"
+- Your role: Execute instructions
+
+Month 3-4: Independent Bug Fixes
+- Find your own bugs
+- Design the fix
+- Get it reviewed
+- Your role: Problem solver
+
+Month 5-6: Feature Development
+- Identify missing features
+- Propose solutions
+- Build with minimal guidance
+- Your role: Feature engineer
+
+Month 7-12: Architecture & Leadership
+- Redesign systems
+- Review others' code
+- Mentor new contributors
+- Your role: Architect
+
+Most contributors stop at month 3.
+The top 1% make it to month 7+.
+```
+
+## Signs You're Ready to Level Up
+
+| Ready | Not Ready Yet |
+|-------|---------------|
+| ✓ 5+ merged PRs | ✗ Still asking basic questions |
+| ✓ Understand codebase | ✗ Still need to ask where files are |
+| ✓ Can fix bugs solo | ✗ Need hand-holding for fixes |
+| ✓ Know conventions | ✗ Still making style mistakes |
+| ✓ Comfortable with git | ✗ Still struggling with rebase |
+
+## How to Find "Advanced Work"
+
+### 1. Read the Code
+
+```
+Good first issue approach:
+- Maintainer tells you what to fix
+- You fix it
+
+Advanced approach:
+- You READ the code
+- You notice: "This could be faster"
+- You propose it
+- You implement it
+
+Example:
+"I noticed the cache invalidation
+calls database 3x on every update.
+We could batch them and reduce to 1 call.
+Proposed change: [design doc]"
+
+Maintainer reaction: "This person knows our code."
+```
+
+### 2. Search for TODOs
+
+```
+git grep "TODO\|FIXME\|XXX" src/
+
+You'll find:
+- "TODO: Handle edge case"
+- "FIXME: Performance issue"
+- "XXX: Refactor this"
+
+You can:
+1. Implement them yourself
+2. Propose a design first
+3. Get feedback before coding
+```
+
+### 3. Run Performance Analysis
+
+```
+Many projects have performance problems
+that nobody optimized.
+
+You can:
+1. Profile the code (find bottlenecks)
+2. Propose optimization
+3. Implement & measure
+4. "Improved X by 40%"
+
+This is advanced work that stands out.
+```
+
+### 4. Identify Missing Tests
+
+```
+Most projects have test gaps.
+
+You can:
+1. Run coverage tool
+2. Find uncovered code
+3. Write tests for it
+4. "Increased coverage from 70% to 78%"
+
+This is valuable and doable.
+```
+
+## Advanced Contribution Examples
+
+### Example 1: From Beginner to Advanced
+
+```
+Beginner task (Month 2):
+Issue: "Add validation for email field"
+Work: 20 minutes
+Impact: Small
+
+Advanced task (Month 5):
+Issue: "Email system is broken in 3 different ways"
+Analysis: Takes 3 hours researching
+Design: Write RFC showing the problem
+Solution: Refactor entire email validation
+Impact: Fix root cause, not symptom
+```
+
+### Example 2: Finding Your Own Project
+
+```
+Month 3 approach: "What does the project need?"
+(Ask maintainers, get assigned work)
+
+Month 7 approach: "Here's what's broken"
+(Find it yourself, propose solution)
+
+Maintainer difference:
+Month 3: "Here, fix this"
+Month 7: "Wow, I didn't know we had this problem. Great find!"
+```
+
+## The Advanced Contribution Template
+
+When you're ready to propose your own work:
+
+```
+Title: Optimization: Reduce N+1 queries in user profile
+
+Problem:
+- User profile loads user data
+- Loads user's posts (1 query)
+- Loads post comments (N queries, 1 per post)
+- Total: 1 + 1 + N queries
+
+Impact:
+- Loading profile with 50 posts: 52 queries
+- Currently takes 2.3 seconds
+- Should take 200ms
+
+Proposed Solution:
+- Use SQL batch loading
+- Load all post comments in 1 query
+- Result: 3 queries instead of N+2
+
+Estimated Time: 6 hours
+Testing Approach: Load test + new tests
+```
+
+Maintainer response:
+"Love it. Go ahead. This is exactly what we need."
+
+## From Contributor to Recognized Expert
+
+```
+Timeline:
+Month 1-3:   "Good first issues" (assigned)
+Month 4-6:   Independent bug fixing (self-directed)
+Month 7-9:   Feature development (leading small work)
+Month 10-12: Architecture decisions (influencing project)
+Month 13+:   Mentorship & leadership (training others)
+
+Recognition:
+Month 3: "New contributor"
+Month 6: "Regular contributor"
+Month 9: "Expert in [area]"
+Month 12: "Trusted advisor"
+Month 18: "Core team" or "Maintainer"
+```
+
+---
+
+> **Good first issues teach you basics.** Advanced work teaches you to lead. Push beyond the basics.
