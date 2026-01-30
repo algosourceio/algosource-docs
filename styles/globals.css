@@ -3,7 +3,25 @@
 @tailwind utilities;
 
 :root {
-  /* AlgoSource Dark Theme Colors - Aligned with Frontend */
+  /* Light Theme Colors */
+  --color-background: oklch(0.985 0 0);
+  --color-foreground: oklch(0.05 0 0);
+  --color-card: oklch(0.98 0 0);
+  --color-card-foreground: oklch(0.05 0 0);
+  --color-primary: oklch(0.696 0.17 162.48); /* Emerald green */
+  --color-primary-foreground: oklch(0.985 0 0);
+  --color-secondary: oklch(0.95 0 0);
+  --color-secondary-foreground: oklch(0.15 0 0);
+  --color-muted: oklch(0.95 0 0);
+  --color-muted-foreground: oklch(0.45 0 0);
+  --color-accent: oklch(0.696 0.17 162.48);
+  --color-accent-foreground: oklch(0.985 0 0);
+  --color-border: oklch(0 0 0 / 10%);
+  --color-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  /* Dark Theme Colors - Aligned with Frontend */
   --color-background: oklch(0.05 0 0);
   --color-foreground: oklch(0.985 0 0);
   --color-card: oklch(0.08 0 0);
@@ -20,28 +38,48 @@
   --color-ring: oklch(0.708 0 0);
 }
 
-/* Force dark mode */
+/* Allow system/user theme preference */
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
 }
 
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
 body {
-  background-color: oklch(0.05 0 0) !important;
-  color: oklch(0.985 0 0);
+  background-color: var(--color-background) !important;
+  color: var(--color-foreground);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 /* Custom Nextra overrides for AlgoSource theme */
-.nextra-nav-container {
+.dark .nextra-nav-container {
   background: oklch(0.05 0 0 / 80%) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid oklch(1 0 0 / 8%) !important;
 }
 
-.nextra-sidebar-container {
+.light .nextra-nav-container,
+html:not(.dark) .nextra-nav-container {
+  background: oklch(0.985 0 0 / 80%) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid oklch(0 0 0 / 8%) !important;
+}
+
+.dark .nextra-sidebar-container {
   background: oklch(0.05 0 0) !important;
+}
+
+.light .nextra-sidebar-container,
+html:not(.dark) .nextra-sidebar-container {
+  background: oklch(0.985 0 0) !important;
 }
 
 /* Sidebar styling */
@@ -49,8 +87,14 @@ body {
   background: transparent !important;
 }
 
-.nextra-sidebar ul li a {
+.dark .nextra-sidebar ul li a {
   color: rgba(255, 255, 255, 0.7) !important;
+  transition: all 0.2s ease;
+}
+
+.light .nextra-sidebar ul li a,
+html:not(.dark) .nextra-sidebar ul li a {
+  color: rgba(0, 0, 0, 0.7) !important;
   transition: all 0.2s ease;
 }
 
@@ -70,7 +114,7 @@ body {
 }
 
 /* Article content styling */
-article {
+.dark article {
   --tw-prose-body: rgba(255, 255, 255, 0.75);
   --tw-prose-headings: #fff;
   --tw-prose-links: #10b981;
@@ -81,17 +125,37 @@ article {
   --tw-prose-quotes: rgba(255, 255, 255, 0.6);
 }
 
+.light article,
+html:not(.dark) article {
+  --tw-prose-body: rgba(0, 0, 0, 0.75);
+  --tw-prose-headings: #000;
+  --tw-prose-links: #059669;
+  --tw-prose-bold: #000;
+  --tw-prose-code: #059669;
+  --tw-prose-pre-bg: #f5f5f5;
+  --tw-prose-pre-code: rgba(0, 0, 0, 0.8);
+  --tw-prose-quotes: rgba(0, 0, 0, 0.6);
+}
+
 /* Headings */
 h1 {
   font-weight: 800 !important;
   letter-spacing: -0.025em !important;
 }
 
-h2 {
+.dark h2 {
   font-weight: 700 !important;
   margin-top: 3rem !important;
   padding-top: 1.5rem !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.light h2,
+html:not(.dark) h2 {
+  font-weight: 700 !important;
+  margin-top: 3rem !important;
+  padding-top: 1.5rem !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
 h3 {
@@ -109,9 +173,16 @@ a:hover {
 }
 
 /* Code blocks */
-pre {
+.dark pre {
   background: #0a0a0a !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0.75rem !important;
+}
+
+.light pre,
+html:not(.dark) pre {
+  background: #f5f5f5 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
   border-radius: 0.75rem !important;
 }
 
@@ -120,7 +191,7 @@ pre code {
   font-size: 0.875rem !important;
 }
 
-code {
+.dark code {
   font-family: "JetBrains Mono", monospace !important;
   background: rgba(16, 185, 129, 0.1) !important;
   color: #10b981 !important;
@@ -129,9 +200,26 @@ code {
   font-size: 0.875em !important;
 }
 
-pre code {
+.light code,
+html:not(.dark) code {
+  font-family: "JetBrains Mono", monospace !important;
+  background: rgba(5, 150, 105, 0.1) !important;
+  color: #059669 !important;
+  padding: 0.125rem 0.375rem !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.875em !important;
+}
+
+.dark pre code {
   background: transparent !important;
   color: rgba(255, 255, 255, 0.8) !important;
+  padding: 0 !important;
+}
+
+.light pre code,
+html:not(.dark) pre code {
+  background: transparent !important;
+  color: rgba(0, 0, 0, 0.8) !important;
   padding: 0 !important;
 }
 
@@ -140,6 +228,12 @@ pre code {
   border-radius: 0.75rem !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.light .nextra-callout,
+html:not(.dark) .nextra-callout {
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  background: rgba(0, 0, 0, 0.03) !important;
 }
 
 .nextra-callout[data-type="warning"] {
@@ -158,9 +252,17 @@ pre code {
 }
 
 /* Cards */
-.nextra-card {
+.dark .nextra-card {
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0.75rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.light .nextra-card,
+html:not(.dark) .nextra-card {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
   border-radius: 0.75rem !important;
   transition: all 0.3s ease !important;
 }
@@ -172,12 +274,23 @@ pre code {
 }
 
 /* Table of Contents */
-.nextra-toc {
+.dark .nextra-toc {
   border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-.nextra-toc a {
+.light .nextra-toc,
+html:not(.dark) .nextra-toc {
+  border-left: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.dark .nextra-toc a {
   color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 0.875rem !important;
+}
+
+.light .nextra-toc a,
+html:not(.dark) .nextra-toc a {
+  color: rgba(0, 0, 0, 0.5) !important;
   font-size: 0.875rem !important;
 }
 
@@ -187,14 +300,26 @@ pre code {
 }
 
 /* Search */
-.nextra-search input {
+.dark .nextra-search input {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: white !important;
 }
 
-.nextra-search input::placeholder {
+.light .nextra-search input,
+html:not(.dark) .nextra-search input {
+  background: rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: black !important;
+}
+
+.dark .nextra-search input::placeholder {
   color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.light .nextra-search input::placeholder,
+html:not(.dark) .nextra-search input::placeholder {
+  color: rgba(0, 0, 0, 0.4) !important;
 }
 
 .nextra-search input:focus {
@@ -208,7 +333,7 @@ table {
   border-collapse: collapse;
 }
 
-th {
+.dark th {
   background: rgba(255, 255, 255, 0.05) !important;
   font-weight: 600;
   text-align: left;
@@ -216,13 +341,33 @@ th {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-td {
+.light th,
+html:not(.dark) th {
+  background: rgba(0, 0, 0, 0.03) !important;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark td {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-tr:hover td {
+.light td,
+html:not(.dark) td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark tr:hover td {
   background: rgba(255, 255, 255, 0.02);
+}
+
+.light tr:hover td,
+html:not(.dark) tr:hover td {
+  background: rgba(0, 0, 0, 0.02);
 }
 
 /* Blockquotes */
@@ -253,9 +398,15 @@ li::marker {
 }
 
 /* Footer */
-.nextra-footer {
+.dark .nextra-footer {
   background: transparent !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.light .nextra-footer,
+html:not(.dark) .nextra-footer {
+  background: transparent !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
 /* Banner */
@@ -264,13 +415,23 @@ li::marker {
   border-bottom: 1px solid rgba(16, 185, 129, 0.2) !important;
 }
 
-.nextra-banner a {
+.dark .nextra-banner a {
   color: white !important;
 }
 
+.light .nextra-banner a,
+html:not(.dark) .nextra-banner a {
+  color: black !important;
+}
+
 /* Breadcrumbs */
-.nextra-breadcrumb {
+.dark .nextra-breadcrumb {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.light .nextra-breadcrumb,
+html:not(.dark) .nextra-breadcrumb {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .nextra-breadcrumb a:hover {
@@ -278,9 +439,17 @@ li::marker {
 }
 
 /* Navigation buttons */
-.nextra-nav-link {
+.dark .nextra-nav-link {
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0.5rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.light .nextra-nav-link,
+html:not(.dark) .nextra-nav-link {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
   border-radius: 0.5rem !important;
   transition: all 0.2s ease !important;
 }
@@ -291,28 +460,56 @@ li::marker {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
+.dark ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-::-webkit-scrollbar-track {
+.dark ::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.03);
 }
 
-::-webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.light ::-webkit-scrollbar,
+html:not(.dark) ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.light ::-webkit-scrollbar-track,
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.light ::-webkit-scrollbar-thumb,
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.light ::-webkit-scrollbar-thumb:hover,
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
 /* Selection */
-::selection {
+.dark ::selection {
   background: rgba(16, 185, 129, 0.3);
   color: white;
+}
+
+.light ::selection,
+html:not(.dark) ::selection {
+  background: rgba(16, 185, 129, 0.3);
+  color: black;
 }
 
 /* Focus states */
@@ -322,9 +519,16 @@ li::marker {
 }
 
 /* Steps component styling */
-.nextra-steps {
+.dark .nextra-steps {
   margin-left: 0 !important;
   border-left: 2px solid rgba(16, 185, 129, 0.3) !important;
+  padding-left: 2rem;
+}
+
+.light .nextra-steps,
+html:not(.dark) .nextra-steps {
+  margin-left: 0 !important;
+  border-left: 2px solid rgba(16, 185, 129, 0.4) !important;
   padding-left: 2rem;
 }
 
@@ -333,16 +537,31 @@ li::marker {
 }
 
 /* Tabs */
-.nextra-tab-bar {
+.dark .nextra-tab-bar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-.nextra-tab {
+.light .nextra-tab-bar,
+html:not(.dark) .nextra-tab-bar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.dark .nextra-tab {
   color: rgba(255, 255, 255, 0.6) !important;
 }
 
-.nextra-tab:hover {
+.light .nextra-tab,
+html:not(.dark) .nextra-tab {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.dark .nextra-tab:hover {
   color: white !important;
+}
+
+.light .nextra-tab:hover,
+html:not(.dark) .nextra-tab:hover {
+  color: black !important;
 }
 
 .nextra-tab[data-active="true"] {
@@ -351,9 +570,16 @@ li::marker {
 }
 
 /* File tree */
-.nextra-filetree {
+.dark .nextra-filetree {
   background: rgba(255, 255, 255, 0.02) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0.5rem !important;
+}
+
+.light .nextra-filetree,
+html:not(.dark) .nextra-filetree {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
   border-radius: 0.5rem !important;
 }
 

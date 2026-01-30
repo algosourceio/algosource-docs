@@ -126,44 +126,52 @@ Discord/Slack often has channels specifically for finding issues.
 
 ## Issue Types for Beginners
 
-<Cards>
-<Card title="Documentation" href="#">
-**Best for:** Absolute beginners
-- Fix typos
-- Clarify instructions
-- Add examples
-- Update outdated info
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-emerald-400 mb-2">Documentation</h4>
+<p className="text-sm text-neutral-300">**Best for:** Absolute beginners</p>
+<ul className="text-sm text-neutral-300 mt-2 list-disc list-inside">
+<li>Fix typos</li>
+<li>Clarify instructions</li>
+<li>Add examples</li>
+<li>Update outdated info</li>
+</ul>
+<p className="text-sm text-neutral-300 mt-2">**Risk:** Very low</p>
+</div>
 
-**Risk:** Very low
-</Card>
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-blue-400 mb-2">Bug Fixes</h4>
+<p className="text-sm text-neutral-300">**Best for:** Those with some coding experience</p>
+<ul className="text-sm text-neutral-300 mt-2 list-disc list-inside">
+<li>Clear reproduction steps</li>
+<li>Well-defined expected behavior</li>
+<li>Self-contained fix</li>
+</ul>
+<p className="text-sm text-neutral-300 mt-2">**Risk:** Low-medium</p>
+</div>
 
-<Card title="Bug Fixes" href="#">
-**Best for:** Those with some coding experience
-- Clear reproduction steps
-- Well-defined expected behavior
-- Self-contained fix
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-purple-400 mb-2">Test Coverage</h4>
+<p className="text-sm text-neutral-300">**Best for:** Learning the codebase</p>
+<ul className="text-sm text-neutral-300 mt-2 list-disc list-inside">
+<li>Add tests for untested code</li>
+<li>Fix flaky tests</li>
+<li>Improve test utilities</li>
+</ul>
+<p className="text-sm text-neutral-300 mt-2">**Risk:** Medium</p>
+</div>
 
-**Risk:** Low-medium
-</Card>
-
-<Card title="Test Coverage" href="#">
-**Best for:** Learning the codebase
-- Add tests for untested code
-- Fix flaky tests
-- Improve test utilities
-
-**Risk:** Medium
-</Card>
-
-<Card title="Small Features" href="#">
-**Best for:** Confident beginners
-- Add a flag/option
-- Improve error messages
-- Add a small UI element
-
-**Risk:** Medium
-</Card>
-</Cards>
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-amber-400 mb-2">Small Features</h4>
+<p className="text-sm text-neutral-300">**Best for:** Confident beginners</p>
+<ul className="text-sm text-neutral-300 mt-2 list-disc list-inside">
+<li>Add a flag/option</li>
+<li>Improve error messages</li>
+<li>Add a small UI element</li>
+</ul>
+<p className="text-sm text-neutral-300 mt-2">**Risk:** Medium</p>
+</div>
+</div>
 
 <Callout type="warning" emoji="⚠️">
 **Avoid These for First Contribution**

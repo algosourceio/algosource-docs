@@ -186,23 +186,27 @@ You'll spend more time reading code than writing it. Learning to navigate unfami
 
 ### Identify Key Abstractions
 
-<Cards>
-<Card title="Interfaces/Types" href="#">
-Look for `types.ts`, `interfaces/`, or TypeScript `.d.ts` files. These define the contract between modules.
-</Card>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-emerald-400 mb-2">Interfaces/Types</h4>
+<p className="text-sm text-neutral-300">Look for `types.ts`, `interfaces/`, or TypeScript `.d.ts` files. These define the contract between modules.</p>
+</div>
 
-<Card title="Core Classes" href="#">
-Find the main abstractions: `User`, `Product`, `Connection`, `Client`. Understanding these unlocks everything.
-</Card>
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-blue-400 mb-2">Core Classes</h4>
+<p className="text-sm text-neutral-300">Find the main abstractions: `User`, `Product`, `Connection`, `Client`. Understanding these unlocks everything.</p>
+</div>
 
-<Card title="Shared Utilities" href="#">
-`utils/`, `helpers/`, `lib/` contain reusable code. Check what's available before writing new code.
-</Card>
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-purple-400 mb-2">Shared Utilities</h4>
+<p className="text-sm text-neutral-300">`utils/`, `helpers/`, `lib/` contain reusable code. Check what's available before writing new code.</p>
+</div>
 
-<Card title="Configuration" href="#">
-`config/`, `.env`, constants files. These control behavior across the app.
-</Card>
-</Cards>
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-amber-400 mb-2">Configuration</h4>
+<p className="text-sm text-neutral-300">`config/`, `.env`, constants files. These control behavior across the app.</p>
+</div>
+</div>
 
 ---
 

@@ -204,31 +204,40 @@ Being a maintainer is mostly **unpaid work**. You'll spend more time reviewing o
 
 Based on your GitHub profile and activity, maintainers quickly categorize you:
 
-<Cards>
-<Card title="Green Light ✅" href="#">
-**You have:**
-- Previous merged PRs (anywhere)
-- Thoughtful issue comments
-- Complete PR descriptions
-- Responsive to feedback
-</Card>
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+<div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4">
+<h4 className="font-semibold text-emerald-400 mb-2">Green Light ✅</h4>
+<p className="text-sm text-neutral-300">**You have:**</p>
+<ul className="text-sm text-neutral-300 list-disc list-inside">
+<li>Previous merged PRs (anywhere)</li>
+<li>Thoughtful issue comments</li>
+<li>Complete PR descriptions</li>
+<li>Responsive to feedback</li>
+</ul>
+</div>
 
-<Card title="Yellow Light ⚠️" href="#">
-**You have:**
-- New account
-- No previous contributions
-- Generic PR description
-- Unknown quantity
-</Card>
+<div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
+<h4 className="font-semibold text-amber-400 mb-2">Yellow Light ⚠️</h4>
+<p className="text-sm text-neutral-300">**You have:**</p>
+<ul className="text-sm text-neutral-300 list-disc list-inside">
+<li>New account</li>
+<li>No previous contributions</li>
+<li>Generic PR description</li>
+<li>Unknown quantity</li>
+</ul>
+</div>
 
-<Card title="Red Light 🚫" href="#">
-**You have:**
-- Hacktoberfest spam history
-- Abandoned PRs
-- Argumentative comments
-- AI-generated contributions
-</Card>
-</Cards>
+<div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
+<h4 className="font-semibold text-red-400 mb-2">Red Light 🚫</h4>
+<p className="text-sm text-neutral-300">**You have:**</p>
+<ul className="text-sm text-neutral-300 list-disc list-inside">
+<li>Hacktoberfest spam history</li>
+<li>Abandoned PRs</li>
+<li>Argumentative comments</li>
+<li>AI-generated contributions</li>
+</ul>
+</div>
+</div>
 
 ---
 

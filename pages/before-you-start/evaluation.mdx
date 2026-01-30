@@ -1,4 +1,5 @@
 import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+import { XCircle, CheckCircle } from 'lucide-react'
 
 # How Contributions Are Evaluated
 
@@ -282,31 +283,37 @@ One-time contributors are forgettable. Regular contributors build relationships.
 
 ## Common Rejection Reasons
 
-<Cards>
-<Card title="No Issue Linked" href="#">
-"Please open an issue first to discuss this change."
-</Card>
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-red-400 mb-2">No Issue Linked</h4>
+<p className="text-sm text-neutral-300">"Please open an issue first to discuss this change."</p>
+</div>
 
-<Card title="Scope Too Large" href="#">
-"This PR does too many things. Please break it into smaller PRs."
-</Card>
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-red-400 mb-2">Scope Too Large</h4>
+<p className="text-sm text-neutral-300">"This PR does too many things. Please break it into smaller PRs."</p>
+</div>
 
-<Card title="Doesn't Fit Roadmap" href="#">
-"We don't plan to add this feature. See issue #X for context."
-</Card>
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-red-400 mb-2">Doesn't Fit Roadmap</h4>
+<p className="text-sm text-neutral-300">"We don't plan to add this feature. See issue #X for context."</p>
+</div>
 
-<Card title="CI Failing" href="#">
-"Please fix the failing tests before we review."
-</Card>
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-red-400 mb-2">CI Failing</h4>
+<p className="text-sm text-neutral-300">"Please fix the failing tests before we review."</p>
+</div>
 
-<Card title="Missing Tests" href="#">
-"Please add tests for this new functionality."
-</Card>
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-red-400 mb-2">Missing Tests</h4>
+<p className="text-sm text-neutral-300">"Please add tests for this new functionality."</p>
+</div>
 
-<Card title="Stale / Abandoned" href="#">
-"Closing due to inactivity. Feel free to reopen if you're still working on this."
-</Card>
-</Cards>
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-4">
+<h4 className="font-semibold text-red-400 mb-2">Stale / Abandoned</h4>
+<p className="text-sm text-neutral-300">"Closing due to inactivity. Feel free to reopen if you're still working on this."</p>
+</div>
+</div>
 
 ---
 
