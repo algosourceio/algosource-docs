@@ -1,0 +1,249 @@
+---
+title: "How Maintainers Think"
+description: "Understand their perspective"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# How Maintainers Think
+
+Empathy for maintainers makes you a better contributor.
+
+## The Maintainer Reality
+
+### Time Scarcity
+
+Maintainers are:
+- Probably volunteers
+- Juggling other projects
+- Dealing with critical bugs
+- Handling user complaints
+- Still have day jobs
+
+```
+Your PR: Great feature!
+Maintainer's mind: I need to review 47 other PRs first
+```
+
+### Responsibility
+
+Maintainers think about:
+- Breaking changes
+- Security implications
+- Performance impact
+- Maintenance burden
+- Future complexity
+
+```
+Your idea: Add this cool feature!
+Maintainer's mind: Who maintains it in 5 years?
+```
+
+### Trust Issues
+
+They've seen:
+- Broken PRs merged
+- Security holes introduced
+- Abandoned features
+- Unmaintainable code
+
+```
+Your PR seems fine
+Maintainer's mind: Is it actually production-ready?
+```
+
+## What Maintainers Appreciate
+
+<Cards>
+<Card title="Clear Intent">
+Understand the problem before proposing solutions
+</Card>
+
+<Card title="Low Friction">
+Easy reviews, well-tested, follows conventions
+</Card>
+
+<Card title="Reliability">
+Deliver what you promise, maintain what you build
+</Card>
+
+<Card title="Respect for Process">
+Follow guidelines, don't push back on standards
+</Card>
+</Cards>
+
+## What Actually Frustrates Maintainers (Real Examples)
+
+### #1: No Context in PR
+
+```
+❌ BAD PR:
+Title: "Fix bug"
+Description: "Found a bug, fixed it. Tests pass."
+
+Maintainer's reaction:
+- What bug?
+- Why is this the right fix?
+- Did you consider X, Y, Z?
+- I have to ask for details
+- Time wasted
+
+✓ GOOD PR:
+Title: "Fix race condition in WebSocket handler"
+Description:
+"Issue: When two messages arrive simultaneously,
+the handler can lose one message because
+the state isn't properly locked.
+
+Fix: Added mutex around state mutation.
+
+Testing: Wrote test that fails without lock,
+passes with lock. Ran full test suite.
+
+Alternatives considered:
+- Using atomic operations (too complex for this case)
+- Async queue (overkill, adds latency)"
+
+Maintainer's reaction:
+- Clear what problem I'm solving
+- I trust the fix is right
+- I can approve with confidence
+- Minimal back-and-forth
+```
+
+### #2: Not Following Guidelines
+
+```
+❌ BAD: PR with 1000 lines of code + no tests
+
+Maintainer's mind:
+"How do I review this? No tests means I have to
+manually verify everything. Plus it touches
+10 different features. If one breaks, which
+change caused it?"
+
+Time spent reviewing: 2+ hours for 1 PR
+
+✓ GOOD: PR with 100 lines + complete tests
+
+Maintainer's mind:
+"Tests pass. CI is green. Changes are focused
+on one thing. I can review in 15 minutes."
+
+Time spent reviewing: 15 minutes
+```
+
+### #3: Pushing for Merging Too Soon
+
+```
+❌ BAD: 
+Mon: Open PR
+Wed: "Hey, is this ready for merge?"
+Fri: "This has been pending 3 days, can you merge?"
+
+Maintainer's reaction: Annoyed. You don't understand
+their time constraints. This gets deprioritized.
+
+✓ GOOD:
+Mon: Open PR with clear description
+Mon-Wed: Respond to feedback, improve code
+Wed: Ask "Anything else you need from me?"
+After merge: Learn and contribute more
+
+Maintainer's reaction: Helpful, understanding person.
+Fast-track future PRs.
+```
+
+### #4: Questions Without Research
+
+```
+❌ BAD:
+Issue: "How do I use this API?"
+(Answer is in README, 5 seconds of reading)
+
+Maintainer's thought: Another person who didn't
+read the docs. This is the 10th question today.
+
+✓ GOOD:
+Issue: "I read the README section 4.2 about API.
+It mentions X but doesn't explain how Y works.
+I tried [approach] and got [error]. What am I missing?"
+
+Maintainer's thought: This person did their homework.
+Worth my time to answer properly.
+```
+
+## The Maintainer Decision Matrix
+
+When reviewing your PR, they're asking:
+
+```
+Question 1: Is this code correct?
+- YES → Continue
+- NO → Reject, ask for fix
+
+Question 2: Does this add maintenance burden?
+- NO → Continue
+- YES → Is it worth it? If no → Reject
+
+Question 3: Is this aligned with project goals?
+- YES → Continue
+- NO → Reject or suggest changes
+
+Question 4: Will this break anything?
+- NO → Approve
+- YES → Ask for safeguards
+```
+
+## What Maintainers Actually Need From You
+
+| Need | What It Means | Example |
+|------|---------------|---------|
+| **Clear communication** | I understand the problem immediately | "Fixes race condition in cache invalidation" |
+| **Well-tested code** | I'm confident it works | "Includes test covering the failure case" |
+| **Minimal scope** | Review is faster | "Only changes parser, leaves serializer alone" |
+| **Respect for process** | You follow our standards | "Added tests + docs as per CONTRIBUTING.md" |
+| **Reliability** | You follow through | "Responds to feedback, fixes issues quickly" |
+
+## Real Talk: The Maintainer's Day
+
+```
+A maintainer's typical review session:
+
+1. Open GitHub → 30 new notifications
+2. 25 are spam/notifications they don't care about
+3. 5 are actual stuff needing attention
+4. Check: "Can I understand this in 5 minutes?"
+   - If NO → Deprioritize (too complex)
+   - If YES → Review in 5 minutes
+5. Write feedback
+6. Move on
+
+Your goal: Make your PR reviewable in 5 minutes.
+
+How?
+- Write great description
+- Keep it focused
+- Include tests
+- Follow conventions
+```
+
+---
+
+> **Maintainers are humans with limited time.** Make their job easier, and they'll love you.
+4. Broken test suites
+5. "Just a small change" touching 5 files
+```
+
+## Ask Yourself
+
+Before reaching out:
+- [ ] Did I read the docs?
+- [ ] Did I search existing issues?
+- [ ] Is this a real problem or my confusion?
+- [ ] Have I done the homework?
+- [ ] Am I respecting their time?
+
+---
+
+> **Maintainers are people.** Treat them like the humans they are.

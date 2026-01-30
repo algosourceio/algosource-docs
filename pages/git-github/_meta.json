@@ -1,0 +1,10 @@
+{
+  "index": "Overview",
+  "basics": "Git Basics",
+  "branching": "Branching Strategy",
+  "commits": "Commit Messages",
+  "syncing": "Syncing Forks",
+  "conflicts": "Merge Conflicts",
+  "rewriting-history": "Rewriting History",
+  "force-push": "Force Push"
+}

@@ -1,0 +1,365 @@
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Understanding Unfamiliar Codebases
+
+<Callout type="info" emoji="ℹ️">
+**The Art of Code Archaeology**
+
+You'll spend more time reading code than writing it. Learning to navigate unfamiliar codebases quickly is a superpower.
+</Callout>
+
+## The Codebase Understanding Framework
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    CODEBASE UNDERSTANDING LEVELS                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  LEVEL 1: BIRD'S EYE VIEW          Time: 30-60 min                         │
+│  ═════════════════════════                                                  │
+│  ┌─────────────────────────────────────────────────────────────┐           │
+│  │ Directory structure │ Entry points │ Major dependencies     │           │
+│  └─────────────────────────────────────────────────────────────┘           │
+│                            │                                                │
+│                            ▼                                                │
+│  LEVEL 2: ARCHITECTURE              Time: 1-2 hours                         │
+│  ══════════════════════                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐           │
+│  │ Module boundaries │ Data flow │ Key abstractions            │           │
+│  └─────────────────────────────────────────────────────────────┘           │
+│                            │                                                │
+│                            ▼                                                │
+│  LEVEL 3: LOCAL AREA               Time: 2-4 hours                          │
+│  ═════════════════════                                                      │
+│  ┌─────────────────────────────────────────────────────────────┐           │
+│  │ Files related to your issue │ Specific functions │ Tests    │           │
+│  └─────────────────────────────────────────────────────────────┘           │
+│                            │                                                │
+│                            ▼                                                │
+│  LEVEL 4: IMPLEMENTATION           Time: As needed                          │
+│  ════════════════════════                                                   │
+│  ┌─────────────────────────────────────────────────────────────┐           │
+│  │ Exact lines to change │ Edge cases │ Integration points     │           │
+│  └─────────────────────────────────────────────────────────────┘           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Level 1: Bird's Eye View
+
+### Directory Structure Patterns
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│             COMMON PROJECT STRUCTURES                           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  FRONTEND PROJECT (React/Vue/Angular)                           │
+│  ═════════════════════════════════════                          │
+│  project/                                                       │
+│  ├── src/                                                       │
+│  │   ├── components/     ← UI components                        │
+│  │   ├── pages/          ← Route pages                          │
+│  │   ├── hooks/          ← Custom hooks                         │
+│  │   ├── utils/          ← Helper functions                     │
+│  │   ├── services/       ← API calls                            │
+│  │   └── App.tsx         ← Entry component                      │
+│  ├── public/             ← Static assets                        │
+│  └── tests/              ← Test files                           │
+│                                                                 │
+│  BACKEND PROJECT (Node/Python/Go)                               │
+│  ══════════════════════════════════                             │
+│  project/                                                       │
+│  ├── src/                                                       │
+│  │   ├── controllers/    ← Request handlers                     │
+│  │   ├── services/       ← Business logic                       │
+│  │   ├── models/         ← Data models                          │
+│  │   ├── middleware/     ← Request processing                   │
+│  │   ├── routes/         ← Route definitions                    │
+│  │   └── index.ts        ← Entry point                          │
+│  ├── config/             ← Configuration                        │
+│  └── tests/              ← Test files                           │
+│                                                                 │
+│  LIBRARY/PACKAGE                                                │
+│  ═══════════════                                                │
+│  project/                                                       │
+│  ├── src/                ← Source code                          │
+│  │   └── index.ts        ← Public API                           │
+│  ├── dist/               ← Built output                         │
+│  ├── examples/           ← Usage examples                       │
+│  └── tests/              ← Test files                           │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Find Entry Points
+
+<Steps>
+
+### Check package.json / pyproject.toml
+
+```json
+{
+  "main": "dist/index.js",        // Library entry
+  "scripts": {
+    "start": "node src/index.ts"  // App entry
+  }
+}
+```
+
+
+
+### Look for obvious filenames
+
+- `index.ts/js` - Common entry
+- `main.ts/js` - Another common entry
+- `app.ts/js` - Application root
+- `server.ts/js` - Server entry
+- `cli.ts/js` - CLI entry
+
+
+
+### Follow the framework conventions
+
+- **Next.js:** `app/page.tsx` or `pages/index.tsx`
+- **Express:** `app.js` or `server.js`
+- **Django:** `urls.py`, `views.py`
+- **Rails:** `config/routes.rb`
+
+</Steps>
+
+---
+
+## Level 2: Architecture
+
+### Map the Data Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        TYPICAL DATA FLOW                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  USER INPUT                                                                 │
+│      │                                                                      │
+│      ▼                                                                      │
+│  ┌─────────────────┐                                                        │
+│  │  UI Component   │  (React Component, HTML Form)                          │
+│  └────────┬────────┘                                                        │
+│           │                                                                 │
+│           ▼                                                                 │
+│  ┌─────────────────┐                                                        │
+│  │  Event Handler  │  (onClick, onSubmit)                                   │
+│  └────────┬────────┘                                                        │
+│           │                                                                 │
+│           ▼                                                                 │
+│  ┌─────────────────┐                                                        │
+│  │  API Service    │  (fetch, axios)                                        │
+│  └────────┬────────┘                                                        │
+│           │                                                                 │
+│           ▼                                                                 │
+│  ┌─────────────────┐                                                        │
+│  │  Backend Route  │  (Express route, API endpoint)                         │
+│  └────────┬────────┘                                                        │
+│           │                                                                 │
+│           ▼                                                                 │
+│  ┌─────────────────┐                                                        │
+│  │  Controller     │  (Request handler)                                     │
+│  └────────┬────────┘                                                        │
+│           │                                                                 │
+│           ▼                                                                 │
+│  ┌─────────────────┐                                                        │
+│  │  Service Layer  │  (Business logic)                                      │
+│  └────────┬────────┘                                                        │
+│           │                                                                 │
+│           ▼                                                                 │
+│  ┌─────────────────┐                                                        │
+│  │  Data Model     │  (Database queries)                                    │
+│  └────────┬────────┘                                                        │
+│           │                                                                 │
+│           ▼                                                                 │
+│       DATABASE                                                              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Identify Key Abstractions
+
+<Cards>
+<Card title="Interfaces/Types">
+Look for `types.ts`, `interfaces/`, or TypeScript `.d.ts` files. These define the contract between modules.
+</Card>
+
+<Card title="Core Classes">
+Find the main abstractions: `User`, `Product`, `Connection`, `Client`. Understanding these unlocks everything.
+</Card>
+
+<Card title="Shared Utilities">
+`utils/`, `helpers/`, `lib/` contain reusable code. Check what's available before writing new code.
+</Card>
+
+<Card title="Configuration">
+`config/`, `.env`, constants files. These control behavior across the app.
+</Card>
+</Cards>
+
+---
+
+## Level 3: Local Understanding
+
+### Code Navigation Techniques
+
+<Steps>
+
+### Follow the imports
+
+Start at your target file and trace imports backwards and forwards.
+```typescript
+import { UserService } from '../services/user' // Go here next
+```
+
+
+
+### Use Go to Definition
+
+In VS Code: `F12` or `Ctrl/Cmd + Click` on any symbol to jump to its definition.
+
+
+
+### Find All References
+
+`Shift + F12` to see everywhere a function/class is used.
+
+
+
+### Search the codebase
+
+```bash
+# Find all files containing "UserService"
+grep -r "UserService" src/
+
+# Or in VS Code: Ctrl/Cmd + Shift + F
+```
+
+
+
+### Read the tests
+
+Tests show how code is meant to be used:
+```typescript
+describe('UserService', () => {
+  it('should create a user', () => {
+    const user = userService.create({ name: 'John' })
+    // Now you know how to call it
+  })
+})
+```
+
+</Steps>
+
+### Key Questions to Answer
+
+
+- [ ] Where is the feature I'm modifying defined?
+- [ ] What other files import this file?
+- [ ] Where are the tests for this code?
+- [ ] What configuration affects this code?
+- [ ] What side effects does this function have?
+
+
+---
+
+## Search Strategies
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    EFFECTIVE SEARCHING                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  SEARCH TYPE          WHAT TO SEARCH FOR                        │
+│  ═══════════          ══════════════════                        │
+│                                                                 │
+│  Error messages       Copy exact error text                     │
+│                                                                 │
+│  UI text              "Submit", "Error occurred"                │
+│                                                                 │
+│  Function names       calculateTotal, handleClick               │
+│                                                                 │
+│  Route paths          /api/users, /dashboard                    │
+│                                                                 │
+│  CSS classes          "btn-primary", "modal-header"             │
+│                                                                 │
+│  Environment vars     DATABASE_URL, API_KEY                     │
+│                                                                 │
+│  Comments             TODO, FIXME, HACK                         │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Mapping Tools
+
+### Generate Documentation
+
+Many projects have tools to generate architecture docs:
+
+```bash
+# TypeScript - type documentation
+npx typedoc src/
+
+# Python - generate docs
+sphinx-build -b html docs/ docs/_build
+
+# Generate dependency graph
+npx madge --image graph.png src/
+```
+
+### Visualize Dependencies
+
+```bash
+# npm package dependencies
+npm ls --depth=0
+
+# Visualize module dependencies
+npx madge --circular src/
+```
+
+---
+
+## Practical Exercise
+
+For your target project, complete this template:
+
+```markdown
+# [Project Name] Codebase Map
+
+## Entry Points
+- Main: 
+- CLI: 
+- Tests: 
+
+## Core Modules
+1. [Module 1]: [Purpose]
+2. [Module 2]: [Purpose]
+3. [Module 3]: [Purpose]
+
+## Data Flow
+User → [Component] → [Service] → [Model] → Database
+
+## Key Files for My Issue
+- [ ] 
+- [ ] 
+- [ ] 
+
+## Tests to Check
+- [ ] 
+- [ ] 
+
+## Questions I Have
+- 
+- 
+```
+
+

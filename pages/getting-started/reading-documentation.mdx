@@ -1,0 +1,311 @@
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Reading Project Documentation
+
+<Callout type="warning" emoji="⚠️">
+**Read Before You Code**
+
+80% of rejected PRs could have been avoided if the contributor read the docs. This is not optional.
+</Callout>
+
+## The Documentation Hierarchy
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       DOCUMENTATION HIERARCHY                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  PRIORITY 1: MUST READ                                                      │
+│  ══════════════════════                                                     │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  README.md              Project overview, setup, usage              │   │
+│  │  CONTRIBUTING.md        HOW TO CONTRIBUTE                           │   │
+│  │  CODE_OF_CONDUCT.md     Community rules                             │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  PRIORITY 2: SHOULD READ                                                    │
+│  ════════════════════════                                                   │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  LICENSE                 Legal terms                                │   │
+│  │  SECURITY.md            Security policies                           │   │
+│  │  CHANGELOG.md           Version history                             │   │
+│  │  Issue templates        How to report bugs/features                 │   │
+│  │  PR templates           What to include in PRs                      │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  PRIORITY 3: HELPFUL                                                        │
+│  ════════════════════                                                       │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  /docs folder           Detailed documentation                      │   │
+│  │  Architecture docs      System design                               │   │
+│  │  API documentation      Interface specifications                    │   │
+│  │  Wiki                   Extended guides                             │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## README.md Deep Dive
+
+### What to Extract
+
+<Cards>
+<Card title="Project Purpose">
+What problem does this solve? Who is it for? Understanding purpose helps you contribute meaningfully.
+</Card>
+
+<Card title="Tech Stack">
+Languages, frameworks, dependencies. Do you have the skills needed?
+</Card>
+
+<Card title="Setup Instructions">
+Prerequisites, installation steps, configuration. Follow these exactly.
+</Card>
+
+<Card title="Project Structure">
+Directory layout, key files, architecture overview.
+</Card>
+</Cards>
+
+### Common README Sections
+
+| Section | What It Contains |
+|---------|------------------|
+| Badges | Build status, coverage, version, downloads |
+| Description | One-paragraph summary of the project |
+| Features | What the project does |
+| Installation | How to install/set up |
+| Quick Start | Get running in minimal steps |
+| Documentation | Links to detailed docs |
+| Contributing | Link to CONTRIBUTING.md |
+| License | What you can do with the code |
+
+---
+
+## CONTRIBUTING.md: The Bible
+
+<Callout type="warning" emoji="⚠️">
+**This is Non-Negotiable**
+
+Every project has its own rules. CONTRIBUTING.md tells you exactly what they are. Ignoring it = PR rejection.
+</Callout>
+
+### What to Look For
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     CONTRIBUTING.md CHECKLIST                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  BEFORE STARTING                                                            │
+│  ═══════════════                                                            │
+│  □ Required: File issue before PR?                                          │
+│  □ Required: Sign CLA (Contributor License Agreement)?                      │
+│  □ Required: Discuss approach first?                                        │
+│  □ Required: DCO (Developer Certificate of Origin)?                         │
+│                                                                             │
+│  CODE REQUIREMENTS                                                          │
+│  ═════════════════                                                          │
+│  □ Code style guide or linter config                                        │
+│  □ Testing requirements                                                     │
+│  □ Documentation requirements                                               │
+│  □ Type annotations required?                                               │
+│                                                                             │
+│  PR REQUIREMENTS                                                            │
+│  ═══════════════                                                            │
+│  □ Branch naming convention                                                 │
+│  □ Commit message format                                                    │
+│  □ PR title format                                                          │
+│  □ Required reviewers                                                       │
+│  □ CI checks that must pass                                                 │
+│                                                                             │
+│  COMMUNICATION                                                              │
+│  ═════════════                                                              │
+│  □ Where to ask questions (Discord, Slack, GitHub Discussions)              │
+│  □ Expected response times                                                  │
+│  □ Who to tag for what                                                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Common Requirements
+
+<Steps>
+
+### Fork and Clone
+
+Most projects want you to fork, not branch directly.
+
+
+
+### Create Feature Branch
+
+Usually from `main` or `develop`. Check the docs.
+```bash
+git checkout -b fix/issue-123-typo
+```
+
+
+
+### Run Tests Locally
+
+```bash
+npm test
+# or
+pytest
+# or whatever the project uses
+```
+
+
+
+### Follow Commit Convention
+
+Many use Conventional Commits:
+```
+fix: correct typo in README
+feat: add dark mode support
+docs: update installation guide
+```
+
+
+
+### Submit PR with Template
+
+Fill out every section. Don't skip.
+
+</Steps>
+
+---
+
+## CODE_OF_CONDUCT.md
+
+Every good project has one. It tells you:
+
+- Expected behavior
+- Unacceptable behavior
+- How to report issues
+- Consequences for violations
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                   TYPICAL RULES                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ✓ Be respectful and inclusive                                 │
+│  ✓ Accept constructive criticism gracefully                    │
+│  ✓ Focus on what's best for the community                      │
+│  ✓ Show empathy toward other community members                 │
+│                                                                 │
+│  ✗ No harassment, trolling, or personal attacks                │
+│  ✗ No discriminatory language or imagery                       │
+│  ✗ No publishing others' private information                   │
+│  ✗ No conduct inappropriate in a professional setting          │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Issue Templates
+
+When a project has issue templates, USE THEM:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                   BUG REPORT TEMPLATE                           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  **Describe the bug**                                           │
+│  A clear description of what the bug is.                        │
+│                                                                 │
+│  **To Reproduce**                                               │
+│  Steps to reproduce:                                            │
+│  1. Go to '...'                                                 │
+│  2. Click on '....'                                             │
+│  3. See error                                                   │
+│                                                                 │
+│  **Expected behavior**                                          │
+│  What you expected to happen.                                   │
+│                                                                 │
+│  **Environment**                                                │
+│  - OS: [e.g. macOS 14.0]                                        │
+│  - Node version: [e.g. 20.0.0]                                  │
+│  - Package version: [e.g. 2.1.0]                                │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Where to Find Docs
+
+| Location | What to Look For |
+|----------|------------------|
+| Repository root | README, CONTRIBUTING, LICENSE, CODE_OF_CONDUCT |
+| `/docs` folder | Detailed guides, architecture, API docs |
+| GitHub Wiki | Extended tutorials, FAQ |
+| Project website | User-facing documentation |
+| GitHub Discussions | Q&A, announcements |
+
+---
+
+## Reading Tips
+
+<Callout type="tip" emoji="💡">
+**Active Reading**
+
+Don't just skim. Take notes on requirements, conventions, and processes.
+</Callout>
+
+### Make a Cheat Sheet
+
+For each project, create a personal cheat sheet:
+
+```markdown
+# [Project Name] Contribution Cheat Sheet
+
+## Setup
+- Node version: 18+
+- Install: `npm install`
+- Test: `npm test`
+
+## Git Workflow
+- Fork → Clone → Feature branch
+- Branch naming: `type/issue-number-description`
+- Commit format: Conventional Commits
+
+## Before PR
+- [ ] Tests pass locally
+- [ ] Linter passes
+- [ ] Docs updated if needed
+- [ ] Issue linked
+
+## PR Template
+- Summary: What this does
+- Motivation: Why this is needed
+- Testing: How it was tested
+- Checklist: All items checked
+
+## Communication
+- Questions: GitHub Discussions
+- Chat: Discord #help-wanted
+```
+
+---
+
+## Final Checklist
+
+
+- [ ] I've read the entire README.md
+- [ ] I've read CONTRIBUTING.md (twice)
+- [ ] I've read the CODE_OF_CONDUCT.md
+- [ ] I know the required commit format
+- [ ] I know where to ask questions
+- [ ] I know what CI checks must pass
+- [ ] I've bookmarked relevant documentation
+- [ ] I've created a personal cheat sheet
+
+
+

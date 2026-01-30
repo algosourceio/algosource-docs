@@ -1,0 +1,285 @@
+---
+title: "Issues & Pull Requests"
+description: "Deep dive into the GitHub workflow"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Issues & Pull Requests
+
+<Callout type="info" emoji="ℹ️">
+**The Core Workflow**
+
+Issues and PRs are the primary communication mechanisms in open source. Master them, and you master open source contribution.
+</Callout>
+
+## The Complete Cycle
+
+```mermaid
+flowchart TD
+    A[Spot Problem] --> B[Search Existing Issues]
+    B --> C{Already Reported?}
+    C -->|Yes| D[Comment/Subscribe]
+    C -->|No| E[Create Issue]
+    E --> F{Got Assignment?}
+    F -->|Yes| G[Fork & Branch]
+    F -->|No| H[Wait for Feedback]
+    H --> G
+    G --> I[Write Code]
+    I --> J[Create PR]
+    J --> K[Code Review]
+    K --> L{Approved?}
+    L -->|No| M[Address Feedback]
+    M --> K
+    L -->|Yes| N[Merged! 🎉]
+```
+
+## The Two Pillars
+
+<Cards>
+<Card title="Issues">
+**Communication tool** for problems, features, and questions. Good issues get triage fast; bad ones get closed or ignored.
+</Card>
+
+<Card title="Pull Requests">
+**Code delivery mechanism**. Small, focused PRs with tests and good descriptions get merged. Large, unclear PRs die in review.
+</Card>
+</Cards>
+
+---
+
+## Issue & PR Lifecycle
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        ISSUE → PR → MERGE TIMELINE                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Day 0        Day 1-3       Day 3-7         Day 7-14        Day 14-30       │
+│  ═════        ════════       ═══════         ═════════       ═════════       │
+│   │              │              │                │               │          │
+│   │ Issue        │ Triage &     │ Development    │ Code Review   │ Merge    │
+│   │ Created      │ Assignment   │ & Testing      │ & Iteration   │ or Close │
+│   │              │              │                │               │          │
+│   ▼              ▼              ▼                ▼               ▼          │
+│  Open      Acknowledged    PR Opened       Changes Made     Resolution     │
+│                                                                             │
+│  ◄──────────────── Typical: 2-4 weeks for first contribution ─────────────►│
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Success Metrics
+
+### What Makes Issues Get Addressed
+
+| Factor | Impact | Why It Matters |
+|--------|--------|----------------|
+| **Clear reproduction steps** | 🔥🔥🔥 | Makes the problem actionable |
+| **Recent activity** | 🔥🔥 | Shows it's still relevant |
+| **Affects many users** | 🔥🔥🔥 | Higher priority |
+| **Has error logs** | 🔥🔥 | Easier to debug |
+| **Respectful tone** | 🔥 | People want to help |
+
+### What Makes PRs Get Merged
+
+| Factor | Impact | Why It Matters |
+|--------|--------|----------------|
+| **Small scope** | 🔥🔥🔥 | Easier to review |
+| **Tests included** | 🔥🔥🔥 | Reduces risk |
+| **Good description** | 🔥🔥 | Context for reviewers |
+| **Follows conventions** | 🔥🔥 | Maintainable code |
+| **Responsive to feedback** | 🔥🔥🔥 | Shows professionalism |
+
+---
+
+## Quality Spectrum
+
+```mermaid
+quadrantChart
+    title Issue & PR Quality Matrix
+    x-axis Low Effort --> High Effort
+    y-axis Low Quality --> High Quality
+    quadrant-1 Excellent
+    quadrant-2 Good Work, Needs Refinement
+    quadrant-3 Noise
+    quadrant-4 Effort, Wrong Direction
+    "Perfect bug report": [0.3, 0.95]
+    "Minimal PR with tests": [0.4, 0.9]
+    "Vague 'doesn't work'": [0.1, 0.1]
+    "PR without context": [0.5, 0.3]
+    "Feature with design doc": [0.8, 0.95]
+    "Random refactor": [0.7, 0.2]
+```
+
+---
+
+## Section Overview
+
+<Steps>
+
+### Raising Good Issues
+
+Learn to write bug reports and feature requests that maintainers actually want to read
+
+
+
+### Bug vs Feature
+
+Know the difference and use the right template for each
+
+
+
+### Writing High-Quality PRs
+
+Small, focused, tested changes that reviewers love
+
+
+
+### PR Templates
+
+The anatomy of a perfect PR description
+
+
+
+### Code Review Response
+
+How to handle feedback professionally and efficiently
+
+
+
+### Handling Rejection
+
+Not all PRs merge. Learn to fail gracefully and improve
+
+
+
+### Iterating on Feedback
+
+Speed up the review cycle with smart responses
+
+
+
+### Closing PRs
+
+How to clean up and move forward
+
+</Steps>
+
+---
+
+## Common Mistakes
+
+### Issue Mistakes
+
+<Callout type="warning" emoji="⚠️">
+**These Get Issues Closed Without Action**
+
+- "It doesn't work" (no details)
+- Asking for ETAs or demanding fixes
+- Not checking if already reported
+- Missing reproduction steps
+- Opening issues that belong in discussions
+</Callout>
+
+### PR Mistakes
+
+<Callout type="warning" emoji="⚠️">
+**These Get PRs Ignored or Rejected**
+
+- No description or "small fix" without context
+- Massive diffs touching unrelated files
+- No tests when tests are expected
+- Ignoring CI failures
+- Being defensive about feedback
+</Callout>
+
+---
+
+## Time Expectations
+
+```mermaid
+gantt
+    title Typical Issue→PR→Merge Timeline
+    dateFormat YYYY-MM-DD
+    section Issue Phase
+    Issue opened           :2024-01-01, 1d
+    Maintainer responds    :2024-01-02, 2d
+    Assignment             :2024-01-03, 1d
+    section Development
+    Local development      :2024-01-04, 4d
+    Testing               :2024-01-07, 1d
+    section PR Phase
+    PR opened             :2024-01-08, 1d
+    First review          :2024-01-10, 2d
+    Address feedback      :2024-01-12, 2d
+    Second review         :2024-01-14, 2d
+    Merge                 :2024-01-16, 1d
+```
+
+**Reality check:**
+- First response to issue: 1-3 days (sometimes 1-2 weeks)
+- First PR review: 2-7 days (sometimes longer)
+- Total time to merge first PR: 2-6 weeks average
+
+---
+
+## The Mindset Shift
+
+### ❌ Wrong Mindset
+
+```
+"I'll open an issue and get an immediate response"
+"My PR is perfect, reviewers are nitpicking"
+"I'll make one huge PR with all my changes"
+"If my PR doesn't merge, the maintainers are biased"
+```
+
+### ✅ Right Mindset
+
+```
+"I'll provide all the info maintainers need upfront"
+"Reviews improve my code and teach me conventions"
+"I'll make small PRs that are easy to review"
+"If my PR doesn't merge, I'll learn why and improve"
+```
+
+---
+
+## Quick Reference
+
+### Issue Checklist
+
+
+- [ ] Searched for existing issues
+- [ ] Clear, descriptive title
+- [ ] Reproducible steps provided
+- [ ] Environment details included
+- [ ] Logs/screenshots attached
+- [ ] Respectful, professional tone
+
+
+### PR Checklist
+
+
+- [ ] Linked to an issue
+- [ ] Small, focused changes
+- [ ] Tests added/updated
+- [ ] CI passing
+- [ ] Good PR description
+- [ ] Follows project conventions
+
+
+---
+
+## Ready to Master the Workflow?
+
+Let's start with the foundation:
+
+➡️ [How to Raise a Good Issue →](raising-issues)
+
+---
+
+> **Remember:** Issues and PRs are conversations, not transactions. Approach them with respect, clarity, and patience.

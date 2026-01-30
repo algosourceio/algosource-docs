@@ -1,0 +1,367 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* AlgoSource Dark Theme Colors */
+  --color-background: #050505;
+  --color-foreground: #fafafa;
+  --color-card: #0a0a0a;
+  --color-card-foreground: #fafafa;
+  --color-primary: #10b981;
+  --color-primary-foreground: #0a0a0a;
+  --color-secondary: #1f1f1f;
+  --color-secondary-foreground: #fafafa;
+  --color-muted: #262626;
+  --color-muted-foreground: #a3a3a3;
+  --color-accent: #10b981;
+  --color-accent-foreground: #0a0a0a;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Force dark mode */
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-background) !important;
+  color: var(--color-foreground);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Custom Nextra overrides for AlgoSource theme */
+.nextra-nav-container {
+  background: rgba(5, 5, 5, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.nextra-sidebar-container {
+  background: var(--color-background) !important;
+}
+
+/* Sidebar styling */
+.nextra-sidebar {
+  background: transparent !important;
+}
+
+.nextra-sidebar ul li a {
+  color: rgba(255, 255, 255, 0.7) !important;
+  transition: all 0.2s ease;
+}
+
+.nextra-sidebar ul li a:hover {
+  color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.1) !important;
+}
+
+.nextra-sidebar ul li a.active {
+  color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+}
+
+/* Content area */
+.nextra-content {
+  background: var(--color-background) !important;
+}
+
+/* Article content styling */
+article {
+  --tw-prose-body: rgba(255, 255, 255, 0.75);
+  --tw-prose-headings: #fff;
+  --tw-prose-links: #10b981;
+  --tw-prose-bold: #fff;
+  --tw-prose-code: #10b981;
+  --tw-prose-pre-bg: #0a0a0a;
+  --tw-prose-pre-code: rgba(255, 255, 255, 0.8);
+  --tw-prose-quotes: rgba(255, 255, 255, 0.6);
+}
+
+/* Headings */
+h1 {
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+}
+
+h2 {
+  font-weight: 700 !important;
+  margin-top: 3rem !important;
+  padding-top: 1.5rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+h3 {
+  font-weight: 600 !important;
+}
+
+/* Links */
+a {
+  color: #10b981;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #34d399;
+}
+
+/* Code blocks */
+pre {
+  background: #0a0a0a !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0.75rem !important;
+}
+
+pre code {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.875rem !important;
+}
+
+code {
+  font-family: "JetBrains Mono", monospace !important;
+  background: rgba(16, 185, 129, 0.1) !important;
+  color: #10b981 !important;
+  padding: 0.125rem 0.375rem !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.875em !important;
+}
+
+pre code {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 0 !important;
+}
+
+/* Callouts */
+.nextra-callout {
+  border-radius: 0.75rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.nextra-callout[data-type="warning"] {
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  background: rgba(245, 158, 11, 0.05) !important;
+}
+
+.nextra-callout[data-type="error"] {
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+}
+
+.nextra-callout[data-type="info"] {
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  background: rgba(59, 130, 246, 0.05) !important;
+}
+
+/* Cards */
+.nextra-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0.75rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.nextra-card:hover {
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  background: rgba(16, 185, 129, 0.05) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Table of Contents */
+.nextra-toc {
+  border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.nextra-toc a {
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 0.875rem !important;
+}
+
+.nextra-toc a:hover,
+.nextra-toc a.active {
+  color: #10b981 !important;
+}
+
+/* Search */
+.nextra-search input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+.nextra-search input::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.nextra-search input:focus {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: rgba(255, 255, 255, 0.05) !important;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 3px solid #10b981 !important;
+  background: rgba(16, 185, 129, 0.05) !important;
+  padding: 1rem 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0 !important;
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+li::marker {
+  color: #10b981;
+}
+
+/* Footer */
+.nextra-footer {
+  background: transparent !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Banner */
+.nextra-banner {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1)) !important;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2) !important;
+}
+
+.nextra-banner a {
+  color: white !important;
+}
+
+/* Breadcrumbs */
+.nextra-breadcrumb {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.nextra-breadcrumb a:hover {
+  color: #10b981;
+}
+
+/* Navigation buttons */
+.nextra-nav-link {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0.5rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.nextra-nav-link:hover {
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  background: rgba(16, 185, 129, 0.05) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Selection */
+::selection {
+  background: rgba(16, 185, 129, 0.3);
+  color: white;
+}
+
+/* Focus states */
+*:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+/* Steps component styling */
+.nextra-steps {
+  margin-left: 0 !important;
+  border-left: 2px solid rgba(16, 185, 129, 0.3) !important;
+  padding-left: 2rem;
+}
+
+.nextra-steps h3::before {
+  background: #10b981 !important;
+}
+
+/* Tabs */
+.nextra-tab-bar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.nextra-tab {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.nextra-tab:hover {
+  color: white !important;
+}
+
+.nextra-tab[data-active="true"] {
+  color: #10b981 !important;
+  border-bottom-color: #10b981 !important;
+}
+
+/* File tree */
+.nextra-filetree {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, opacity;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+/* Remove transitions from code blocks */
+pre, pre * {
+  transition: none !important;
+}

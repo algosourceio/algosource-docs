@@ -1,0 +1,78 @@
+---
+title: "Defining Clear Deliverables"
+description: "Concrete outcomes"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Defining Clear Deliverables
+
+Vague proposals sink. Concrete ones float.
+
+## Deliverable vs Vague
+
+| Vague | Concrete | Why Better |
+|-------|----------|-----------|
+| "Improve performance" | "Reduce API latency by 30% for 90th percentile" | Measurable |
+| "Add features" | "Implement caching layer for user queries" | Specific |
+| "Fix bugs" | "Fix N+1 queries in post listing (issue #123)" | Testable |
+| "Better docs" | "Write 5 guides covering [specific areas]" | Completable |
+| "Optimize" | "Reduce bundle size from 450KB to 300KB" | Verifiable |
+
+## Why Specificity Matters
+
+```
+Vague deliverables lead to:
+- Maintainers unsure if you're done
+- You unsure if you're done
+- Misaligned expectations
+- Wasted time arguing over completion
+
+Concrete deliverables mean:
+- Clear definition of success
+- Easy to verify
+- Easy to test
+- Unambiguous completion
+```
+
+## The Milestone Breakdown
+
+Each major deliverable should have:
+
+1. **Concrete Description**
+   - What exactly will exist when done?
+
+2. **Acceptance Criteria**
+   - How do you measure success?
+
+3. **Dependencies**
+   - What needs to be done first?
+
+4. **Testing**
+   - How will you verify it works?
+
+## Example Structure
+
+```markdown
+## Deliverable 1: Caching Layer
+
+### Description
+Implement Redis-based caching for user profile queries, 
+reducing database load and API response times.
+
+### Acceptance Criteria
+- [ ] Redis integration working
+- [ ] Cache invalidation on user updates
+- [ ] 30% latency reduction in benchmarks
+- [ ] Tests covering cache edge cases
+
+### Timeline
+Weeks 1-3
+
+### Dependencies
+Redis setup in test environment
+```
+
+---
+
+> **"We'll figure it out as we go" is not a deliverable.** Be specific.

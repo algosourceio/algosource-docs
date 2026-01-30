@@ -1,0 +1,71 @@
+---
+title: "Logs, Stack Traces & Errors"
+description: "Reading error output"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Logs, Stack Traces & Error Reports
+
+Master the error output and you master debugging.
+
+## Stack Traces
+
+Show the path that led to error:
+
+```
+File "main.py", line 15, in <module>
+    process_user(user_id)
+    ↓
+File "service.py", line 42, in process_user
+    user = get_user(user_id)
+    ↓
+File "db.py", line 8, in get_user
+    return db.query(User).filter(id=user_id).first()
+    ↓
+AttributeError: 'NoneType' object has no attribute 'first'
+```
+
+**Read backwards:**
+- Last line: The actual error
+- Lines above: How you got there
+
+## Log Levels
+
+```
+DEBUG:   Detailed info for debugging
+INFO:    General information (startup, etc)
+WARNING: Something unexpected, not an error
+ERROR:   Something failed, but app continues
+CRITICAL: App is stopping
+```
+
+Use appropriate level for clarity.
+
+## Error Messages
+
+Good error messages have:
+
+```
+❌ Bad:
+"Error 404"
+
+✅ Good:
+"User with ID 123 not found in database. 
+ Expected user to exist before processing. 
+ Check if user was created successfully."
+```
+
+## Reporting Errors
+
+When reporting a bug, include:
+
+1. **Exact error message**
+2. **What you did to trigger it**
+3. **Expected vs actual behavior**
+4. **Stack trace (if available)**
+5. **Environment (OS, Python version, etc)**
+
+---
+
+> **The error message is your best friend.** Read it carefully before Googling.

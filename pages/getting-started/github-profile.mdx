@@ -1,0 +1,284 @@
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Setting Up Your GitHub Profile
+
+<Callout type="info" emoji="ℹ️">
+**First Impressions Matter**
+
+When you submit a PR, maintainers will look at your profile. A professional profile builds trust. A blank profile raises red flags.
+</Callout>
+
+## What Maintainers See
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    MAINTAINER'S FIRST LOOK                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│                ┌─────────────────────────────────────┐                     │
+│                │         YOUR GITHUB PROFILE         │                     │
+│                │                                     │                     │
+│                │  ┌─────┐  @username                 │                     │
+│                │  │ 📷  │  Full Name                 │                     │
+│                │  └─────┘  Bio: "What I do"          │                     │
+│                │           📍 Location               │                     │
+│                │           🔗 Website                │                     │
+│                │           🏢 Company                │                     │
+│                │                                     │                     │
+│                │  ═══════════════════════════════    │                     │
+│                │  🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩          │                     │
+│                │  Contribution Activity              │                     │
+│                │                                     │                     │
+│                │  📌 Pinned Repositories             │                     │
+│                │  [Project 1] [Project 2] [Project 3]│                     │
+│                │                                     │                     │
+│                └─────────────────────────────────────┘                     │
+│                                                                             │
+│  In seconds, they evaluate:                                                 │
+│  ✓ Is this a real person?                                                   │
+│  ✓ Do they have relevant experience?                                        │
+│  ✓ Have they contributed before?                                            │
+│  ✓ Are they likely to finish what they start?                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## The Good vs Bad Profile
+
+<Cards>
+<Card title="🚫 Red Flag Profile">
+- No profile picture
+- No bio
+- No pinned repositories  
+- No contribution activity
+- Generic username like "user12345"
+- Account created yesterday
+</Card>
+
+<Card title="✅ Trust-Building Profile">
+- Professional photo or avatar
+- Clear bio with skills
+- Pinned personal projects
+- Regular contribution activity
+- Professional username
+- Account with history
+</Card>
+</Cards>
+
+---
+
+## Step-by-Step Profile Setup
+
+### 1. Profile Picture
+
+<Steps>
+
+### Choose a photo
+
+Options in order of preference:
+1. Professional headshot
+2. High-quality casual photo
+3. Illustrated avatar (like Notion style)
+4. GitHub-generated identicon (acceptable)
+
+**Never:** No photo, memes, anime characters (for professional contributions)
+
+
+
+### Upload
+
+Go to [github.com/settings/profile](https://github.com/settings/profile) and click "Upload new picture"
+
+</Steps>
+
+### 2. Name and Username
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    NAME GUIDELINES                              │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  USERNAME (handle)                                              │
+│  ════════════════                                               │
+│  ✓ johndeveloper, jsmith-dev, jane-code                        │
+│  ✗ user123456, xXx_hacker_xXx, temporary_account               │
+│                                                                 │
+│  DISPLAY NAME (full name)                                       │
+│  ════════════════════════                                       │
+│  ✓ John Smith, Jane Developer                                  │
+│  ✗ (blank), "The Hacker", emojis                               │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 3. Bio
+
+Your bio appears in many places. Make it count:
+
+**Template:**
+```
+[Role/Title] | [Primary skill] | [Secondary skill] | [Optional: Interests]
+```
+
+**Examples:**
+```
+Full-stack developer | TypeScript & React | Open source contributor
+CS Student @ Stanford | Python & ML | Building tools for developers  
+Software Engineer | Rust enthusiast | Contributing to database projects
+```
+
+### 4. Details to Add
+
+| Field | What to Put |
+|-------|-------------|
+| Company | Your employer or "Independent" |
+| Location | City, Country (or just Country) |
+| Website | Personal site, blog, or LinkedIn |
+| Social accounts | Twitter/X if relevant |
+
+---
+
+## Create a Profile README
+
+A profile README appears at the top of your profile:
+
+<Steps>
+
+### Create repository
+
+Create a new repository with the **same name as your username**.
+Example: If you're `@johndoe`, create repo `johndoe`.
+
+
+
+### Add README.md
+
+```markdown
+# Hi, I'm John 👋
+
+I'm a software developer interested in open source and web technologies.
+
+## 🔧 Technologies I work with
+- JavaScript / TypeScript
+- React, Next.js
+- Node.js, Python
+
+## 🌱 Currently learning
+- Rust
+- System design
+
+## 💬 Open source interests
+- Developer tools
+- Documentation
+- Accessibility
+
+## 📫 How to reach me
+- Twitter: @johndoe
+- Email: john@example.com
+```
+
+</Steps>
+
+<Callout type="warning" emoji="⚠️">
+**Keep It Simple**
+
+Don't add excessive badges, stats widgets, or animations. Many maintainers find them distracting. Simple and professional wins.
+</Callout>
+
+---
+
+## Pin Your Best Repositories
+
+<Steps>
+
+### Choose 4-6 projects to pin
+
+Priority:
+1. Open source contributions (forks you've PR'd to)
+2. Personal projects with clean code
+3. Tutorial projects (lower priority)
+
+
+
+### Pin them
+
+Go to your profile → Click "Customize your pins" → Select repos
+
+
+
+### Add descriptions
+
+Each pinned repo should have:
+- Clear description
+- Relevant topics/tags
+- README with instructions
+
+</Steps>
+
+---
+
+## Contribution Graph
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                  CONTRIBUTION GRAPH                             │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Less                               More                        │
+│   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░          │
+│   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░          │
+│   ░░░░░░░░░░░░░░▓▓░░░░▓▓▓▓▓░░░░░░▓▓▓▓▓▓▓▓░░░░░░░░░░          │
+│   ░░░░░░░░░░░░░░▓▓░░░░▓▓▓▓▓▓░░░░▓▓▓▓▓▓▓▓▓▓░░░░░░░░░          │
+│   ░░░░░░░░░░░░░▓▓▓░░░▓▓▓▓▓▓▓░░░▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░          │
+│   ░░░░░░░░░░░░▓▓▓▓░░░▓▓▓▓▓▓▓▓░▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░          │
+│   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░          │
+│                                                                 │
+│  What maintainers look for:                                     │
+│  ✓ Consistency over time (not just Hacktoberfest)              │
+│  ✓ Activity on weekdays (shows regular work)                    │
+│  ✗ Obvious contribution farming                                 │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<Callout type="tip" emoji="💡">
+**Don't Game the Graph**
+
+Don't make fake commits to fill your graph. Quality matters more than green squares. Maintainers can tell.
+</Callout>
+
+---
+
+## Final Checklist
+
+
+- [ ] Profile photo uploaded (face or professional avatar)
+- [ ] Display name set to your real name
+- [ ] Bio written with skills and interests
+- [ ] Location added
+- [ ] Website or social link added
+- [ ] Profile README created (optional but recommended)
+- [ ] 4-6 repositories pinned
+- [ ] Pinned repos have descriptions and READMEs
+- [ ] Email verified
+- [ ] Two-factor authentication enabled
+
+
+---
+
+## Two-Factor Authentication
+
+<Callout type="warning" emoji="⚠️">
+**Enable 2FA Now**
+
+Many open source projects require 2FA. GitHub itself is moving toward requiring it. Set it up before you need it.
+</Callout>
+
+Go to [github.com/settings/security](https://github.com/settings/security):
+1. Click "Enable two-factor authentication"
+2. Use an authenticator app (recommended) or SMS
+3. Save backup codes somewhere safe
+
+

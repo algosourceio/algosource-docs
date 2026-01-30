@@ -1,0 +1,85 @@
+---
+title: "Contributions as Case Studies"
+description: "Tell your story"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Using Contributions as Case Studies
+
+Turn your PRs into career stories.
+
+## The Case Study Format
+
+```markdown
+# Case Study: [Feature Name]
+
+## Problem
+[What was the issue?]
+
+## Challenge
+[Why was it hard?]
+
+## Solution
+[How you solved it]
+
+## Results
+[What changed?]
+
+## Learnings
+[What did you learn?]
+
+[Link to PR]
+```
+
+## Example
+
+```markdown
+# Case Study: Caching Layer Implementation
+
+## Problem
+Post API was returning 10,000+ queries, 
+causing 8-second page loads.
+
+## Challenge
+Cache invalidation in distributed system.
+Needed to handle concurrent updates.
+
+## Solution
+Implemented Redis with:
+- 5-minute TTL for consistency
+- Event-based invalidation on writes
+- Fallback to database
+
+## Results
+- 80% hit rate achieved
+- 90% latency reduction (8s → 0.8s)
+- Handling 3x user load
+
+## Learnings
+- Distributed cache complexities
+- Performance monitoring importance
+- Trade-offs between consistency/speed
+
+[Link: github.com/...]
+```
+
+## Where to Share
+
+- Blog posts
+- Resume/portfolio
+- Interview discussions
+- Speaking proposals
+- Networking conversations
+
+## Impact
+
+Case studies prove:
+- Your technical depth
+- Your communication
+- Your impact
+- Your learning ability
+
+---
+
+> **Your work should tell a story.** Help people understand what you achieved and why it matters.

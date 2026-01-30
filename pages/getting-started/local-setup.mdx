@@ -1,0 +1,378 @@
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Local Setup Guide
+
+<Callout type="info" emoji="ℹ️">
+**The Test of Readiness**
+
+If you can't run the project locally, you can't contribute to it. This step is non-negotiable.
+</Callout>
+
+## The Local Setup Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        LOCAL SETUP PIPELINE                                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐             │
+│  │   FORK   │───►│  CLONE   │───►│ INSTALL  │───►│  CONFIG  │             │
+│  │          │    │          │    │  DEPS    │    │          │             │
+│  └──────────┘    └──────────┘    └──────────┘    └──────────┘             │
+│       │              │               │               │                     │
+│       ▼              ▼               ▼               ▼                     │
+│   Copy repo     Get code       npm install      .env files                 │
+│   to your       locally        pip install      config files               │
+│   account                      go mod           databases                  │
+│                                                                             │
+│                         │                                                   │
+│                         ▼                                                   │
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐             │
+│  │  BUILD   │───►│   RUN    │───►│  TESTS   │───►│ UPSTREAM │             │
+│  │          │    │          │    │          │    │  REMOTE  │             │
+│  └──────────┘    └──────────┘    └──────────┘    └──────────┘             │
+│       │              │               │               │                     │
+│       ▼              ▼               ▼               ▼                     │
+│   Compile        Start dev       Run test        Add upstream              │
+│   if needed      server          suite           remote                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Step 1: Fork the Repository
+
+<Steps>
+
+### Go to the project's GitHub page
+
+Navigate to the repository you want to contribute to.
+
+
+
+### Click the Fork button
+
+Top right corner. This creates a copy in YOUR GitHub account.
+
+
+
+### Wait for fork to complete
+
+GitHub will redirect you to your fork: `github.com/YOUR-USERNAME/project-name`
+
+</Steps>
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    FORK ARCHITECTURE                            │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────────────────────────────────────┐           │
+│  │           ORIGINAL REPO (UPSTREAM)              │           │
+│  │        github.com/org/project                   │           │
+│  │                                                 │           │
+│  │  main ─────────────────────────────────►        │           │
+│  └────────────────────┬────────────────────────────┘           │
+│                       │ Fork                                    │
+│                       ▼                                         │
+│  ┌─────────────────────────────────────────────────┐           │
+│  │            YOUR FORK (ORIGIN)                   │           │
+│  │        github.com/you/project                   │           │
+│  │                                                 │           │
+│  │  main ─────────────────────────────────►        │           │
+│  └────────────────────┬────────────────────────────┘           │
+│                       │ Clone                                   │
+│                       ▼                                         │
+│  ┌─────────────────────────────────────────────────┐           │
+│  │            LOCAL CLONE                          │           │
+│  │        ~/projects/project                       │           │
+│  │                                                 │           │
+│  │  main ─────────────────────────────────►        │           │
+│  │    └── feature-branch ──────────────►          │           │
+│  └─────────────────────────────────────────────────┘           │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Step 2: Clone Your Fork
+
+```bash
+# Clone your fork (not the original!)
+git clone git@github.com:YOUR-USERNAME/project-name.git
+
+# Navigate into the project
+cd project-name
+```
+
+<Callout type="warning" emoji="⚠️">
+**Clone YOUR Fork**
+
+Clone from YOUR fork (`your-username/project`), not the original (`org/project`). You won't have push access to the original.
+</Callout>
+
+---
+
+## Step 3: Add Upstream Remote
+
+This lets you sync with the original repository:
+
+```bash
+# Add the original repo as "upstream"
+git remote add upstream git@github.com:original-org/project-name.git
+
+# Verify remotes
+git remote -v
+
+# Should show:
+# origin    git@github.com:YOUR-USERNAME/project.git (fetch)
+# origin    git@github.com:YOUR-USERNAME/project.git (push)
+# upstream  git@github.com:original-org/project.git (fetch)
+# upstream  git@github.com:original-org/project.git (push)
+```
+
+---
+
+## Step 4: Install Dependencies
+
+### JavaScript/TypeScript
+
+```bash
+# Using npm
+npm install
+
+# Using yarn
+yarn install
+
+# Using pnpm (preferred for monorepos)
+pnpm install
+
+# Using bun
+bun install
+```
+
+### Python
+
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate it
+source venv/bin/activate  # Linux/macOS
+# or
+.\venv\Scripts\activate   # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+# or for development
+pip install -e ".[dev]"
+```
+
+### Rust
+
+```bash
+cargo build
+```
+
+### Go
+
+```bash
+go mod download
+```
+
+---
+
+## Step 5: Environment Configuration
+
+Many projects require environment variables:
+
+```bash
+# Check if there's an example env file
+ls -la | grep -i env
+
+# Common names:
+# .env.example
+# .env.sample
+# .env.template
+
+# Copy and configure
+cp .env.example .env
+
+# Edit with your editor
+code .env  # or vim .env
+```
+
+<Callout type="tip" emoji="💡">
+**Check docs for env setup**
+
+README or CONTRIBUTING.md usually explains required environment variables.
+</Callout>
+
+---
+
+## Step 6: Build (If Required)
+
+### Check if build is needed
+
+```bash
+# Check package.json scripts
+cat package.json | grep -A 20 '"scripts"'
+
+# Common build commands:
+npm run build
+yarn build
+pnpm build
+```
+
+### Watch mode for development
+
+```bash
+# Continuous rebuild during development
+npm run dev
+# or
+npm run watch
+```
+
+---
+
+## Step 7: Run the Project
+
+<Cards>
+<Card title="Web Projects">
+```bash
+npm run dev
+# Usually runs at localhost:3000
+```
+</Card>
+
+<Card title="CLI Tools">
+```bash
+./bin/cli --help
+# or
+node ./src/cli.js
+```
+</Card>
+
+<Card title="Libraries">
+```bash
+# Libraries might not "run"
+# Check tests or examples instead
+npm test
+```
+</Card>
+
+<Card title="Backend APIs">
+```bash
+npm run start:dev
+# Check API at localhost:PORT
+```
+</Card>
+</Cards>
+
+---
+
+## Step 8: Run Tests
+
+<Callout type="warning" emoji="⚠️">
+**Tests Must Pass Before PR**
+
+If tests fail on a clean clone, it's a project issue. But YOUR changes must not break tests.
+</Callout>
+
+```bash
+# JavaScript
+npm test
+npm run test:watch  # Interactive mode
+
+# Python
+pytest
+python -m unittest discover
+
+# Rust
+cargo test
+
+# Go
+go test ./...
+```
+
+---
+
+## Common Setup Issues
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      TROUBLESHOOTING GUIDE                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  PROBLEM: npm install fails                                                 │
+│  ─────────────────────────────                                              │
+│  → Check Node version (nvm use or volta)                                    │
+│  → Delete node_modules and package-lock.json, retry                         │
+│  → Check for native dependencies requiring build tools                      │
+│                                                                             │
+│  PROBLEM: "Module not found"                                                │
+│  ─────────────────────────────                                              │
+│  → Did you run npm install?                                                 │
+│  → Is the import path correct?                                              │
+│  → Check if module is in dependencies (not just devDependencies)            │
+│                                                                             │
+│  PROBLEM: Python import errors                                              │
+│  ─────────────────────────────                                              │
+│  → Is virtualenv activated?                                                 │
+│  → Did you install with pip install -e .?                                   │
+│  → Check PYTHONPATH                                                         │
+│                                                                             │
+│  PROBLEM: Docker errors                                                     │
+│  ─────────────────────────────                                              │
+│  → Is Docker running?                                                       │
+│  → docker-compose down && docker-compose up --build                         │
+│  → Check port conflicts                                                     │
+│                                                                             │
+│  PROBLEM: Database connection fails                                         │
+│  ─────────────────────────────                                              │
+│  → Is database service running?                                             │
+│  → Check .env connection string                                             │
+│  → Run migrations if needed                                                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Keeping Your Fork Updated
+
+Before starting new work, always sync with upstream:
+
+```bash
+# Fetch upstream changes
+git fetch upstream
+
+# Switch to main
+git checkout main
+
+# Merge upstream changes
+git merge upstream/main
+
+# Push to your fork
+git push origin main
+```
+
+---
+
+## Setup Verification Checklist
+
+
+- [ ] Repository forked to my account
+- [ ] Clone is from MY fork (not upstream)
+- [ ] Upstream remote added
+- [ ] Dependencies installed without errors
+- [ ] Environment variables configured
+- [ ] Project builds successfully
+- [ ] Project runs locally
+- [ ] All tests pass
+- [ ] I can access the running application (if web)
+
+
+

@@ -1,0 +1,119 @@
+---
+title: "Tooling & Developer Setup"
+description: "Essential developer tools"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Tooling & Developer Setup
+
+The right tools make you faster and happier.
+
+## Why This Matters
+
+```
+Good Tools:
+- Catch errors before commit
+- Automate repetitive tasks
+- Provide fast feedback
+- Make testing easy
+
+Bad/No Tools:
+- Find errors after push
+- Manual, slow processes
+- Slow feedback loop
+- Testing is painful
+```
+
+## The Tooling Landscape
+
+```
+Tier 1: MUST HAVE (Non-negotiable)
+- Code Editor (VSCode, JetBrains)
+- Git client (command line or GUI)
+- Docker (if project uses it)
+
+Tier 2: SHOULD HAVE (Highly recommended)
+- Linter (catches syntax errors)
+- Formatter (ensures consistent style)
+- Local CI simulation (test before pushing)
+
+Tier 3: NICE TO HAVE (Productivity boosters)
+- Debug tools
+- Profiling tools
+- Shell customizations
+```
+
+## Essential Tool Categories
+
+<Cards>
+<Card title="Editor & IDE Setup">
+VSCode, JetBrains IntelliJ, Vim/Neovim configurations, extensions
+</Card>
+
+<Card title="Version Control">
+Git workflows, GitHub CLI, merge tools, branch management
+</Card>
+
+<Card title="Linting & Formatting">
+ESLint, Prettier, Black, autopep8, pre-commit hooks
+</Card>
+
+<Card title="CI/CD Understanding">
+GitHub Actions, local CI simulation, understanding failures
+</Card>
+
+<Card title="Debugging">
+VSCode debugger, browser DevTools, print debugging, profilers
+</Card>
+
+<Card title="Container Tools">
+Docker, Docker Compose, local testing environments
+</Card>
+</Cards>
+
+## Tool Setup Quick Reference
+
+| Tool | Language | Setup | Purpose |
+|------|----------|-------|---------|
+| **prettier** | JS/TS | `npm install --save-dev prettier` | Auto code formatter |
+| **black** | Python | `pip install black` | Auto code formatter |
+| **eslint** | JS/TS | `npm install --save-dev eslint` | Catch syntax errors |
+| **pylint** | Python | `pip install pylint` | Catch syntax errors |
+| **pre-commit** | Any | `pip install pre-commit` | Run checks before commit |
+| **docker** | Any | Install from docker.com | Test in isolation |
+
+## Real-World Scenario: Debugging a Failed Test
+
+```
+Problem: Test passes locally, fails in CI
+
+Debug Steps:
+1. Check CI logs first (not local logs)
+2. Recreate CI environment locally with Docker
+3. Run the exact same command CI runs
+4. Use debugger to step through code
+5. Check environment variables
+6. Compare OS (macOS vs Linux differences)
+
+Tool Setup:
+docker run -it <project-image> bash
+# Then run the failing test in that container
+```
+
+## Anti-Pattern: Ignoring CI Failures
+
+```
+❌ BAD: "CI passed on their machine, must be flaky"
+✓ GOOD: "CI failed. Let me understand why and fix my code."
+
+90% of "flaky tests" are actually environment issues:
+- Missing environment variable
+- Race condition in code
+- Version mismatch
+- OS-specific behavior
+```
+
+---
+
+> **Invest in your tools.** Better tools mean better code, faster.

@@ -1,0 +1,137 @@
+---
+title: "FAQs & Common Failures"
+description: "Common questions answered"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# FAQs & Common Failure Patterns
+
+Real questions from real contributors.
+
+## Most Common Questions
+
+1. [Why PRs Get Ignored](prs-ignored)
+2. [Why PRs Get Rejected](prs-rejected)
+3. [Not Feeling Good Enough](not-good-enough)
+4. [Handling Imposter Syndrome](imposter-syndrome)
+5. [When to Pause or Pivot](pause-pivot)
+
+## The Honest FAQ Answers
+
+### "Why is my PR being ignored?"
+
+**Real reasons (rank by frequency):**
+```
+1. Maintainers are busy (most common - 70%)
+   → Solution: Ping after 3 days, ask "How can I help move this forward?"
+   
+2. PR has issues but wasn't reviewed yet (15%)
+   → Solution: Check CI logs, see if tests pass
+   
+3. PR was abandoned by maintainer (10%)
+   → Solution: Ask if they want help, offer to close and reopen cleaner version
+   
+4. You didn't follow contribution guidelines (5%)
+   → Solution: Read CONTRIBUTING.md, reformat, update
+```
+
+**What to actually do:**
+- Day 1: Wait for initial response
+- Day 3: Comment "Hey, is there anything I can do to help move this forward?"
+- Day 7: "I see this hasn't been reviewed. Should I close and reopen?"
+- Day 14: Close and reopen with summary, improved version
+
+**Time to expect:**
+- Small fixes: 2-7 days
+- Feature PRs: 1-3 weeks
+- Major changes: 1-2 months
+- (These are medians, not guarantees)
+
+### "Why was my PR rejected?"
+
+**Common rejection reasons:**
+```
+1. Doesn't solve the stated problem (30%)
+   → "This adds feature X, but issue Y needs Z"
+   
+2. Out of scope for the project (25%)
+   → "Nice idea, but we don't do that here"
+   
+3. Technical issues (20%)
+   → "Doesn't handle edge case, breaks existing code"
+   
+4. Code quality issues (15%)
+   → "Needs tests, needs documentation"
+   
+5. Communication issue (10%)
+   → "Didn't discuss before coding"
+```
+
+**How to respond:**
+```
+✓ Good: "Thanks for the feedback. I see the issue now. Want me to fix it?"
+❌ Bad: "But I think my approach is better"
+
+Remember: They reviewed your code. That's effort.
+```
+
+### "I don't feel good enough"
+
+**The truth:**
+```
+You're comparing your:
+- Chapter 2 (current) to
+- Chapter 20 (everyone else's finished work)
+
+They started at Chapter 2 once too.
+They were confused, made mistakes, wanted to quit.
+They didn't.
+
+That's the only difference.
+```
+
+**Action steps:**
+1. Find someone who contributes + is friendly
+2. Ask them: "What was your first PR like?"
+3. They'll tell you: "Oh man, I was so confused"
+4. That's your permission to be confused too
+
+### "Is this imposter syndrome or am I actually bad?"
+
+**Check:**
+```
+IMPOSTER SYNDROME signals:
+✓ People say your code is good
+✓ Your PRs usually get merged
+✓ But you feel like a fraud
+→ It's imposter syndrome
+
+ACTUALLY STRUGGLING signals:
+✓ PRs consistently get rejected
+✓ You struggle with basic concepts
+✓ Mentors say "slow down, learn this first"
+→ You need more learning, not confidence
+
+The fix is different:
+- Imposter? Get proof (merged code, testimonials)
+- Struggling? Get help (mentorship, courses, time)
+```
+
+### "When should I give up or try a different project?"
+
+**Give up after:**
+- 3 projects, no success (wrong ecosystem)
+- 1 project, 6 months, still confused (bad fit)
+- Constant rejection + no feedback (toxic community)
+
+**Try different project after:**
+- 2-3 rejected PRs from same person (they might have high standards)
+- Project seems abandoned (no commits in 6+ months)
+- Community is dismissive (rude or unwelcoming)
+
+**Keep trying after:**
+- 1st PR rejection (normal)
+- Feedback given (they care)
+- Slow response time (they're busy, not uninterested)
+

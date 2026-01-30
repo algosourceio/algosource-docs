@@ -1,0 +1,22 @@
+{
+  "index": {
+    "title": "Welcome",
+    "theme": {
+      "layout": "full"
+    }
+  },
+  "before-you-start": "Before You Start",
+  "getting-started": "Getting Started",
+  "git-github": "Git & GitHub",
+  "first-contribution": "First Contribution",
+  "issues-prs": "Issues & PRs",
+  "programs": "Open Source Programs",
+  "choosing-org": "Choosing an Organization",
+  "proposals": "Writing Proposals",
+  "communication": "Communication",
+  "tooling": "Tooling & Setup",
+  "long-term": "Long-Term Contributing",
+  "career": "Career & Growth",
+  "faqs": "FAQs",
+  "final-check": "Final Check"
+}

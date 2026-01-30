@@ -1,0 +1,392 @@
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Development Environment Setup
+
+<Callout type="info" emoji="ℹ️">
+**One-Time Setup**
+
+Do this once, and you'll be ready to contribute to any project. Don't skip steps—improper setup causes embarrassing issues later.
+</Callout>
+
+## Environment Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      DEVELOPMENT ENVIRONMENT STACK                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                         EDITOR / IDE                                 │   │
+│  │                   VS Code, WebStorm, Vim, etc.                       │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                    │                                        │
+│                                    ▼                                        │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                        VERSION CONTROL                               │   │
+│  │                        Git + GitHub CLI                              │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                    │                                        │
+│                                    ▼                                        │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                      LANGUAGE RUNTIMES                               │   │
+│  │             Node.js, Python, Rust, Go, Java, etc.                    │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                    │                                        │
+│                                    ▼                                        │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                      PACKAGE MANAGERS                                │   │
+│  │               npm, pnpm, pip, cargo, etc.                            │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                    │                                        │
+│                                    ▼                                        │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                      DEVELOPMENT TOOLS                               │   │
+│  │           Docker, testing tools, linters, formatters                 │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Step 1: Install Git
+
+<Steps>
+
+### Check if Git is installed
+
+```bash
+git --version
+```
+If you see a version number, skip to configuration.
+
+
+
+### Install Git (if needed)
+
+**macOS:**
+```bash
+xcode-select --install
+# or
+brew install git
+```
+
+**Ubuntu/Debian:**
+```bash
+sudo apt update && sudo apt install git
+```
+
+**Windows:**
+Download from [git-scm.com](https://git-scm.com/) or use:
+```powershell
+winget install Git.Git
+```
+
+
+
+### Configure Git globally
+
+```bash
+# Set your identity (use your REAL name and GitHub email)
+git config --global user.name "Your Full Name"
+git config --global user.email "your-email@github.com"
+
+# Set default branch to main
+git config --global init.defaultBranch main
+
+# Set useful defaults
+git config --global pull.rebase false
+git config --global push.autoSetupRemote true
+```
+
+
+
+### Verify configuration
+
+```bash
+git config --list
+```
+
+</Steps>
+
+<Callout type="warning" emoji="⚠️">
+**Use Your GitHub Email**
+
+The email in `git config` MUST match your GitHub account email, or your commits won't be linked to your profile.
+</Callout>
+
+---
+
+## Step 2: Set Up SSH Keys
+
+SSH keys let you authenticate to GitHub without passwords.
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                   SSH AUTHENTICATION FLOW                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────┐           ┌─────────────┐                     │
+│  │ Your Machine│           │   GitHub    │                     │
+│  │             │           │             │                     │
+│  │ Private Key │ ────────► │ Public Key  │                     │
+│  │ (stays here)│  proves   │ (stored)    │                     │
+│  │             │ identity  │             │                     │
+│  └─────────────┘           └─────────────┘                     │
+│                                                                 │
+│  NEVER share your private key. NEVER.                           │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<Steps>
+
+### Generate SSH key
+
+```bash
+ssh-keygen -t ed25519 -C "your-email@github.com"
+```
+Press Enter to accept default location. Use a passphrase for extra security.
+
+
+
+### Start SSH agent
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+
+
+### Copy public key
+
+```bash
+# macOS
+cat ~/.ssh/id_ed25519.pub | pbcopy
+
+# Linux
+cat ~/.ssh/id_ed25519.pub | xclip -selection clipboard
+
+# Windows (Git Bash)
+cat ~/.ssh/id_ed25519.pub | clip
+```
+
+
+
+### Add to GitHub
+
+1. Go to [github.com/settings/keys](https://github.com/settings/keys)
+2. Click "New SSH key"
+3. Title: "My Laptop" (or descriptive name)
+4. Paste the key
+5. Click "Add SSH key"
+
+
+
+### Test connection
+
+```bash
+ssh -T git@github.com
+```
+You should see: "Hi username! You've successfully authenticated..."
+
+</Steps>
+
+---
+
+## Step 3: Install GitHub CLI
+
+GitHub CLI (`gh`) makes many operations easier.
+
+<Steps>
+
+### Install GitHub CLI
+
+**macOS:**
+```bash
+brew install gh
+```
+
+**Ubuntu/Debian:**
+```bash
+sudo apt install gh
+```
+
+**Windows:**
+```powershell
+winget install GitHub.cli
+```
+
+
+
+### Authenticate
+
+```bash
+gh auth login
+```
+Follow the prompts. Choose SSH if you set up SSH keys.
+
+
+
+### Verify
+
+```bash
+gh auth status
+```
+
+</Steps>
+
+---
+
+## Step 4: Code Editor Setup
+
+### VS Code (Recommended)
+
+
+- [ ] Install from [code.visualstudio.com](https://code.visualstudio.com/)
+- [ ] Install command line tool: Cmd/Ctrl+Shift+P → "Shell Command: Install 'code' command in PATH"
+- [ ] Sign in with GitHub (for settings sync)
+
+
+### Essential Extensions
+
+| Extension | Purpose |
+|-----------|---------|
+| GitLens | Enhanced Git integration |
+| GitHub Pull Requests | Review PRs in editor |
+| EditorConfig | Respect project settings |
+| ESLint / Prettier | Code formatting |
+| Error Lens | Inline error display |
+
+### Recommended Settings
+
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "editor.rulers": [80, 120]
+}
+```
+
+---
+
+## Step 5: Language Runtimes
+
+Install based on your target projects:
+
+<Cards>
+<Card title="Node.js">
+```bash
+# Use nvm (node version manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+nvm install --lts
+nvm use --lts
+```
+</Card>
+
+<Card title="Python">
+```bash
+# Use pyenv
+curl https://pyenv.run | bash
+pyenv install 3.12
+pyenv global 3.12
+```
+</Card>
+
+<Card title="Rust">
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+</Card>
+
+<Card title="Go">
+Download from [go.dev/dl](https://go.dev/dl/) or:
+```bash
+# macOS
+brew install go
+```
+</Card>
+</Cards>
+
+---
+
+## Step 6: Docker (Optional but Common)
+
+Many projects use Docker for development:
+
+```bash
+# macOS / Windows: Download Docker Desktop
+# https://www.docker.com/products/docker-desktop
+
+# Linux:
+sudo apt install docker.io
+sudo usermod -aG docker $USER
+```
+
+---
+
+## Verification Checklist
+
+Run each command and verify output:
+
+```bash
+# Git
+git --version
+# ✓ Should show: git version 2.x.x
+
+git config user.name
+# ✓ Should show: Your Name
+
+git config user.email
+# ✓ Should show: your-email@github.com
+
+# SSH
+ssh -T git@github.com
+# ✓ Should show: Hi username! ...
+
+# GitHub CLI
+gh auth status
+# ✓ Should show: Logged in to github.com
+
+# Editor
+code --version
+# ✓ Should show version number
+
+# Node.js (if needed)
+node --version
+# ✓ Should show: v20.x.x or similar
+
+# Docker (if installed)
+docker --version
+# ✓ Should show: Docker version x.x.x
+```
+
+---
+
+## Common Setup Issues
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    TROUBLESHOOTING                              │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Problem: "Permission denied (publickey)"                       │
+│  Solution: SSH key not added. Run:                              │
+│    ssh-add ~/.ssh/id_ed25519                                    │
+│                                                                 │
+│  Problem: Commits show wrong author                             │
+│  Solution: Set git config user.name and user.email              │
+│                                                                 │
+│  Problem: "git: command not found"                              │
+│  Solution: Restart terminal, or add to PATH                     │
+│                                                                 │
+│  Problem: "remote: Permission to X denied to Y"                 │
+│  Solution: Fork first, then push to YOUR fork                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+

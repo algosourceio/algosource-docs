@@ -1,0 +1,291 @@
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Beginner vs Contributor vs Maintainer
+
+<Callout type="info" emoji="ℹ️">
+**Understanding the Hierarchy**
+
+Open source has a clear (but rarely documented) hierarchy. Knowing where you are—and where you're going—helps you navigate the community.
+</Callout>
+
+## The Open Source Ladder
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        OPEN SOURCE HIERARCHY                                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│    ⭐ BDFL / PROJECT LEAD                          ┌─────────────────┐     │
+│       Final say on everything                      │ 1-2 people      │     │
+│                                                    └─────────────────┘     │
+│    ───────────────────────────────────────────                              │
+│                                                                             │
+│    🛡️ CORE MAINTAINERS                             ┌─────────────────┐     │
+│       Write access, release management             │ 2-10 people     │     │
+│                                                    └─────────────────┘     │
+│    ───────────────────────────────────────────                              │
+│                                                                             │
+│    👥 REGULAR CONTRIBUTORS                         ┌─────────────────┐     │
+│       Consistent, trusted contributors             │ 10-50 people    │     │
+│                                                    └─────────────────┘     │
+│    ───────────────────────────────────────────                              │
+│                                                                             │
+│    🌱 OCCASIONAL CONTRIBUTORS                      ┌─────────────────┐     │
+│       Sporadic PRs, still learning                 │ 50-200 people   │     │
+│                                                    └─────────────────┘     │
+│    ───────────────────────────────────────────                              │
+│                                                                             │
+│    👤 FIRST-TIME CONTRIBUTORS                      ┌─────────────────┐     │
+│       Just getting started                         │ Hundreds        │     │
+│                                                    └─────────────────┘     │
+│    ───────────────────────────────────────────                              │
+│                                                                             │
+│    👁️ USERS / LURKERS                              ┌─────────────────┐     │
+│       Use but don't contribute                     │ Thousands+      │     │
+│                                                    └─────────────────┘     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Role Breakdown
+
+### 👤 First-time Contributor
+
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-6 mb-6">
+
+**What you can do:**
+- Submit PRs
+- Open issues
+- Comment on discussions
+- Ask questions
+
+**What you can't do:**
+- Merge PRs
+- Close issues
+- Manage releases
+- Make project decisions
+
+**Typical signs:**
+- No previous PRs to the project
+- Questions about basic conventions
+- Learning the codebase
+
+**How to level up:**
+- Get your first PR merged
+- Respond quickly to feedback
+- Be humble and grateful
+- Read all documentation
+
+</div>
+
+### 🌱 Occasional Contributor
+
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-6 mb-6">
+
+**What you can do:**
+- Everything above, plus:
+- Reference past contributions for context
+- Participate in design discussions
+- Help answer newcomer questions
+
+**Typical signs:**
+- A few PRs merged (2-5)
+- Known to some maintainers
+- Understanding of project conventions
+
+**How to level up:**
+- Contribute consistently (monthly+)
+- Take on bigger issues
+- Help with code reviews (even without merge rights)
+- Build relationships with maintainers
+
+</div>
+
+### 👥 Regular Contributor
+
+<div className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-6 mb-6">
+
+**What you can do:**
+- Everything above, plus:
+- Get assigned to issues directly
+- Influence technical decisions
+- Review PRs (reviews carry weight)
+- Mentor newcomers
+
+**What you can't do:**
+- Merge PRs
+- Close/manage issues
+- Release management
+
+**Typical signs:**
+- Consistent contributions over 6+ months
+- Deep knowledge of part of the codebase
+- Maintainers know you by name
+- Your PRs get faster reviews
+
+**How to level up:**
+- Express interest in maintainership
+- Take ownership of a subsystem
+- Help with project management
+- Be reliable and responsive
+
+</div>
+
+### 🛡️ Core Maintainer
+
+<div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-6 mb-6">
+
+**What you can do:**
+- Everything above, plus:
+- Merge PRs
+- Close issues
+- Manage releases
+- Set project direction
+- Add new maintainers
+
+**Responsibilities:**
+- Review PRs from others
+- Maintain CI/CD
+- Security patches
+- Community management
+- Documentation
+- Backward compatibility
+
+<Callout type="warning" emoji="⚠️">
+**Maintainership is a Burden**
+
+Being a maintainer is mostly **unpaid work**. You'll spend more time reviewing others' code than writing your own. Only pursue this if you truly care about the project.
+</Callout>
+
+</div>
+
+---
+
+## Progression Timeline
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        TYPICAL PROGRESSION TIMELINE                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  USER ─────────────────────────────────────────────────────────────────────►│
+│    │                                                                        │
+│    │ [1-4 weeks]                                                            │
+│    ▼                                                                        │
+│  FIRST-TIME CONTRIBUTOR ───────────────────────────────────────────────────►│
+│    │                                                                        │
+│    │ [1-3 months]                                                           │
+│    ▼                                                                        │
+│  OCCASIONAL CONTRIBUTOR ───────────────────────────────────────────────────►│
+│    │                                                                        │
+│    │ [6-12 months]                                                          │
+│    ▼                                                                        │
+│  REGULAR CONTRIBUTOR ──────────────────────────────────────────────────────►│
+│    │                                                                        │
+│    │ [1-2+ years]                                                           │
+│    ▼                                                                        │
+│  CORE MAINTAINER ──────────────────────────────────────────────────────────►│
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+| Transition | Time | Requirements |
+|-----------|------|--------------|
+| User → First Contributor | 1-4 weeks | One merged PR |
+| First → Occasional | 1-3 months | 3-5 merged PRs |
+| Occasional → Regular | 6-12 months | Consistent contributions, relationships |
+| Regular → Maintainer | 1-2+ years | Deep trust, proven reliability |
+
+---
+
+## How Maintainers See You
+
+Based on your GitHub profile and activity, maintainers quickly categorize you:
+
+<Cards>
+<Card title="Green Light ✅">
+**You have:**
+- Previous merged PRs (anywhere)
+- Thoughtful issue comments
+- Complete PR descriptions
+- Responsive to feedback
+</Card>
+
+<Card title="Yellow Light ⚠️">
+**You have:**
+- New account
+- No previous contributions
+- Generic PR description
+- Unknown quantity
+</Card>
+
+<Card title="Red Light 🚫">
+**You have:**
+- Hacktoberfest spam history
+- Abandoned PRs
+- Argumentative comments
+- AI-generated contributions
+</Card>
+</Cards>
+
+---
+
+## Informal Roles
+
+Beyond the official hierarchy, there are important informal roles:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    INFORMAL ROLES                               │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  🔍 THE BUG HUNTER                                              │
+│     Files detailed, reproducible bug reports                    │
+│     Doesn't fix them, but makes them fixable                    │
+│                                                                 │
+│  📝 THE DOCUMENTARIAN                                           │
+│     Keeps docs up to date, writes guides                        │
+│     Often underappreciated but invaluable                       │
+│                                                                 │
+│  🌍 THE TRANSLATOR                                              │
+│     Translates docs and UI                                      │
+│     Opens project to new communities                            │
+│                                                                 │
+│  💬 THE ANSWERER                                                │
+│     Monitors Stack Overflow, Discord, Discussions               │
+│     Reduces maintainer burden significantly                     │
+│                                                                 │
+│  📢 THE EVANGELIST                                              │
+│     Gives talks, writes blog posts                              │
+│     Brings new users and contributors                           │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<Callout type="tip" emoji="💡">
+**Non-code Contributions Matter**
+
+Every role above is valuable even without writing a single line of code. Many maintainers started in these roles.
+</Callout>
+
+---
+
+## Quick Assessment: Where Are You?
+
+
+- [ ] I have merged at least one PR to this project
+- [ ] Maintainers recognize my username
+- [ ] My PRs get reviewed within a week
+- [ ] I'm sometimes tagged on relevant issues
+- [ ] I help review other people's PRs
+- [ ] I have write/merge access to the repo
+
+
+**0 checked:** You're a user or lurker
+**1-2 checked:** First-time / Occasional contributor
+**3-4 checked:** Regular contributor
+**5-6 checked:** Core contributor / Maintainer
+
+

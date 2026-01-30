@@ -1,0 +1,83 @@
+---
+title: "Understanding the Problem Statement"
+description: "Read between the lines"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Understanding the Problem Statement
+
+The best proposals show deep problem understanding.
+
+## What Mentors Want to Hear
+
+```
+"I understand why this matters" >>> "I will do what you ask"
+
+A mentor reading your proposal thinks:
+"Can this person solve the right problem?"
+"Or will they solve something wrong really well?"
+
+Understanding the problem = 40% of success
+```
+
+## The Deep Dive: Real Example
+
+```markdown
+WEAK Understanding:
+"The project needs caching. I will add Redis caching."
+
+STRONG Understanding:
+"Current system makes 500+ DB queries per page load
+(traced via New Relic profiling). 70% are repetitive
+user profile queries (same 100 users accessed repeatedly).
+Current caching is 5-min TTL, no smart invalidation.
+This causes stale data issues in high-frequency scenarios.
+I propose Redis with event-based invalidation, which
+solves stale data + reduces QPS by 60% based on
+similar implementations in [Project X and Y]."
+
+The difference: One shows thinking. One shows understanding.
+```
+
+## Analysis Process
+
+<Steps>
+
+<Step>**Read the Official Description**
+- What does it literally say?
+- What's the stated goal?
+
+
+<Step>**Read Between the Lines**
+- Why would they request this?
+- What pain point does this solve?
+- Who benefits?
+
+
+<Step>**Research the Context**
+- Look at related issues
+- Check discussions on this topic
+- See what's already been tried
+
+
+<Step>**Ask Questions**
+- Join community channels
+- Discuss with mentors
+- Don't make assumptions
+
+
+</Steps>
+
+## Questions to Answer in Proposal
+
+1. What is the problem?
+2. Who is affected by it?
+3. What's the current state?
+4. Why isn't it fixed yet?
+5. How will your solution help?
+6. What's the success criteria?
+
+---
+
+> **Read the project idea description 10 times.** Then read it again. Understanding matters more than speed.

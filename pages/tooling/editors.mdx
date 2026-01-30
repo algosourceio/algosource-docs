@@ -1,0 +1,67 @@
+---
+title: "Code Editors & IDE Setup"
+description: "Configuring your environment"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Code Editors & IDE Setup
+
+Your editor is where you spend most time. Make it count.
+
+## Popular Choices
+
+| Editor | Best For | Learning Curve |
+|--------|----------|-----------------|
+| **VS Code** | Most things | Easy |
+| **JetBrains IDEs** | Professional dev | Medium |
+| **Vim/Neovim** | Power users | Hard |
+| **Emacs** | Customization fanatics | Hard |
+
+## Essential Extensions (VS Code)
+
+```
+Code Quality:
+- Pylance (Python)
+- ESLint (JavaScript)
+- Prettier (Formatting)
+
+Productivity:
+- GitLens
+- GitHub Copilot
+- Thunder Client (REST)
+
+Appearance:
+- Dracula (Theme)
+- Icons extension
+```
+
+## Configuration
+
+Create `.editorconfig`:
+```
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+
+[*.py]
+indent_size = 4
+```
+
+This ensures consistency across editors.
+
+## Debugging Setup
+
+Most editors support debugging:
+- Set breakpoints
+- Inspect variables
+- Step through code
+
+Much better than `print()` debugging!
+
+---
+
+> **Your editor should feel like an extension of your brain.** Spend time customizing it.

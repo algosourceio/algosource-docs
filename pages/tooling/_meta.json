@@ -1,0 +1,8 @@
+{
+  "index": "Overview",
+  "editors": "Code Editors & IDE",
+  "debugging": "Debugging Techniques",
+  "linters-ci": "Linters & CI",
+  "ci-failures": "CI Failures",
+  "logs-errors": "Logs & Errors"
+}

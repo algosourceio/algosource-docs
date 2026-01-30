@@ -1,0 +1,220 @@
+---
+title: "Linters, Formatters & CI"
+description: "Code quality tools"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Linters, Formatters & CI
+
+Automated quality checks catch errors before humans do.
+
+# Linters, Formatters & CI
+
+Learn these tools. They make your life easier and your code better.
+
+## The Purpose of Each Tool
+
+```
+LINTER (Find bugs):
+x = 5
+if x = 5:  ❌ Error! = is assignment, == is comparison
+    pass
+
+FORMATTER (Make it consistent):
+Before: x=1+2
+After:  x = 1 + 2
+
+CI Pipeline (Automated verification):
+Step 1: Run tests
+Step 2: Run linters
+Step 3: Check coverage
+Step 4: Report results → Approve or block PR
+```
+
+## Setting Up Linters Locally
+
+### JavaScript/TypeScript
+
+```bash
+# Install ESLint
+npm install --save-dev eslint
+
+# Create config
+npx eslint --init
+
+# Run on your code
+npx eslint src/
+
+# Fix automatically where possible
+npx eslint src/ --fix
+```
+
+### Python
+
+```bash
+# Install pylint or flake8
+pip install pylint
+
+# Run on your code
+pylint src/
+
+# Or use autopep8 to auto-fix
+pip install autopep8
+autopep8 --in-place --aggressive src/file.py
+```
+
+## Setting Up Formatters
+
+### JavaScript (Prettier)
+
+```bash
+npm install --save-dev prettier
+
+# Format code
+npx prettier --write src/
+
+# Check before commit
+npx prettier --check src/
+```
+
+### Python (Black)
+
+```bash
+pip install black
+
+# Format code
+black src/
+
+# Check before commit
+black --check src/
+```
+
+## Pre-Commit Hooks (Game Changer)
+
+Automatically run checks before each commit:
+
+```bash
+# Install pre-commit
+pip install pre-commit
+
+# Create .pre-commit-config.yaml
+cat > .pre-commit-config.yaml << EOF
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.1.0
+    hooks:
+      - id: black
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+EOF
+
+# Install the hooks
+pre-commit install
+
+# Now on every commit, checks run automatically
+git commit -m "Fix bug"
+# → Black runs
+# → If fails, commit is blocked
+# → Fix it, try again
+```
+
+## Understanding CI Failures
+
+### Scenario: Your PR CI fails
+
+```
+Step 1: Look at CI logs
+GitHub → Your PR → "Checks" tab → Click failing job
+
+Step 2: Read the error carefully
+Example:
+  Error: Test suite failed
+  FAIL src/auth.test.js
+  ✕ should validate email format
+  Expected: true
+  Received: false
+
+Step 3: Reproduce locally
+npm test -- src/auth.test.js
+
+Step 4: Fix it
+(Based on the test failure, update code)
+
+Step 5: Push fix
+git add . && git commit -m "Fix email validation" && git push
+
+Step 6: Watch CI pass
+(Go back to PR checks → See green checkmark)
+```
+
+### Common CI Failures and Fixes
+
+| Failure | Cause | Fix |
+|---------|-------|-----|
+| **Test failed** | Code has bug | Debug test, fix code |
+| **Linting error** | Code style wrong | Run `prettier --write .` or `eslint --fix .` |
+| **Type error** | TypeScript issue | Fix type annotations or cast properly |
+| **Coverage dropped** | Not enough tests | Write tests for new code |
+| **Import error** | Missing dependency | `npm install` or `pip install` |
+
+## CI Pipeline Checklist (Before Pushing)
+
+```
+Before git push, run locally:
+
+□ npm test (or pytest)
+  If fails: Fix code and test again
+  
+□ npm run lint (or pylint)
+  If fails: Run npm run lint --fix
+  
+□ npm run format (or black)
+  If fails: Already fixed, just commit
+  
+□ Code review guidelines
+  - Is code readable?
+  - Are there comments where needed?
+  - Did I handle edge cases?
+
+All green? → git push
+```
+
+## Reading a Successful CI Report
+
+```
+✓ All checks passed
+
+Breakdown:
+✓ Test Suite - 142 passed in 3.2s
+✓ Linting - 0 errors, 0 warnings
+✓ Coverage - 82% (threshold: 75%)
+✓ Type Check - 0 errors
+
+This PR is ready to merge.
+Maintainer sees green lights → fast approval.
+```
+
+## Pro Tip: Use Formatters to Your Advantage
+
+```
+❌ Bad workflow:
+1. Write code
+2. Style it manually (tedious)
+3. Push
+4. CI complains about formatting
+
+✓ Good workflow:
+1. Write code (messy is fine)
+2. Run prettier/black (automatic formatting)
+3. Push
+4. CI approves immediately (no formatting issues)
+
+You save 10-15 minutes per PR just by using formatters.
+```
+
+---
+
+> **Fix linting errors immediately.** They're easy wins that show you care about quality.

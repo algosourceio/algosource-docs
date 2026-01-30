@@ -1,0 +1,163 @@
+---
+title: "Debugging Techniques"
+description: "Find and fix bugs"
+---
+
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
+
+# Debugging Techniques
+
+Debugging is a skill. Get good at it.
+
+## The Debugging Process
+
+```
+1. Reproduce
+   ↓ Can you make it happen consistently?
+   
+2. Isolate
+   ↓ What's the minimal case that breaks?
+   
+3. Hypothesis
+   ↓ What do you think is wrong?
+   
+4. Test
+   ↓ Check if your hypothesis is correct
+   
+5. Fix
+   ↓ Implement the solution
+   
+6. Verify
+   ↓ Confirm the bug is gone
+```
+
+## Advanced Debugging Strategies
+
+### 1. Read Error Messages (Carefully, Twice)
+
+```
+❌ BAD DEBUGGING:
+Error: "TypeError on line 42"
+*changes random code*
+
+✓ GOOD DEBUGGING:
+Error: "TypeError: Cannot read property 'name' of undefined"
+Line 42: user.profile.name
+Questions:
+- What is user? (defined? not null?)
+- What is user.profile? (exists? not undefined?)
+
+Then trace back: where does user come from?
+```
+
+### 2. Isolate the Problem
+
+```
+SCENARIO: Login form broken, 5 different fields
+
+Bad approach:
+- Spend 3 hours debugging entire flow
+- Still confused
+
+Good approach:
+1. Isolate: Test each field separately
+2. Find: "Email field works, password fails"
+3. Isolate more: "Password validation breaks"
+4. Find: "Regex pattern is wrong"
+5. Fix: 2-minute change
+
+Time: 30 minutes instead of 3 hours
+```
+
+### 3. Use Different Tools for Different Cases
+
+| Situation | Tool | Why |
+|-----------|------|-----|
+| **"I don't know what's happening"** | Debugger + breakpoints | Step through line by line |
+| **"Performance is slow"** | Profiler | See which functions take time |
+| **"Something changed and broke"** | Git bisect | Find the exact commit |
+| **"Tests fail inconsistently"** | Logging + timestamps | Find race conditions |
+| **"CI fails but local works"** | Docker + CI commands | Recreate exact environment |
+
+## Real-World Debugging Example
+
+### The Scenario
+```
+Bug: User avatars not loading on profile page
+Status: Works in staging, broken in production
+Team: "Must be a caching issue"
+
+What's actually happening:
+- Staging: Uses internal CDN URL
+- Production: Uses external CDN URL
+- External CDN: Requires CORS header
+- Response: Missing CORS header = images blocked
+
+Debugging path:
+1. Open browser DevTools → Network tab
+2. Click broken image → see 403 error
+3. Check request headers
+4. See CORS error in console
+5. Find: Missing CORS header in production config
+6. Fix: Add CORS header to production
+```
+
+### Bad vs Good Debugging
+
+```
+❌ TEAM A (Bad):
+"It's probably a cache issue"
+→ Clears cache (doesn't help)
+→ Spends 4 hours investigating
+→ Finally looks at actual error
+→ Solves in 10 minutes
+
+✓ TEAM B (Good):
+1. Looks at actual error first (DevTools)
+2. Sees 403 CORS error
+3. Checks config files
+4. Finds missing header
+5. Solves in 20 minutes (including testing)
+```
+
+## Debugging Tools Quick Reference
+
+<Cards>
+<Card title="VSCode Debugger">
+Set breakpoints, step through code, inspect variables. Works for Node.js, Python, more.
+</Card>
+
+<Card title="Browser DevTools">
+Network tab (see requests), Console (see errors), Sources (debug JS), Application (see storage)
+</Card>
+
+<Card title="Git Bisect">
+Find which commit broke something: `git bisect start` then test commits
+</Card>
+
+<Card title="Logging">
+Add structured logs with timestamps to trace execution flow in production
+</Card>
+
+<Card title="Profiling">
+Find performance bottlenecks: which functions are slow?
+</Card>
+
+<Card title="Strace/Ltrace">
+Advanced: See system calls being made by your program
+</Card>
+</Cards>
+
+## Common Debugging Mistakes
+
+| Mistake | Why It's Bad | Better Approach |
+|---------|------------|-------------------|
+| **Change code randomly** | Wastes hours, introduces new bugs | Understand root cause first |
+| **Assume you know the problem** | You're usually wrong | Test your assumptions |
+| **Debug without tools** | Slower, miss details | Use debugger or logs |
+| **Ignore error messages** | Most info is in the error | Read them carefully |
+| **Don't isolate the problem** | Debugging entire app is hard | Find the minimal failing case |
+
+---
+
+> **Good debugging isn't luck.** It's a process. Follow the process, find the bug.
