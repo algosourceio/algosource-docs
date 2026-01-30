@@ -3,42 +3,45 @@
 @tailwind utilities;
 
 :root {
-  /* AlgoSource Dark Theme Colors */
-  --color-background: #050505;
-  --color-foreground: #fafafa;
-  --color-card: #0a0a0a;
-  --color-card-foreground: #fafafa;
-  --color-primary: #10b981;
-  --color-primary-foreground: #0a0a0a;
-  --color-secondary: #1f1f1f;
-  --color-secondary-foreground: #fafafa;
-  --color-muted: #262626;
-  --color-muted-foreground: #a3a3a3;
-  --color-accent: #10b981;
-  --color-accent-foreground: #0a0a0a;
-  --color-border: rgba(255, 255, 255, 0.1);
+  /* AlgoSource Dark Theme Colors - Aligned with Frontend */
+  --color-background: oklch(0.05 0 0);
+  --color-foreground: oklch(0.985 0 0);
+  --color-card: oklch(0.08 0 0);
+  --color-card-foreground: oklch(0.985 0 0);
+  --color-primary: oklch(0.696 0.17 162.48); /* Emerald green */
+  --color-primary-foreground: oklch(0.05 0 0);
+  --color-secondary: oklch(0.15 0 0);
+  --color-secondary-foreground: oklch(0.985 0 0);
+  --color-muted: oklch(0.15 0 0);
+  --color-muted-foreground: oklch(0.65 0 0);
+  --color-accent: oklch(0.696 0.17 162.48);
+  --color-accent-foreground: oklch(0.05 0 0);
+  --color-border: oklch(1 0 0 / 10%);
+  --color-ring: oklch(0.708 0 0);
 }
 
 /* Force dark mode */
 html {
   color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-background) !important;
-  color: var(--color-foreground);
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background-color: oklch(0.05 0 0) !important;
+  color: oklch(0.985 0 0);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 /* Custom Nextra overrides for AlgoSource theme */
 .nextra-nav-container {
-  background: rgba(5, 5, 5, 0.8) !important;
+  background: oklch(0.05 0 0 / 80%) !important;
   backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid oklch(1 0 0 / 8%) !important;
 }
 
 .nextra-sidebar-container {
-  background: var(--color-background) !important;
+  background: oklch(0.05 0 0) !important;
 }
 
 /* Sidebar styling */

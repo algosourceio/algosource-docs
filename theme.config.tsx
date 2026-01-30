@@ -99,9 +99,9 @@ const config: DocsThemeConfig = {
   footer: {
     text: (
       <div className="flex w-full flex-col items-center sm:items-start">
-        <p className="text-sm text-gray-500">
+        <span className="text-sm text-gray-500">
           © {new Date().getFullYear()} AlgoSource. Built with ❤️ for the open source community.
-        </p>
+        </span>
         <div className="mt-2 flex gap-4 text-sm text-gray-500">
           <a href="https://algosource.in" className="hover:text-white transition-colors">
             Platform
