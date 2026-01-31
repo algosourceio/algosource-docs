@@ -18,23 +18,23 @@ interface FooterLink {
 
 const footerLinks: Record<string, FooterLink[]> = {
   Programs: [
-    { name: "GSoC", href: "/programs/gsoc" },
-    { name: "LFX Mentorship", href: "/programs/lfx" },
-    { name: "Summer of Bitcoin", href: "/programs/sob" },
-    { name: "Outreachy", href: "/programs/outreachy", comingSoon: true },
-    { name: "ESOC", href: "/programs/esoc", comingSoon: true },
-    { name: "C4GT", href: "/programs/c4gt", comingSoon: true },
+    { name: "GSoC", href: "https://algosource.in/programs/gsoc" },
+    { name: "LFX Mentorship", href: "https://algosource.in/programs/lfx" },
+    { name: "Summer of Bitcoin", href: "https://algosource.in/programs/sob" },
+    { name: "Outreachy", href: "https://algosource.in/programs/outreachy", comingSoon: true },
+    { name: "ESOC", href: "https://algosource.in/programs/esoc", comingSoon: true },
+    { name: "C4GT", href: "https://algosource.in/programs/c4gt", comingSoon: true },
   ],
   Platform: [
-    { name: "Proposal Library", href: "/proposal" },
-    // { name: "Submit Proposal", href: "/proposal/submit" }, // Feature temporarily disabled
-    { name: "Changelog", href: "/changelog" },
+    { name: "Proposal Library", href: "https://algosource.in/proposal" },
+    // { name: "Submit Proposal", href: "https://algosource.in/proposal/submit" }, // Feature temporarily disabled
+    { name: "Changelog", href: "https://algosource.in/changelog" },
   ],
   Company: [
-    // { name: "Team", href: "/team" },
-    { name: "Terms of Service", href: "/terms" },
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Disclaimer", href: "/disclaimer" },
+    // { name: "Team", href: "https://algosource.in/team" },
+    { name: "Terms of Service", href: "https://algosource.in/terms" },
+    { name: "Privacy Policy", href: "https://algosource.in/privacy" },
+    { name: "Disclaimer", href: "https://algosource.in/disclaimer" },
   ],
 };
 
@@ -146,25 +146,25 @@ export default function Footer() {
             
             <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
               <Link
-                href="/terms"
+                href="https://algosource.in/terms"
                 className="text-xs sm:text-sm text-zinc-500 hover:text-white transition-colors font-mono"
               >
                 Terms
               </Link>
               <Link
-                href="/privacy"
+                href="https://algosource.in/privacy"
                 className="text-xs sm:text-sm text-zinc-500 hover:text-white transition-colors font-mono"
               >
                 Privacy
               </Link>
               <Link
-                href="/disclaimer"
+                href="https://algosource.in/disclaimer"
                 className="text-xs sm:text-sm text-zinc-500 hover:text-white transition-colors font-mono"
               >
                 Disclaimer
               </Link>
               <Link
-                href="/changelog"
+                href="https://algosource.in/changelog"
                 className="text-xs sm:text-sm text-zinc-500 hover:text-white transition-colors font-mono"
               >
                 Changelog
