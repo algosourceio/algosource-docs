@@ -27,11 +27,9 @@ const footerLinks: Record<string, FooterLink[]> = {
   ],
   Platform: [
     { name: "Proposal Library", href: "https://algosource.in/proposal" },
-    // { name: "Submit Proposal", href: "https://algosource.in/proposal/submit" }, // Feature temporarily disabled
     { name: "Changelog", href: "https://algosource.in/changelog" },
   ],
   Company: [
-    // { name: "Team", href: "https://algosource.in/team" },
     { name: "Terms of Service", href: "https://algosource.in/terms" },
     { name: "Privacy Policy", href: "https://algosource.in/privacy" },
     { name: "Disclaimer", href: "https://algosource.in/disclaimer" },
@@ -46,31 +44,31 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#0f1117]">
+    <footer className="border-t border-white/8 bg-[#0d1117]">
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="sm:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg overflow-hidden">
+            <Link href="/" className="flex items-center gap-2.5 mb-4">
+              <div className="w-8 h-8 rounded-md overflow-hidden">
                 <Image
                   src="/logo.png"
                   alt="AlgoSource Logo"
-                  width={50}
-                  height={50}
+                  width={32}
+                  height={32}
                   className="h-full w-full object-contain"
                 />
               </div>
-              <span className="font-bold text-xl text-white font-mono">AlgoSource</span>
+              <span className="font-bold text-lg text-white tracking-tight">AlgoSource</span>
             </Link>
-            <p className="text-sm text-zinc-500 mb-6 leading-relaxed max-w-md font-mono">
+            <p className="text-sm text-[#8b949e] mb-6 leading-relaxed max-w-md">
               Your gateway to open source opportunities. Discover programs, access proposals, 
               and kickstart your journey in open source.
             </p>
             
             {/* Social Links */}
-            <div className="flex gap-3 sm:gap-4">
+            <div className="flex gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -79,18 +77,18 @@ export default function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                      className="w-9 h-9 rounded-md bg-white/5 border border-white/8 flex items-center justify-center text-[#8b949e] hover:text-white hover:bg-white/10 hover:border-white/15 transition-all"
                       aria-label={social.name}
                     >
                       {social.isWhatsApp ? (
-                        <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <WhatsAppIcon className="w-4 h-4" />
                       ) : Icon ? (
-                        <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <Icon className="w-4 h-4" />
                       ) : null}
                     </a>
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 text-xs font-medium text-white bg-zinc-800 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-white/10 hidden sm:block">
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 text-xs font-medium text-white bg-[#21262d] rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-white/8 hidden sm:block">
                       {social.tooltip}
-                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-800 rotate-45 border-r border-b border-white/10"></div>
+                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#21262d] rotate-45 border-r border-b border-white/8"></div>
                     </div>
                   </div>
                 );
@@ -101,27 +99,27 @@ export default function Footer() {
           {/* Links Columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-sm font-semibold text-white mb-4 font-mono">{category}</h4>
-              <ul className="space-y-2 sm:space-y-3">
+              <h4 className="text-xs font-semibold text-[#e6edf3] mb-4 uppercase tracking-wider">{category}</h4>
+              <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.comingSoon ? "#" : link.href}
-                      className={`text-xs sm:text-sm transition-colors inline-flex items-center gap-2 font-mono ${
+                      className={`text-sm transition-colors inline-flex items-center gap-2 ${
                         link.comingSoon 
-                          ? "text-zinc-600 cursor-not-allowed" 
-                          : "text-zinc-500 hover:text-white"
+                          ? "text-[#484f58] cursor-not-allowed" 
+                          : "text-[#8b949e] hover:text-white"
                       }`}
                       onClick={(e) => link.comingSoon && e.preventDefault()}
                     >
                       {link.name}
                       {link.comingSoon && (
-                        <span className="text-[8px] sm:text-[9px] px-1 sm:px-1.5 py-0.5 rounded-full bg-zinc-800 text-zinc-500">
+                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-[#8b949e]">
                           Soon
                         </span>
                       )}
                       {link.premium && (
-                        <span className="text-[8px] sm:text-[9px] px-1 sm:px-1.5 py-0.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/20">
+                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
                           Pro
                         </span>
                       )}
@@ -136,36 +134,36 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-xs sm:text-sm text-zinc-500 flex items-center gap-1 font-mono text-center sm:text-left">
+            <p className="text-sm text-[#8b949e] flex items-center gap-1.5 text-center sm:text-left">
               © {new Date().getFullYear()} AlgoSource. Made with 
-              <Heart className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-red-500 fill-red-500" /> 
+              <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" /> 
               for the open source community.
             </p>
             
-            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+            <div className="flex flex-wrap justify-center items-center gap-5">
               <Link
                 href="https://algosource.in/terms"
-                className="text-xs sm:text-sm text-zinc-500 hover:text-white transition-colors font-mono"
+                className="text-sm text-[#8b949e] hover:text-white transition-colors"
               >
                 Terms
               </Link>
               <Link
                 href="https://algosource.in/privacy"
-                className="text-xs sm:text-sm text-zinc-500 hover:text-white transition-colors font-mono"
+                className="text-sm text-[#8b949e] hover:text-white transition-colors"
               >
                 Privacy
               </Link>
               <Link
                 href="https://algosource.in/disclaimer"
-                className="text-xs sm:text-sm text-zinc-500 hover:text-white transition-colors font-mono"
+                className="text-sm text-[#8b949e] hover:text-white transition-colors"
               >
                 Disclaimer
               </Link>
               <Link
                 href="https://algosource.in/changelog"
-                className="text-xs sm:text-sm text-zinc-500 hover:text-white transition-colors font-mono"
+                className="text-sm text-[#8b949e] hover:text-white transition-colors"
               >
                 Changelog
               </Link>

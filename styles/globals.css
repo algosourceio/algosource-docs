@@ -4,41 +4,41 @@
 
 :root {
   /* Light Theme Colors */
-  --color-background: oklch(0.985 0 0);
-  --color-foreground: oklch(0.05 0 0);
-  --color-card: oklch(0.98 0 0);
-  --color-card-foreground: oklch(0.05 0 0);
-  --color-primary: oklch(0.696 0.17 162.48); /* Emerald green */
-  --color-primary-foreground: oklch(0.985 0 0);
-  --color-secondary: oklch(0.95 0 0);
-  --color-secondary-foreground: oklch(0.15 0 0);
-  --color-muted: oklch(0.95 0 0);
-  --color-muted-foreground: oklch(0.45 0 0);
-  --color-accent: oklch(0.696 0.17 162.48);
-  --color-accent-foreground: oklch(0.985 0 0);
-  --color-border: oklch(0 0 0 / 10%);
-  --color-ring: oklch(0.708 0 0);
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-card: #f8fafc;
+  --color-card-foreground: #0f172a;
+  --color-primary: #10b981;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f1f5f9;
+  --color-secondary-foreground: #1e293b;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-accent: #10b981;
+  --color-accent-foreground: #ffffff;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-ring: #10b981;
 }
 
 .dark {
-  /* Dark Theme Colors - Aligned with Frontend */
-  --color-background: oklch(0.05 0 0);
-  --color-foreground: oklch(0.985 0 0);
-  --color-card: oklch(0.08 0 0);
-  --color-card-foreground: oklch(0.985 0 0);
-  --color-primary: oklch(0.696 0.17 162.48); /* Emerald green */
-  --color-primary-foreground: oklch(0.05 0 0);
-  --color-secondary: oklch(0.15 0 0);
-  --color-secondary-foreground: oklch(0.985 0 0);
-  --color-muted: oklch(0.15 0 0);
-  --color-muted-foreground: oklch(0.65 0 0);
-  --color-accent: oklch(0.696 0.17 162.48);
-  --color-accent-foreground: oklch(0.05 0 0);
-  --color-border: oklch(1 0 0 / 10%);
-  --color-ring: oklch(0.708 0 0);
+  /* Dark Theme Colors - Professional dark mode */
+  --color-background: #0d1117;
+  --color-foreground: #e6edf3;
+  --color-card: #161b22;
+  --color-card-foreground: #e6edf3;
+  --color-primary: #10b981;
+  --color-primary-foreground: #0d1117;
+  --color-secondary: #21262d;
+  --color-secondary-foreground: #e6edf3;
+  --color-muted: #21262d;
+  --color-muted-foreground: #8b949e;
+  --color-accent: #10b981;
+  --color-accent-foreground: #0d1117;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-ring: #10b981;
 }
 
-/* Allow system/user theme preference */
+/* Base HTML styles */
 html {
   scroll-behavior: smooth;
 }
@@ -54,315 +54,453 @@ html.light {
 body {
   background-color: var(--color-background) !important;
   color: var(--color-foreground);
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Apply font-mono to all text elements */
-h1, h2, h3, h4, h5, h6, p, span, a, li, label, button {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
-}
+/* ===========================================
+   NAVBAR STYLING - Professional Clean Design
+   =========================================== */
 
-/* Navbar font styling */
-.nextra-nav-container * {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
-}
-
-/* Sidebar font styling */
-.nextra-sidebar-container * {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
-}
-
-/* Custom Nextra overrides for AlgoSource theme */
+/* Main navbar container */
 .dark .nextra-nav-container {
-  background: oklch(0.05 0 0 / 80%) !important;
+  background: rgba(13, 17, 23, 0.95) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid oklch(1 0 0 / 8%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .light .nextra-nav-container,
 html:not(.dark) .nextra-nav-container {
-  background: oklch(0.985 0 0 / 80%) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid oklch(0 0 0 / 8%) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
+/* Hide default Nextra project/chat icons - we use custom navbar */
+.nextra-nav-container nav > a[href*="github"],
+.nextra-nav-container nav > a[href*="whatsapp"] {
+  display: none !important;
+}
+
+/* Navbar link buttons styling */
+.nav-link-btn {
+  border-radius: 6px;
+}
+
+.nav-link-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Navbar dropdown styling */
+.nav-dropdown {
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================================
+   SIDEBAR STYLING
+   =========================================== */
+
 .dark .nextra-sidebar-container {
-  background: oklch(0.05 0 0) !important;
+  background: #0d1117 !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .light .nextra-sidebar-container,
 html:not(.dark) .nextra-sidebar-container {
-  background: oklch(0.985 0 0) !important;
+  background: #ffffff !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Sidebar styling */
 .nextra-sidebar {
   background: transparent !important;
 }
 
+/* Sidebar links */
 .dark .nextra-sidebar ul li a {
-  color: rgba(255, 255, 255, 0.7) !important;
-  transition: all 0.2s ease;
+  color: #8b949e !important;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.15s ease;
 }
 
 .light .nextra-sidebar ul li a,
 html:not(.dark) .nextra-sidebar ul li a {
-  color: rgba(0, 0, 0, 0.7) !important;
-  transition: all 0.2s ease;
+  color: #57606a !important;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.15s ease;
 }
 
-.nextra-sidebar ul li a:hover {
-  color: #10b981 !important;
-  background: rgba(16, 185, 129, 0.1) !important;
+.dark .nextra-sidebar ul li a:hover {
+  color: #e6edf3 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
 }
 
-.nextra-sidebar ul li a.active {
-  color: #10b981 !important;
+.light .nextra-sidebar ul li a:hover,
+html:not(.dark) .nextra-sidebar ul li a:hover {
+  color: #24292f !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+.dark .nextra-sidebar ul li a.active {
+  color: #ffffff !important;
   background: rgba(16, 185, 129, 0.15) !important;
+  font-weight: 500;
 }
 
-/* Content area */
+.light .nextra-sidebar ul li a.active,
+html:not(.dark) .nextra-sidebar ul li a.active {
+  color: #0f172a !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+  font-weight: 500;
+}
+
+/* Sidebar section headers */
+.dark .nextra-sidebar-container [class*="nx-font-semibold"] {
+  color: #e6edf3 !important;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ===========================================
+   MAIN CONTENT AREA
+   =========================================== */
+
 .nextra-content {
   background: var(--color-background) !important;
 }
 
 /* Article content styling */
 .dark article {
-  --tw-prose-body: rgba(255, 255, 255, 0.75);
-  --tw-prose-headings: #fff;
+  --tw-prose-body: #adbac7;
+  --tw-prose-headings: #e6edf3;
   --tw-prose-links: #10b981;
-  --tw-prose-bold: #fff;
+  --tw-prose-bold: #e6edf3;
   --tw-prose-code: #10b981;
-  --tw-prose-pre-bg: #0a0a0a;
-  --tw-prose-pre-code: rgba(255, 255, 255, 0.8);
-  --tw-prose-quotes: rgba(255, 255, 255, 0.6);
+  --tw-prose-pre-bg: #161b22;
+  --tw-prose-pre-code: #adbac7;
+  --tw-prose-quotes: #8b949e;
 }
 
 .light article,
 html:not(.dark) article {
-  --tw-prose-body: rgba(0, 0, 0, 0.75);
-  --tw-prose-headings: #000;
+  --tw-prose-body: #24292f;
+  --tw-prose-headings: #1f2328;
   --tw-prose-links: #059669;
-  --tw-prose-bold: #000;
-  --tw-prose-code: #059669;
-  --tw-prose-pre-bg: #f5f5f5;
-  --tw-prose-pre-code: rgba(0, 0, 0, 0.8);
-  --tw-prose-quotes: rgba(0, 0, 0, 0.6);
+  --tw-prose-bold: #1f2328;
+  --tw-prose-code: #0d7d53;
+  --tw-prose-pre-bg: #f6f8fa;
+  --tw-prose-pre-code: #24292f;
+  --tw-prose-quotes: #57606a;
 }
 
-/* Headings */
+/* ===========================================
+   TYPOGRAPHY
+   =========================================== */
+
 h1 {
-  font-weight: 800 !important;
+  font-weight: 700 !important;
   letter-spacing: -0.025em !important;
+  font-size: 2.25rem !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem !important;
 }
 
 .dark h2 {
-  font-weight: 700 !important;
-  margin-top: 3rem !important;
-  padding-top: 1.5rem !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  margin-top: 2.5rem !important;
+  padding-top: 1.25rem !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #e6edf3 !important;
 }
 
 .light h2,
 html:not(.dark) h2 {
-  font-weight: 700 !important;
-  margin-top: 3rem !important;
-  padding-top: 1.5rem !important;
-  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  margin-top: 2.5rem !important;
+  padding-top: 1.25rem !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  color: #1f2328 !important;
 }
 
 h3 {
   font-weight: 600 !important;
+  font-size: 1.25rem !important;
 }
 
 /* Links */
 a {
   color: #10b981;
-  transition: color 0.2s ease;
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
 
 a:hover {
   color: #34d399;
 }
 
-/* Code blocks */
+/* ===========================================
+   CODE BLOCKS & INLINE CODE
+   =========================================== */
+
 .dark pre {
-  background: #0a0a0a !important;
+  background: #161b22 !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 0.75rem !important;
+  border-radius: 8px !important;
 }
 
 .light pre,
 html:not(.dark) pre {
-  background: #f5f5f5 !important;
+  background: #f6f8fa !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  border-radius: 0.75rem !important;
+  border-radius: 8px !important;
 }
 
 pre code {
-  font-family: "JetBrains Mono", monospace !important;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace !important;
   font-size: 0.875rem !important;
 }
 
 .dark code {
-  font-family: "JetBrains Mono", monospace !important;
+  font-family: "JetBrains Mono", ui-monospace, monospace !important;
   background: rgba(16, 185, 129, 0.1) !important;
   color: #10b981 !important;
   padding: 0.125rem 0.375rem !important;
-  border-radius: 0.25rem !important;
+  border-radius: 4px !important;
   font-size: 0.875em !important;
 }
 
 .light code,
 html:not(.dark) code {
-  font-family: "JetBrains Mono", monospace !important;
-  background: rgba(5, 150, 105, 0.1) !important;
-  color: #059669 !important;
+  font-family: "JetBrains Mono", ui-monospace, monospace !important;
+  background: rgba(5, 150, 105, 0.08) !important;
+  color: #0d7d53 !important;
   padding: 0.125rem 0.375rem !important;
-  border-radius: 0.25rem !important;
+  border-radius: 4px !important;
   font-size: 0.875em !important;
 }
 
-.dark pre code {
+.dark pre code,
+.light pre code,
+html:not(.dark) pre code {
   background: transparent !important;
-  color: rgba(255, 255, 255, 0.8) !important;
   padding: 0 !important;
+}
+
+.dark pre code {
+  color: #adbac7 !important;
 }
 
 .light pre code,
 html:not(.dark) pre code {
-  background: transparent !important;
-  color: rgba(0, 0, 0, 0.8) !important;
-  padding: 0 !important;
+  color: #24292f !important;
 }
 
-/* Callouts */
+/* ===========================================
+   CALLOUTS & ALERTS
+   =========================================== */
+
 .nextra-callout {
-  border-radius: 0.75rem !important;
+  border-radius: 8px !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  padding: 1rem 1.25rem !important;
 }
 
 .light .nextra-callout,
 html:not(.dark) .nextra-callout {
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  background: rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: rgba(0, 0, 0, 0.02) !important;
 }
 
 .nextra-callout[data-type="warning"] {
-  border-color: rgba(245, 158, 11, 0.3) !important;
-  background: rgba(245, 158, 11, 0.05) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  background: rgba(245, 158, 11, 0.08) !important;
 }
 
 .nextra-callout[data-type="error"] {
-  border-color: rgba(239, 68, 68, 0.3) !important;
-  background: rgba(239, 68, 68, 0.05) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  background: rgba(239, 68, 68, 0.08) !important;
 }
 
 .nextra-callout[data-type="info"] {
-  border-color: rgba(59, 130, 246, 0.3) !important;
-  background: rgba(59, 130, 246, 0.05) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+  background: rgba(59, 130, 246, 0.08) !important;
 }
 
-/* Cards */
+/* ===========================================
+   CARDS
+   =========================================== */
+
 .dark .nextra-card {
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: #161b22 !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 0.75rem !important;
-  transition: all 0.3s ease !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
 }
 
 .light .nextra-card,
 html:not(.dark) .nextra-card {
-  background: rgba(0, 0, 0, 0.02) !important;
+  background: #f6f8fa !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  border-radius: 0.75rem !important;
-  transition: all 0.3s ease !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
 }
 
-.nextra-card:hover {
-  border-color: rgba(16, 185, 129, 0.3) !important;
+.dark .nextra-card:hover {
+  border-color: rgba(16, 185, 129, 0.4) !important;
   background: rgba(16, 185, 129, 0.05) !important;
-  transform: translateY(-2px) !important;
 }
 
-/* Table of Contents */
+.light .nextra-card:hover,
+html:not(.dark) .nextra-card:hover {
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  background: rgba(16, 185, 129, 0.05) !important;
+}
+
+/* ===========================================
+   TABLE OF CONTENTS (RIGHT SIDEBAR)
+   =========================================== */
+
 .dark .nextra-toc {
   border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .light .nextra-toc,
 html:not(.dark) .nextra-toc {
-  border-left: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+/* "On This Page" header */
+.dark .nextra-toc-meta {
+  color: #e6edf3 !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.light .nextra-toc-meta,
+html:not(.dark) .nextra-toc-meta {
+  color: #1f2328 !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.75rem !important;
 }
 
 .dark .nextra-toc a {
-  color: rgba(255, 255, 255, 0.5) !important;
-  font-size: 0.875rem !important;
+  color: #8b949e !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5;
 }
 
 .light .nextra-toc a,
 html:not(.dark) .nextra-toc a {
-  color: rgba(0, 0, 0, 0.5) !important;
-  font-size: 0.875rem !important;
+  color: #57606a !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5;
 }
 
-.nextra-toc a:hover,
-.nextra-toc a.active {
+.dark .nextra-toc a:hover {
+  color: #e6edf3 !important;
+}
+
+.light .nextra-toc a:hover,
+html:not(.dark) .nextra-toc a:hover {
+  color: #24292f !important;
+}
+
+.nextra-toc a.active,
+.nextra-toc a[aria-current="true"] {
   color: #10b981 !important;
+  font-weight: 500;
 }
 
-/* Search */
+/* ===========================================
+   SEARCH
+   =========================================== */
+
 .dark .nextra-search input {
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: #21262d !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: white !important;
+  color: #e6edf3 !important;
+  border-radius: 6px;
 }
 
 .light .nextra-search input,
 html:not(.dark) .nextra-search input {
-  background: rgba(0, 0, 0, 0.03) !important;
+  background: #f6f8fa !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  color: black !important;
+  color: #24292f !important;
+  border-radius: 6px;
 }
 
 .dark .nextra-search input::placeholder {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #8b949e !important;
 }
 
 .light .nextra-search input::placeholder,
 html:not(.dark) .nextra-search input::placeholder {
-  color: rgba(0, 0, 0, 0.4) !important;
+  color: #57606a !important;
 }
 
 .nextra-search input:focus {
   border-color: #10b981 !important;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2) !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
+  outline: none !important;
 }
 
-/* Tables */
+/* ===========================================
+   TABLES
+   =========================================== */
+
 table {
   width: 100%;
   border-collapse: collapse;
+  margin: 1.5rem 0;
 }
 
 .dark th {
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: #161b22 !important;
   font-weight: 600;
   text-align: left;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e6edf3;
 }
 
 .light th,
 html:not(.dark) th {
-  background: rgba(0, 0, 0, 0.03) !important;
+  background: #f6f8fa !important;
   font-weight: 600;
   text-align: left;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #24292f;
 }
 
 .dark td {
@@ -385,13 +523,16 @@ html:not(.dark) tr:hover td {
   background: rgba(0, 0, 0, 0.02);
 }
 
-/* Blockquotes */
+/* ===========================================
+   BLOCKQUOTES
+   =========================================== */
+
 blockquote {
   border-left: 3px solid #10b981 !important;
   background: rgba(16, 185, 129, 0.05) !important;
   padding: 1rem 1.5rem !important;
   margin: 1.5rem 0 !important;
-  border-radius: 0 0.5rem 0.5rem 0 !important;
+  border-radius: 0 8px 8px 0 !important;
   font-style: italic;
 }
 
@@ -399,7 +540,10 @@ blockquote p {
   margin: 0 !important;
 }
 
-/* Lists */
+/* ===========================================
+   LISTS
+   =========================================== */
+
 ul, ol {
   padding-left: 1.5rem;
 }
@@ -412,7 +556,10 @@ li::marker {
   color: #10b981;
 }
 
-/* Footer */
+/* ===========================================
+   FOOTER
+   =========================================== */
+
 .dark .nextra-footer {
   background: transparent !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -424,7 +571,10 @@ html:not(.dark) .nextra-footer {
   border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Banner */
+/* ===========================================
+   BANNER
+   =========================================== */
+
 .nextra-banner {
   background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1)) !important;
   border-bottom: 1px solid rgba(16, 185, 129, 0.2) !important;
@@ -439,49 +589,66 @@ html:not(.dark) .nextra-banner a {
   color: black !important;
 }
 
-/* Breadcrumbs */
+/* ===========================================
+   BREADCRUMBS
+   =========================================== */
+
 .dark .nextra-breadcrumb {
-  color: rgba(255, 255, 255, 0.5);
+  color: #8b949e;
+  font-size: 0.875rem;
 }
 
 .light .nextra-breadcrumb,
 html:not(.dark) .nextra-breadcrumb {
-  color: rgba(0, 0, 0, 0.5);
+  color: #57606a;
+  font-size: 0.875rem;
 }
 
 .nextra-breadcrumb a:hover {
   color: #10b981;
 }
 
-/* Navigation buttons */
+/* ===========================================
+   NAVIGATION BUTTONS (Prev/Next)
+   =========================================== */
+
 .dark .nextra-nav-link {
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: #161b22 !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 0.5rem !important;
+  border-radius: 8px !important;
   transition: all 0.2s ease !important;
 }
 
 .light .nextra-nav-link,
 html:not(.dark) .nextra-nav-link {
-  background: rgba(0, 0, 0, 0.02) !important;
+  background: #f6f8fa !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  border-radius: 0.5rem !important;
+  border-radius: 8px !important;
   transition: all 0.2s ease !important;
 }
 
-.nextra-nav-link:hover {
-  border-color: rgba(16, 185, 129, 0.3) !important;
+.dark .nextra-nav-link:hover {
+  border-color: rgba(16, 185, 129, 0.4) !important;
   background: rgba(16, 185, 129, 0.05) !important;
 }
 
-/* Scrollbar */
+.light .nextra-nav-link:hover,
+html:not(.dark) .nextra-nav-link:hover {
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  background: rgba(16, 185, 129, 0.05) !important;
+}
+
+/* ===========================================
+   SCROLLBAR
+   =========================================== */
+
 .dark ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .dark ::-webkit-scrollbar-thumb {
@@ -490,7 +657,7 @@ html:not(.dark) .nextra-nav-link {
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .light ::-webkit-scrollbar,
@@ -501,7 +668,7 @@ html:not(.dark) ::-webkit-scrollbar {
 
 .light ::-webkit-scrollbar-track,
 html:not(.dark) ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .light ::-webkit-scrollbar-thumb,
@@ -512,10 +679,13 @@ html:not(.dark) ::-webkit-scrollbar-thumb {
 
 .light ::-webkit-scrollbar-thumb:hover,
 html:not(.dark) ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.15);
 }
 
-/* Selection */
+/* ===========================================
+   SELECTION
+   =========================================== */
+
 .dark ::selection {
   background: rgba(16, 185, 129, 0.3);
   color: white;
@@ -527,13 +697,19 @@ html:not(.dark) ::selection {
   color: black;
 }
 
-/* Focus states */
+/* ===========================================
+   FOCUS STATES
+   =========================================== */
+
 *:focus-visible {
   outline: 2px solid #10b981;
   outline-offset: 2px;
 }
 
-/* Steps component styling */
+/* ===========================================
+   STEPS COMPONENT
+   =========================================== */
+
 .dark .nextra-steps {
   margin-left: 0 !important;
   border-left: 2px solid rgba(16, 185, 129, 0.3) !important;
@@ -551,7 +727,10 @@ html:not(.dark) .nextra-steps {
   background: #10b981 !important;
 }
 
-/* Tabs */
+/* ===========================================
+   TABS
+   =========================================== */
+
 .dark .nextra-tab-bar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
@@ -562,21 +741,21 @@ html:not(.dark) .nextra-tab-bar {
 }
 
 .dark .nextra-tab {
-  color: rgba(255, 255, 255, 0.6) !important;
+  color: #8b949e !important;
 }
 
 .light .nextra-tab,
 html:not(.dark) .nextra-tab {
-  color: rgba(0, 0, 0, 0.6) !important;
+  color: #57606a !important;
 }
 
 .dark .nextra-tab:hover {
-  color: white !important;
+  color: #e6edf3 !important;
 }
 
 .light .nextra-tab:hover,
 html:not(.dark) .nextra-tab:hover {
-  color: black !important;
+  color: #24292f !important;
 }
 
 .nextra-tab[data-active="true"] {
@@ -584,23 +763,108 @@ html:not(.dark) .nextra-tab:hover {
   border-bottom-color: #10b981 !important;
 }
 
-/* File tree */
+/* ===========================================
+   FILE TREE
+   =========================================== */
+
 .dark .nextra-filetree {
-  background: rgba(255, 255, 255, 0.02) !important;
+  background: #161b22 !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 0.5rem !important;
+  border-radius: 8px !important;
 }
 
 .light .nextra-filetree,
 html:not(.dark) .nextra-filetree {
-  background: rgba(0, 0, 0, 0.02) !important;
+  background: #f6f8fa !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  border-radius: 0.5rem !important;
+  border-radius: 8px !important;
 }
 
-/* Smooth transitions */
+/* ===========================================
+   TOC SIDEBAR LINKS (Feedback & Edit)
+   =========================================== */
+
+.nextra-toc {
+  min-width: 240px !important;
+}
+
+/* Feedback and Edit Link Container */
+.dark .nextra-toc > div:last-child,
+.dark aside.nextra-toc-sidebar > div:last-child {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.light .nextra-toc > div:last-child,
+html:not(.dark) .nextra-toc > div:last-child,
+.light aside.nextra-toc-sidebar > div:last-child,
+html:not(.dark) aside.nextra-toc-sidebar > div:last-child {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Style the feedback and edit links */
+.dark a[href*="issues/new?labels=feedback"],
+.dark a[href*="/edit/main/pages/"] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #8b949e !important;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.dark a[href*="issues/new?labels=feedback"]:hover,
+.dark a[href*="/edit/main/pages/"]:hover {
+  color: #e6edf3 !important;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.light a[href*="issues/new?labels=feedback"],
+html:not(.dark) a[href*="issues/new?labels=feedback"],
+.light a[href*="/edit/main/pages/"],
+html:not(.dark) a[href*="/edit/main/pages/"] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #57606a !important;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.light a[href*="issues/new?labels=feedback"]:hover,
+html:not(.dark) a[href*="issues/new?labels=feedback"]:hover,
+.light a[href*="/edit/main/pages/"]:hover,
+html:not(.dark) a[href*="/edit/main/pages/"]:hover {
+  color: #24292f !important;
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================================
+   UTILITY CLASSES
+   =========================================== */
+
+/* Smooth transitions for theme switching */
 * {
-  transition-property: color, background-color, border-color, opacity;
+  transition-property: color, background-color, border-color;
   transition-duration: 0.15s;
   transition-timing-function: ease;
 }
@@ -610,65 +874,21 @@ pre, pre * {
   transition: none !important;
 }
 
-/* TOC (Table of Contents) sidebar improvements */
-.nextra-toc {
-  min-width: 280px !important;
+/* Back to top button */
+.dark button[aria-label="Back to top"] {
+  background: #161b22 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #8b949e !important;
 }
 
-/* Feedback and Edit Link Container Styling */
-.dark .nextra-toc > div:last-child,
-.dark aside.nextra-toc-sidebar > div:last-child {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+.light button[aria-label="Back to top"],
+html:not(.dark) button[aria-label="Back to top"] {
+  background: #f6f8fa !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #57606a !important;
 }
 
-/* Style the feedback and edit links */
-.dark a[href*="issues/new?labels=feedback"],
-.dark a[href*="/edit/main/pages/"] {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.625rem 0.875rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #9ca3af !important;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  transition: all 0.2s ease;
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-
-.dark a[href*="issues/new?labels=feedback"]:hover,
-.dark a[href*="/edit/main/pages/"]:hover {
-  color: #f3f4f6 !important;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Light mode styling */
-html:not(.dark) a[href*="issues/new?labels=feedback"],
-html:not(.dark) a[href*="/edit/main/pages/"] {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.625rem 0.875rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #6b7280 !important;
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
-  transition: all 0.2s ease;
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-
-html:not(.dark) a[href*="issues/new?labels=feedback"]:hover,
-html:not(.dark) a[href*="/edit/main/pages/"]:hover {
-  color: #111827 !important;
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.2);
+button[aria-label="Back to top"]:hover {
+  color: #10b981 !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
 }
