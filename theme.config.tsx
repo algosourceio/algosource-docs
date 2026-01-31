@@ -191,18 +191,18 @@ const config: DocsThemeConfig = {
   primaryHue: 150,
   primarySaturation: 80,
 
-  // Git timestamp
-  gitTimestamp: function GitTimestamp({ timestamp }) {
-    return (
-      <span className="text-sm text-gray-500">
-        Last updated: {timestamp.toLocaleDateString("en-US", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })}
-      </span>
-    );
-  },
+  // Git timestamp - disabled due to prerender issue
+  // gitTimestamp: function GitTimestamp({ timestamp }) {
+  //   return (
+  //     <span className="text-sm text-gray-500">
+  //       Last updated: {timestamp.toLocaleDateString("en-US", {
+  //         day: "numeric",
+  //         month: "long",
+  //         year: "numeric",
+  //       })}
+  //     </span>
+  //   );
+  // },
 
   // Search
   search: {
