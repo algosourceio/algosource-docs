@@ -77,17 +77,18 @@ const config: DocsThemeConfig = {
   //   ),
   // },
 
-  // Sidebar
+  // Sidebar - Professional styling with better organization
   sidebar: {
     defaultMenuCollapseLevel: 1,
     toggleButton: true,
-    autoCollapse: false,
+    autoCollapse: true,
   },
 
   // Table of Contents
   toc: {
     backToTop: true,
     float: true,
+    title: "On This Page",
   },
 
   // Navigation
@@ -122,25 +123,12 @@ const config: DocsThemeConfig = {
   },
 
   // Primary hue (green to match AlgoSource branding)
-  primaryHue: 150,
-  primarySaturation: 80,
-
-  // Git timestamp - disabled due to prerender issue
-  // gitTimestamp: function GitTimestamp({ timestamp }) {
-  //   return (
-  //     <span className="text-sm text-gray-500">
-  //       Last updated: {timestamp.toLocaleDateString("en-US", {
-  //         day: "numeric",
-  //         month: "long",
-  //         year: "numeric",
-  //       })}
-  //     </span>
-  //   );
-  // },
+  primaryHue: 160,
+  primarySaturation: 70,
 
   // Search - Ctrl+K to open
   search: {
-    placeholder: "Search docs... (⌘K or Ctrl+K)",
+    placeholder: "Search docs...",
   },
 
   // Components customization
