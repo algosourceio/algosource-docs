@@ -2,6 +2,8 @@ import React from "react";
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Footer from './components/Footer';
+import Navbar from "./components/Navbar";
 
 // WhatsApp SVG Icon
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -39,39 +41,10 @@ const config: DocsThemeConfig = {
     link: "https://chat.whatsapp.com/B9vSLumYFCs5IP2UszZnzL",
     icon: <WhatsAppIcon className="w-6 h-6" />,
   },
-  docsRepositoryBase: "https://github.com/algosourceio/algosource-docs/tree/main/docs",
+  docsRepositoryBase: "https://github.com/algosourceio/algosource-docs/tree/main/docs/pages",
   
   // Navbar extra content (similar to frontend navbar)
-  navbar: {
-    extraContent: (
-      <div className="flex items-center gap-4">
-        <a
-          href="https://algosource.in/programs"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:block text-sm font-medium text-gray-500 hover:text-emerald-500 transition-colors"
-        >
-          Programs
-        </a>
-        <a
-          href="https://algosource.in/proposal"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:block text-sm font-medium text-gray-500 hover:text-emerald-500 transition-colors"
-        >
-          Proposals
-        </a>
-        <a
-          href="https://algosource.in"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-3 py-1.5 text-sm font-medium bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
-        >
-          Platform
-        </a>
-      </div>
-    ),
-  },
+  navbar: {component: Navbar},
   
   // SEO
   useNextSeoProps() {
@@ -133,41 +106,7 @@ const config: DocsThemeConfig = {
 
   // Footer
   footer: {
-    text: (
-      <div className="flex w-full flex-col">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 w-full">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/logo.png"
-              alt="AlgoSource Logo"
-              width={24}
-              height={24}
-              className="rounded"
-            />
-            <span className="text-sm text-gray-500">
-              © {new Date().getFullYear()} AlgoSource. Made with ❤️ for the open source community.
-            </span>
-          </div>
-          <div className="flex items-center gap-6 text-sm text-gray-500">
-            <a href="https://algosource.in" className="hover:text-emerald-500 transition-colors">
-              Platform
-            </a>
-            <a href="https://algosource.in/terms" className="hover:text-emerald-500 transition-colors">
-              Terms
-            </a>
-            <a href="https://algosource.in/privacy" className="hover:text-emerald-500 transition-colors">
-              Privacy
-            </a>
-            <a href="https://algosource.in/disclaimer" className="hover:text-emerald-500 transition-colors">
-              Disclaimer
-            </a>
-            <a href="https://algosource.in/changelog" className="hover:text-emerald-500 transition-colors">
-              Changelog
-            </a>
-          </div>
-        </div>
-      </div>
-    ),
+    component: <Footer />
   },
 
   // Edit Link
@@ -175,10 +114,13 @@ const config: DocsThemeConfig = {
     text: "Edit this page on GitHub →",
   },
 
-  // Feedback
+  // Feedback - Link to GitHub issues
   feedback: {
     content: "Question? Give us feedback →",
     labels: "feedback",
+    useLink() {
+      return "https://github.com/algosourceio/algosource-docs/issues/new?labels=feedback&title=Feedback%20for%20Documentation";
+    },
   },
 
   // Dark mode - allow toggling
@@ -204,9 +146,9 @@ const config: DocsThemeConfig = {
   //   );
   // },
 
-  // Search
+  // Search - Ctrl+K to open
   search: {
-    placeholder: "Search documentation...",
+    placeholder: "Search docs... (⌘K or Ctrl+K)",
   },
 
   // Components customization

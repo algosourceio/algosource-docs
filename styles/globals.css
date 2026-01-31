@@ -54,7 +54,22 @@ html.light {
 body {
   background-color: var(--color-background) !important;
   color: var(--color-foreground);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Apply font-mono to all text elements */
+h1, h2, h3, h4, h5, h6, p, span, a, li, label, button {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
+}
+
+/* Navbar font styling */
+.nextra-nav-container * {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
+}
+
+/* Sidebar font styling */
+.nextra-sidebar-container * {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
 }
 
 /* Custom Nextra overrides for AlgoSource theme */
