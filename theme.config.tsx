@@ -41,10 +41,12 @@ const config: DocsThemeConfig = {
     link: "https://chat.whatsapp.com/B9vSLumYFCs5IP2UszZnzL",
     icon: <WhatsAppIcon className="w-6 h-6" />,
   },
-  docsRepositoryBase: "https://github.com/algosourceio/algosource-docs/tree/main/docs/pages",
+  docsRepositoryBase: "https://github.com/algosourceio/algosource-docs/tree/main",
   
   // Navbar extra content (similar to frontend navbar)
-  navbar: {component: Navbar},
+  navbar: {
+    extraContent: <Navbar />,
+  },
   
   // SEO
   useNextSeoProps() {
@@ -75,15 +77,15 @@ const config: DocsThemeConfig = {
     );
   },
 
-  // Banner
-  banner: {
-    key: "algosource-launch",
-    text: (
-      <a href="https://algosource.in" target="_blank" rel="noreferrer">
-        🚀 AlgoSource Platform is live! Explore 10,000+ projects and proposals →
-      </a>
-    ),
-  },
+  // // Banner
+  // banner: {
+  //   key: "algosource-launch",
+  //   text: (
+  //     <a href="https://algosource.in" target="_blank" rel="noreferrer">
+  //       🚀 AlgoSource Platform is live! Explore 10,000+ projects and proposals →
+  //     </a>
+  //   ),
+  // },
 
   // Sidebar
   sidebar: {

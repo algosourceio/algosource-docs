@@ -609,3 +609,66 @@ html:not(.dark) .nextra-filetree {
 pre, pre * {
   transition: none !important;
 }
+
+/* TOC (Table of Contents) sidebar improvements */
+.nextra-toc {
+  min-width: 280px !important;
+}
+
+/* Feedback and Edit Link Container Styling */
+.dark .nextra-toc > div:last-child,
+.dark aside.nextra-toc-sidebar > div:last-child {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Style the feedback and edit links */
+.dark a[href*="issues/new?labels=feedback"],
+.dark a[href*="/edit/main/pages/"] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #9ca3af !important;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.dark a[href*="issues/new?labels=feedback"]:hover,
+.dark a[href*="/edit/main/pages/"]:hover {
+  color: #f3f4f6 !important;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Light mode styling */
+html:not(.dark) a[href*="issues/new?labels=feedback"],
+html:not(.dark) a[href*="/edit/main/pages/"] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #6b7280 !important;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+html:not(.dark) a[href*="issues/new?labels=feedback"]:hover,
+html:not(.dark) a[href*="/edit/main/pages/"]:hover {
+  color: #111827 !important;
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.2);
+}
