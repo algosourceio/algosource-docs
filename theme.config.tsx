@@ -53,13 +53,71 @@ const config: DocsThemeConfig = {
   // Head
   head: function useHead() {
     const { title } = useConfig();
+    const { asPath } = useRouter();
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://algosource.in/docs";
+    const canonicalUrl = `${siteUrl}${asPath === "/" ? "" : asPath}`;
+    const pageTitle = title ? `${title} – AlgoSource Docs` : "AlgoSource Docs – The Complete Open Source Contribution Guide";
+    const description = "The complete guide to open source contribution. From your first PR to GSoC selection.";
+    const imageUrl = `${siteUrl}/logo.png`;
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "AlgoSource",
+          "url": siteUrl,
+          "logo": imageUrl,
+          "sameAs": [
+            "https://github.com/algosourceio/algosource-docs",
+            "https://algosource.in"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "AlgoSource Docs",
+          "url": siteUrl,
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": `${siteUrl}/?q={search_term_string}`,
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "name": pageTitle,
+          "url": canonicalUrl,
+          "description": description
+        }
+      ]
+    };
+
     return (
       <>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:title" content={title ? title + " – AlgoSource Docs" : "AlgoSource Docs"} />
-        <meta property="og:description" content="The complete guide to open source contribution. From your first PR to GSoC selection." />
+        <meta name="description" content={description} />
+        <meta name="keywords" content="open source, contribution guide, GSoC, LFX, Outreachy, documentation, GitHub, pull requests" />
+        <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+        <meta name="author" content="AlgoSource" />
+        <meta name="application-name" content="AlgoSource Docs" />
+        <meta name="theme-color" content="#10b981" />
+        <link rel="canonical" href={canonicalUrl} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="AlgoSource Docs" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={imageUrl} />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@algosource" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={imageUrl} />
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       </>
