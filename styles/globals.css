@@ -85,6 +85,28 @@ html:not(.dark) .nextra-nav-container {
   display: none !important;
 }
 
+/* Navbar ordering - Programs/Proposals, then Search, then icons/button */
+.nextra-nav-container nav {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* The navbar-left-items should appear first (Programs, Proposals) */
+.navbar-left-items {
+  order: 1 !important;
+}
+
+/* Search should come after Programs/Proposals */
+.nextra-search {
+  order: 2 !important;
+  margin-left: 0.5rem !important;
+}
+
+/* Right items come last (GitHub, WhatsApp, Get Started) */
+.navbar-right-items {
+  order: 3 !important;
+}
+
 /* Navbar link buttons styling */
 .nav-link-btn {
   border-radius: 6px;
@@ -133,7 +155,7 @@ html:not(.dark) .nextra-sidebar-container {
 .dark .nextra-sidebar ul li a {
   color: #8b949e !important;
   font-size: 0.875rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 6px;
   transition: all 0.15s ease;
 }
@@ -142,9 +164,34 @@ html:not(.dark) .nextra-sidebar-container {
 html:not(.dark) .nextra-sidebar ul li a {
   color: #57606a !important;
   font-size: 0.875rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 6px;
   transition: all 0.15s ease;
+}
+
+/* Reduce sidebar container padding */
+.nextra-sidebar-container {
+  padding-left: 0 !important;
+}
+
+.nextra-sidebar-container > div {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+.nextra-sidebar {
+  padding-left: 0.25rem !important;
+  margin-left: 0 !important;
+}
+
+.nextra-sidebar ul {
+  padding-left: 0.25rem !important;
+  margin-left: 0 !important;
+}
+
+.nextra-sidebar ul ul {
+  padding-left: 0.5rem !important;
+  margin-left: 0 !important;
 }
 
 .dark .nextra-sidebar ul li a:hover {
@@ -434,10 +481,42 @@ html:not(.dark) .nextra-toc a:hover {
   color: #24292f !important;
 }
 
+/* TOC active item highlighting with left border */
+.nextra-toc a {
+  display: block;
+  padding-left: 0.75rem;
+  border-left: 2px solid transparent;
+  transition: all 0.15s ease;
+}
+
 .nextra-toc a.active,
-.nextra-toc a[aria-current="true"] {
+.nextra-toc a[aria-current="true"],
+.nextra-toc li.active > a,
+.nextra-toc [data-active="true"] {
   color: #10b981 !important;
   font-weight: 500;
+  border-left: 2px solid #10b981 !important;
+  background: rgba(16, 185, 129, 0.08);
+  padding-left: 0.75rem;
+}
+
+/* Also target Nextra's specific TOC structure */
+.dark .nextra-toc ul li a.nx-text-primary-600,
+.dark aside[class*="toc"] a.nx-text-primary-600 {
+  color: #10b981 !important;
+  font-weight: 500;
+  border-left: 2px solid #10b981 !important;
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.light .nextra-toc ul li a.nx-text-primary-600,
+html:not(.dark) .nextra-toc ul li a.nx-text-primary-600,
+.light aside[class*="toc"] a.nx-text-primary-600,
+html:not(.dark) aside[class*="toc"] a.nx-text-primary-600 {
+  color: #059669 !important;
+  font-weight: 500;
+  border-left: 2px solid #059669 !important;
+  background: rgba(5, 150, 105, 0.08);
 }
 
 /* ===========================================
@@ -472,6 +551,50 @@ html:not(.dark) .nextra-search input::placeholder {
   border-color: #10b981 !important;
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
   outline: none !important;
+}
+
+/* Search results dropdown - solid background, no blur/transparency */
+.dark .nextra-search ul,
+.dark .nextra-search [class*="results"],
+.dark [class*="nextra-search"] > div:not(:first-child),
+.dark div[class*="nextra-scrollbar"][class*="border"] {
+  background: #0d1117 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.light .nextra-search ul,
+.light .nextra-search [class*="results"],
+.light [class*="nextra-search"] > div:not(:first-child),
+html:not(.dark) .nextra-search ul,
+html:not(.dark) .nextra-search [class*="results"],
+html:not(.dark) [class*="nextra-search"] > div:not(:first-child),
+html:not(.dark) div[class*="nextra-scrollbar"][class*="border"] {
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Search results items */
+.dark .nextra-search li {
+  background: transparent !important;
+}
+
+.dark .nextra-search li:hover,
+.dark .nextra-search li[class*="active"],
+.dark .nextra-search li.active {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.light .nextra-search li:hover,
+.light .nextra-search li[class*="active"],
+.light .nextra-search li.active,
+html:not(.dark) .nextra-search li:hover,
+html:not(.dark) .nextra-search li[class*="active"],
+html:not(.dark) .nextra-search li.active {
+  background: rgba(0, 0, 0, 0.04) !important;
 }
 
 /* ===========================================

@@ -56,14 +56,14 @@ const CommunityIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// Programs data
+// Programs data (no icons)
 const programs = [
-  { name: "GSoC", href: "https://algosource.in/programs/gsoc", description: "Google Summer of Code", icon: "🌟" },
-  { name: "LFX", href: "https://algosource.in/programs/lfx", description: "Linux Foundation Mentorship", icon: "🐧" },
-  { name: "SOB", href: "https://algosource.in/programs/sob", description: "Summer of Bitcoin", icon: "₿" },
-  { name: "Outreachy", href: "https://algosource.in/programs/outreachy", description: "Outreachy Internships", icon: "🌈", comingSoon: true },
-  { name: "ESOC", href: "https://algosource.in/programs/esoc", description: "European Summer of Code", icon: "🇪🇺", comingSoon: true },
-  { name: "C4GT", href: "https://algosource.in/programs/c4gt", description: "Code for GovTech", icon: "🏛️", comingSoon: true },
+  { name: "GSoC", href: "https://algosource.in/programs/gsoc", description: "Google Summer of Code" },
+  { name: "LFX", href: "https://algosource.in/programs/lfx", description: "Linux Foundation Mentorship" },
+  { name: "SOB", href: "https://algosource.in/programs/sob", description: "Summer of Bitcoin" },
+  { name: "Outreachy", href: "https://algosource.in/programs/outreachy", description: "Outreachy Internships", comingSoon: true },
+  { name: "ESOC", href: "https://algosource.in/programs/esoc", description: "European Summer of Code", comingSoon: true },
+  { name: "C4GT", href: "https://algosource.in/programs/c4gt", description: "Code for GovTech", comingSoon: true },
 ];
 
 // Community links
@@ -220,73 +220,62 @@ function GitHubDropdown() {
   );
 }
 
-// Main Navbar component
+// Main Navbar component - renders all nav items, CSS will handle positioning
 export default function Navbar() {
   return (
-    <nav className="navbar-extra flex items-center gap-0.5">
-      {/* Platform Link */}
-      <a
-        href="https://algosource.in"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="nav-link-btn hidden md:flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
-      >
-        <PlatformIcon className="w-4 h-4" />
-        <span>Platform</span>
-      </a>
-
-      {/* Guide Link */}
-      <Link
-        href="/"
-        className="nav-link-btn hidden md:flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
-      >
-        <GuideIcon className="w-4 h-4" />
-        <span>Guide</span>
-      </Link>
-
-      {/* Programs Dropdown */}
-      <div className="hidden md:block">
+    <nav className="navbar-extra flex items-center gap-1">
+      {/* Left section: Programs and Proposals - will be moved before search via CSS */}
+      <div className="navbar-left-items hidden md:flex items-center gap-1">
+        {/* Programs Dropdown */}
         <NavDropdown 
           label="Programs" 
           items={programs}
-          icon={<ProgramsIcon className="w-4 h-4" />}
         />
+
+        {/* Proposals Link */}
+        <Link
+          href="/proposals"
+          className="nav-link-btn flex items-center px-3 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
+        >
+          <span>Proposals</span>
+        </Link>
       </div>
 
-      {/* Community Dropdown */}
-      <div className="hidden md:block">
-        <NavDropdown 
-          label="Community" 
-          items={communityLinks}
-          icon={<CommunityIcon className="w-4 h-4" />}
-        />
+      {/* Right section: Icons and Get Started */}
+      <div className="navbar-right-items flex items-center gap-1">
+        {/* GitHub Icon */}
+        <a
+          href="https://github.com/algosourceio/algosource-docs"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 text-gray-400 hover:text-white transition-colors rounded-md hover:bg-white/5"
+          title="GitHub Repository"
+        >
+          <Github className="w-5 h-5" />
+        </a>
+
+        {/* WhatsApp Icon */}
+        <a
+          href="https://chat.whatsapp.com/B9vSLumYFCs5IP2UszZnzL"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 text-gray-400 hover:text-green-400 transition-colors rounded-md hover:bg-white/5"
+          title="Join WhatsApp Community"
+        >
+          <WhatsAppIcon className="w-5 h-5" />
+        </a>
+
+        {/* Divider */}
+        <div className="w-px h-5 bg-white/10 mx-1 hidden md:block" />
+
+        {/* Get Started Button */}
+        <a
+          href="https://algosource.in/profile"
+          className="hidden md:flex items-center px-4 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-500 rounded-md transition-colors"
+        >
+          Get Started
+        </a>
       </div>
-
-      {/* Proposals Link */}
-      <Link
-        href="/proposals"
-        className="nav-link-btn hidden lg:flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
-      >
-        <ProposalsIcon className="w-4 h-4" />
-        <span>Proposals</span>
-      </Link>
-
-      {/* Divider */}
-      <div className="w-px h-5 bg-white/10 mx-2 hidden md:block" />
-
-      {/* GitHub Dropdown */}
-      <GitHubDropdown />
-
-      {/* WhatsApp Quick Link */}
-      <a
-        href="https://chat.whatsapp.com/B9vSLumYFCs5IP2UszZnzL"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-2 text-gray-400 hover:text-green-400 transition-colors rounded-md hover:bg-white/5"
-        title="Join WhatsApp Community"
-      >
-        <WhatsAppIcon className="w-5 h-5" />
-      </a>
     </nav>
   );
 }

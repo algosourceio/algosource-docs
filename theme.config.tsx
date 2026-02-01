@@ -1,14 +1,13 @@
 import React from "react";
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import Footer from './components/Footer';
 import Navbar from "./components/Navbar";
 
 const Logo = () => {
   return (
     <div className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
-      <Image
+      <img
         src="/logo.png"
         alt="AlgoSource Logo"
         width={28}
@@ -23,17 +22,17 @@ const Logo = () => {
 const config: DocsThemeConfig = {
   logo: <Logo />,
   
-  // Hide default project and chat icons (we handle them in Navbar)
+  // Disable default project and chat icons (we handle them in Navbar)
   project: {
-    link: "https://github.com/algosourceio/algosource-docs",
+    icon: null,
   },
   chat: {
-    link: "https://chat.whatsapp.com/B9vSLumYFCs5IP2UszZnzL",
+    icon: null,
   },
   
   docsRepositoryBase: "https://github.com/algosourceio/algosource-docs/tree/main",
   
-  // Navbar extra content
+  // Navbar extra content (renders after search)
   navbar: {
     extraContent: <Navbar />,
   },
