@@ -112,7 +112,9 @@ function NavDropdown({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <button className="nav-link-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-colors text-gray-400 hover:text-white">
+      <button className={`nav-link-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-colors ${
+        isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+      }`}>
         {Icon}
         <span>{label}</span>
         <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
@@ -120,7 +122,9 @@ function NavDropdown({
 
       {isOpen && (
         <div className="absolute top-full left-0 pt-2 w-64 z-50">
-          <div className="nav-dropdown rounded-lg border shadow-xl overflow-hidden border-white/10 bg-[#0d1117]">
+          <div className={`nav-dropdown rounded-lg border shadow-xl overflow-hidden ${
+            isDark ? 'border-white/10 bg-[#0d1117]' : 'border-gray-200 bg-white'
+          }`}>
             <div className="p-2">
               {items.map((item) => (
                 <Link
@@ -131,7 +135,7 @@ function NavDropdown({
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-md transition-all ${
                     item.comingSoon 
                       ? "opacity-50 cursor-not-allowed" 
-                      : "hover:bg-white/5"
+                      : isDark ? "hover:bg-white/5" : "hover:bg-gray-50"
                   }`}
                   onClick={(e) => {
                     if (item.comingSoon) e.preventDefault();
@@ -143,7 +147,7 @@ function NavDropdown({
                   )}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-white">{item.name}</span>
+                      <span className={`text-sm font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>{item.name}</span>
                       {item.comingSoon && (
                         <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 font-medium">
                           Soon
@@ -151,11 +155,11 @@ function NavDropdown({
                       )}
                     </div>
                     {item.description && (
-                      <p className="text-xs truncate text-gray-500">{item.description}</p>
+                      <p className={`text-xs truncate ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>{item.description}</p>
                     )}
                   </div>
                   {item.href.startsWith("http") && !item.comingSoon && (
-                    <ExternalLink className="w-3.5 h-3.5 text-gray-500" />
+                    <ExternalLink className={`w-3.5 h-3.5 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} />
                   )}
                 </Link>
               ))}
@@ -242,7 +246,9 @@ export default function Navbar() {
         {/* Proposals Link */}
         <Link
           href="https://algosource.in/proposals"
-          className="nav-link-btn flex items-center px-3 py-2 text-sm font-medium transition-colors text-gray-400 hover:text-white"
+          className={`nav-link-btn flex items-center px-3 py-2 text-sm font-medium transition-colors ${
+            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+          }`}
         >
           <span>Proposals</span>
         </Link>
@@ -255,7 +261,11 @@ export default function Navbar() {
           href="https://github.com/algosourceio/algosource-docs"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 transition-colors rounded-md text-gray-400 hover:text-white hover:bg-white/5"
+          className={`p-2 transition-colors rounded-md ${
+            isDark 
+              ? 'text-gray-400 hover:text-white hover:bg-white/5' 
+              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+          }`}
           title="GitHub Repository"
         >
           <Github className="w-5 h-5" />
@@ -266,14 +276,18 @@ export default function Navbar() {
           href="https://chat.whatsapp.com/B9vSLumYFCs5IP2UszZnzL"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 transition-colors rounded-md text-gray-400 hover:text-green-400 hover:bg-white/5"
+          className={`p-2 transition-colors rounded-md ${
+            isDark 
+              ? 'text-gray-400 hover:text-green-400 hover:bg-white/5' 
+              : 'text-gray-600 hover:text-green-600 hover:bg-gray-100'
+          }`}
           title="Join WhatsApp Community"
         >
           <WhatsAppIcon className="w-5 h-5" />
         </a>
 
         {/* Divider */}
-        <div className="w-px h-5 mx-1 hidden md:block bg-white/10" />
+        <div className={`w-px h-5 mx-1 hidden md:block ${isDark ? 'bg-white/10' : 'bg-gray-200'}`} />
 
         {/* Get Started Button */}
         <a
