@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { ChevronDown, Github, ExternalLink } from "lucide-react";
 import { useTheme } from "nextra-theme-docs";
@@ -229,8 +229,17 @@ function GitHubDropdown() {
 
 // Main Navbar component - renders all nav items, CSS will handle positioning
 export default function Navbar() {
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === 'dark';
+  
+  // Prevent hydration mismatch by only rendering theme-dependent styles after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  // Default to dark theme (matches nextThemes defaultTheme config)
+  // Use dark theme during SSR and before mount to avoid flash
+  const isDark = !mounted || resolvedTheme === 'dark' || resolvedTheme === undefined;
   
   return (
     <nav className="navbar-extra flex items-center gap-1">

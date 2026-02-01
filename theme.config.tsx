@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { DocsThemeConfig, useConfig, useTheme } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 import Footer from './components/Footer';
 import Navbar from "./components/Navbar";
 
 const Logo = () => {
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === 'dark';
-  // 
+  
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  // Default to dark theme during SSR and before mount
+  const isDark = !mounted || resolvedTheme === 'dark' || resolvedTheme === undefined;
+  
   return (
     <div className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
       <img

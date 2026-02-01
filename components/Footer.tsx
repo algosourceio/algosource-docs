@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Heart, Github } from "lucide-react";
@@ -44,8 +45,17 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === 'dark';
+  
+  // Prevent hydration mismatch by only rendering theme-dependent styles after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  // Default to dark theme (matches nextThemes defaultTheme config)
+  // Use dark theme during SSR and before mount to avoid flash
+  const isDark = !mounted || resolvedTheme === 'dark' || resolvedTheme === undefined;
   
   return (
     <footer className={`border-t ${isDark ? 'border-white/8 bg-[#0d1117]' : 'border-gray-200 bg-white'}`}>
