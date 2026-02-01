@@ -1,0 +1,33 @@
+# AlgoSource Documentation - robots.txt
+# https://algosource.in/docs
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://algosource.in/docs/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Block sensitive paths (if any)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /404
+
+# Allow search engine image crawlers
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Allow social media crawlers
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /

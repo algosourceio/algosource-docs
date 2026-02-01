@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Heart, Github } from "lucide-react";
+import { useTheme } from "nextra-theme-docs";
 
 // WhatsApp SVG Icon
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -43,8 +44,11 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
+  
   return (
-    <footer className="border-t border-white/8 bg-[#0d1117]">
+    <footer className={`border-t ${isDark ? 'border-white/8 bg-[#0d1117]' : 'border-gray-200 bg-white'}`}>
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
@@ -53,16 +57,16 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-md overflow-hidden">
                 <Image
-                  src="/logo.png"
+                  src={isDark ? "/logo.png" : "/logo-light-theme.png"}
                   alt="AlgoSource Logo"
                   width={32}
                   height={32}
                   className="h-full w-full object-contain"
                 />
               </div>
-              <span className="font-bold text-lg text-white tracking-tight">AlgoSource</span>
+              <span className={`font-bold text-lg tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>AlgoSource</span>
             </Link>
-            <p className="text-sm text-[#8b949e] mb-6 leading-relaxed max-w-md">
+            <p className={`text-sm mb-6 leading-relaxed max-w-md ${isDark ? 'text-[#8b949e]' : 'text-gray-600'}`}>
               Your gateway to open source opportunities. Discover programs, access proposals, 
               and kickstart your journey in open source.
             </p>
@@ -77,7 +81,11 @@ export default function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-md bg-white/5 border border-white/8 flex items-center justify-center text-[#8b949e] hover:text-white hover:bg-white/10 hover:border-white/15 transition-all"
+                      className={`w-9 h-9 rounded-md flex items-center justify-center transition-all ${
+                        isDark 
+                          ? 'bg-white/5 border border-white/8 text-[#8b949e] hover:text-white hover:bg-white/10 hover:border-white/15' 
+                          : 'bg-gray-100 border border-gray-200 text-gray-500 hover:text-gray-900 hover:bg-gray-200 hover:border-gray-300'
+                      }`}
                       aria-label={social.name}
                     >
                       {social.isWhatsApp ? (
@@ -86,9 +94,17 @@ export default function Footer() {
                         <Icon className="w-4 h-4" />
                       ) : null}
                     </a>
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 text-xs font-medium text-white bg-[#21262d] rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-white/8 hidden sm:block">
+                    <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 text-xs font-medium rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none hidden sm:block ${
+                      isDark 
+                        ? 'text-white bg-[#21262d] border border-white/8' 
+                        : 'text-gray-900 bg-white border border-gray-200 shadow-lg'
+                    }`}>
                       {social.tooltip}
-                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#21262d] rotate-45 border-r border-b border-white/8"></div>
+                      <div className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 ${
+                        isDark 
+                          ? 'bg-[#21262d] border-r border-b border-white/8' 
+                          : 'bg-white border-r border-b border-gray-200'
+                      }`}></div>
                     </div>
                   </div>
                 );
@@ -99,7 +115,7 @@ export default function Footer() {
           {/* Links Columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-xs font-semibold text-[#e6edf3] mb-4 uppercase tracking-wider">{category}</h4>
+              <h4 className={`text-xs font-semibold mb-4 uppercase tracking-wider ${isDark ? 'text-[#e6edf3]' : 'text-gray-900'}`}>{category}</h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.name}>
@@ -107,14 +123,14 @@ export default function Footer() {
                       href={link.comingSoon ? "#" : link.href}
                       className={`text-sm transition-colors inline-flex items-center gap-2 ${
                         link.comingSoon 
-                          ? "text-[#484f58] cursor-not-allowed" 
-                          : "text-[#8b949e] hover:text-white"
+                          ? isDark ? "text-[#484f58] cursor-not-allowed" : "text-gray-400 cursor-not-allowed"
+                          : isDark ? "text-[#8b949e] hover:text-white" : "text-gray-600 hover:text-gray-900"
                       }`}
                       onClick={(e) => link.comingSoon && e.preventDefault()}
                     >
                       {link.name}
                       {link.comingSoon && (
-                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-[#8b949e]">
+                        <span className={`text-[9px] px-1.5 py-0.5 rounded ${isDark ? 'bg-white/5 text-[#8b949e]' : 'bg-gray-100 text-gray-500'}`}>
                           Soon
                         </span>
                       )}
@@ -133,10 +149,10 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/5">
+      <div className={`border-t ${isDark ? 'border-white/5' : 'border-gray-100'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-[#8b949e] flex items-center gap-1.5 text-center sm:text-left">
+            <p className={`text-sm flex items-center gap-1.5 text-center sm:text-left ${isDark ? 'text-[#8b949e]' : 'text-gray-600'}`}>
               © {new Date().getFullYear()} AlgoSource. Made with 
               <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" /> 
               for the open source community.
@@ -145,25 +161,25 @@ export default function Footer() {
             <div className="flex flex-wrap justify-center items-center gap-5">
               <Link
                 href="https://algosource.in/terms"
-                className="text-sm text-[#8b949e] hover:text-white transition-colors"
+                className={`text-sm transition-colors ${isDark ? 'text-[#8b949e] hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
               >
                 Terms
               </Link>
               <Link
                 href="https://algosource.in/privacy"
-                className="text-sm text-[#8b949e] hover:text-white transition-colors"
+                className={`text-sm transition-colors ${isDark ? 'text-[#8b949e] hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
               >
                 Privacy
               </Link>
               <Link
                 href="https://algosource.in/disclaimer"
-                className="text-sm text-[#8b949e] hover:text-white transition-colors"
+                className={`text-sm transition-colors ${isDark ? 'text-[#8b949e] hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
               >
                 Disclaimer
               </Link>
               <Link
                 href="https://algosource.in/changelog"
-                className="text-sm text-[#8b949e] hover:text-white transition-colors"
+                className={`text-sm transition-colors ${isDark ? 'text-[#8b949e] hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
               >
                 Changelog
               </Link>
