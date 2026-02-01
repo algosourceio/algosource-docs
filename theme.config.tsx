@@ -104,6 +104,7 @@ const config: DocsThemeConfig = {
         <link rel="canonical" href={canonicalUrl} />
 
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="AlgoSource Docs" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={description} />
@@ -118,8 +119,13 @@ const config: DocsThemeConfig = {
 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="icon" sizes="32x32" href="/logo.png" type="image/png" />
+        <link rel="icon" sizes="16x16" href="/logo.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
+        <link rel="shortcut icon" href="/logo.png" type="image/png" />
       </>
     );
   },
