@@ -54,7 +54,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="sm:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
+            <Link href="https://algosource.in/" className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-md overflow-hidden">
                 <Image
                   src={isDark ? "/logo.png" : "/logo-light-theme.png"}

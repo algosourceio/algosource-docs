@@ -245,7 +245,7 @@ export default function Navbar() {
 
         {/* Proposals Link */}
         <Link
-          href="/proposals"
+          href="https://algosource.in/proposals"
           className={`nav-link-btn flex items-center px-3 py-2 text-sm font-medium transition-colors ${
             isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
           }`}
