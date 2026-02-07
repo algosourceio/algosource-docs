@@ -85,7 +85,7 @@ html:not(.dark) .nextra-nav-container {
   display: none !important;
 }
 
-/* Navbar ordering - Programs/Proposals, then Search, then icons/button */
+/* Navbar ordering - Programs/proposal, then Search, then icons/button */
 .nextra-nav-container nav {
   display: flex !important;
   align-items: center !important;
@@ -96,7 +96,7 @@ html:not(.dark) .nextra-nav-container {
   order: 1 !important;
 }
 
-/* Search should come after Programs/Proposals */
+/* Search should come after Programs/proposal */
 .nextra-search {
   order: 2 !important;
   margin-left: 0.5rem !important;
