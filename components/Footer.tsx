@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Mail, Heart, Github } from "lucide-react";
 import { useTheme } from "nextra-theme-docs";
 
@@ -66,12 +65,13 @@ export default function Footer() {
           <div className="sm:col-span-2">
             <Link href="https://algosource.in/" className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-md overflow-hidden">
-                <Image
+                <img
                   src={isDark ? "/logo.png" : "/logo-light-theme.png"}
                   alt="AlgoSource Logo"
                   width={32}
                   height={32}
                   className="h-full w-full object-contain"
+                  loading="lazy"
                 />
               </div>
               <span className={`font-bold text-lg tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>AlgoSource</span>
